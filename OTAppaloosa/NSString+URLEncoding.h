@@ -13,16 +13,25 @@
 // limitations under the License.
 
 //
-//  OTAppaloosa
+//  NSString+URLEncoding.h
 //
 //  Created by Abdou Benhamouche on 10/12/12.
+//  Copyright (c) 2012 OCTO Technology. All rights reserved.
 //
-//
 
-#ifndef __OTAPPALOOSA__
-#define __OTAPPALOOSA__
+#import <Foundation/Foundation.h>
 
-#import "OTAppaloosaUpdateService.h"
-#import "OTAppaloosaSimpleUpdateService.h"
+/**
+ * Adding url encoding capability to NSString.
+ */
+@interface NSString (URLEncoding)
 
-#endif
+/**
+ * Encode the url string.
+ * @param encoding Encoding format for the output string.
+ * @return Resulting string.
+ */
+- (NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
+
+@end
+

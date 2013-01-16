@@ -14,42 +14,54 @@
 
 //
 //  OTAppaloosaUpdateService.h
-//  OTAppaloosaUpdateService
 //
 //  Created by Abdou Benhamouche on 10/12/12.
+//  Copyright (c) 2012 OCTO Technology. All rights reserved.
+//
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+
+/**************************************************************************************************/
+#pragma mark - Service Delegate
+
+@protocol OTAppaloosaUpdateServiceDelegate<NSObject>
+
+- (void)updateIsAvailableOnAppaloosaStore;
+
+@end
+
 
 /**************************************************************************************************/
 #pragma mark - Interface
 
 /**
- * AutoUpdate Simple Service.
+ * AutoUpdate Service.
  */
-@interface OTAppaloosaUpdateService : NSObject <UIAlertViewDelegate>
+@interface OTAppaloosaUpdateService : NSObject
+
+
+/**************************************************************************************************/
+#pragma mark - Birth & Death
+
+- (id)initWithDelegate:(id<OTAppaloosaUpdateServiceDelegate>)theDelegate;
 
 /**************************************************************************************************/
 #pragma mark - Getters & Setters
 
 /** @name Properties */
 
+/** Delegate called for user interaction */
+@property (nonatomic, assign) id<OTAppaloosaUpdateServiceDelegate>  delegate;
+
 /** ID of your Store on Appaloosa Store */
-@property (nonatomic, strong) NSString *storeID;
+@property (nonatomic, strong) NSString                              *storeID;
 /** Bundle ID of your App on Appaloosa Store */
-@property (nonatomic, strong) NSString *bundleID;
+@property (nonatomic, strong) NSString                              *bundleID;
 /** Token */
-@property (nonatomic, strong) NSString *storeToken;
+@property (nonatomic, strong) NSString                              *storeToken;
 /** ID of your App on Appaloosa Store */
-@property (nonatomic, strong) NSString *appID;
+@property (nonatomic, strong) NSString                              *appID;
 
-/**************************************************************************************************/
-#pragma mark - Birth & Death
-
-/** @name Birth & Death */
-
-/** Retrieve the common instance of the service */
-+ (OTAppaloosaUpdateService *)sharedInstance;
 
 /**************************************************************************************************/
 #pragma mark - Manage updates
@@ -58,11 +70,14 @@
 
 /**
  * Call Appaloosa Store Server to check if a new version of the App is available.
- * 
+ *
  * @param storeID ID of your Store on Appaloosa Server.
+ * @param bundleID Bundle ID of your App on Appaloosa Store.
  * @param storeToken Token.
  */
-- (void)checkForUpdateWithStoreID:(NSString *)storeID storeToken:(NSString *)storeToken;
+- (void)checkForUpdateWithStoreID:(NSString *)storeID
+                            appID:(NSString *)bundleID
+                       storeToken:(NSString *)storeToken;
 
 /**
  * Ask for download the last version of the App.

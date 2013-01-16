@@ -1,4 +1,4 @@
-// Copyright 2013 OCTO Technology
+// Copyright 2012 OCTO Technology
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,11 +13,10 @@
 // limitations under the License.
 
 //
-//  OTAppaloosaUpdateService.h
-//  OTAppaloosaUpdateService
+//  OTAppaloosaUpdateService.m
 //
 //  Created by Abdou Benhamouche on 10/12/12.
-//
+//  Copyright (c) 2012 OCTO Technology. All rights reserved.
 //
 
 #import "OTAppaloosaUpdateService.h"
@@ -33,17 +32,12 @@
 #define JSON_ID_KEY @"id"
 #define JSON_VERSION_KEY @"version"
 
-#define CANCEL_ALERT_INDEX 0
-#define OK_ALERT_INDEX 1
-
-@interface OTAppaloosaUpdateService()
+@interface OTAppaloosaUpdateService ()
 
 - (void)shouldUpdateApp;
 - (void)checkFromUpdateResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *)error;
 - (BOOL)mustBeUpdatedWithVersion:(NSString *)newVersion;
 - (NSString *)installUrlWithStoreID:(NSString *)theStoreID appID:(NSString *)theBundleID storeToken:(NSString *)theStoreToken;
-- (void)downloadNewVersionOfTheApp;
-- (NSString *)url:(NSString*)url usingEncoding:(NSStringEncoding)encoding;
 
 @end
 
@@ -52,6 +46,7 @@
 /**************************************************************************************************/
 #pragma mark - Getters & Setters
 
+@synthesize delegate;
 @synthesize storeID;
 @synthesize bundleID;
 @synthesize storeToken;
@@ -60,28 +55,23 @@
 /**************************************************************************************************/
 #pragma mark - Birth & Death
 
-+ (OTAppaloosaUpdateService *)sharedInstance
+- (id)initWithDelegate:(id<OTAppaloosaUpdateServiceDelegate>)theDelegate;
 {
-    static OTAppaloosaUpdateService *sharedInstance;
-    static dispatch_once_t onceToken;
-    
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[OTAppaloosaUpdateService alloc] init];
-    });
-    
-    return sharedInstance;
+    self = [super init];
+    if (self && theDelegate) 
+    {
+        self.delegate = theDelegate;
+    }
+    return self;
 }
 
 /**************************************************************************************************/
 #pragma mark - Manage updates
 
-- (void)checkForUpdateWithStoreID:(NSString *)theStoreID storeToken:(NSString *)theStoreToken
+- (void)checkForUpdateWithStoreID:(NSString *)theStoreID appID:(NSString *)theBundleID storeToken:(NSString *)theStoreToken
 {
-    NSString *bundle = [[NSBundle mainBundle] bundleIdentifier];
-    NSString *bundleIDFormatted = [self url:bundle usingEncoding:NSUTF8StringEncoding];
-    
     self.storeID = theStoreID;
-    self.bundleID = bundleIDFormatted;
+    self.bundleID = theBundleID;
     self.storeToken = theStoreToken;
     
     NSString *urlString = [NSString stringWithFormat
@@ -104,19 +94,6 @@
 }
 
 /**************************************************************************************************/
-#pragma mark - Appaloosa service delegate
-
-- (void)downloadNewVersionOfTheApp
-{
-    if (storeID && bundleID && storeToken)
-    {
-        NSString *installUrl = [self installUrlWithStoreID:storeID appID:bundleID storeToken:storeToken];
-
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:installUrl]];
-    }
-}
-
-/**************************************************************************************************/
 #pragma mark - Private
 
 - (void)checkFromUpdateResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *)error
@@ -130,20 +107,17 @@
         self.appID = [dataDictionnary objectForKey:JSON_ID_KEY];
         
         if ([self mustBeUpdatedWithVersion:[dataDictionnary objectForKey:JSON_VERSION_KEY]])
+            if ([self.delegate respondsToSelector:@selector(updateIsAvailableOnAppaloosaStore)])
         {
             [self performSelectorOnMainThread:@selector(shouldUpdateApp) withObject:nil waitUntilDone:NO];
         }
     }
 }
 
+
 - (void)shouldUpdateApp
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Update available", @"Update available")
-                                                    message:NSLocalizedString(@"Would you like to update?", @"Would you like to update?")
-                                                   delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
-                                          otherButtonTitles:NSLocalizedString(@"Ok", @"Ok"),nil];
-    [alert show];
+    [self.delegate updateIsAvailableOnAppaloosaStore];
 }
 
 - (BOOL)mustBeUpdatedWithVersion:(NSString *)newVersion
@@ -152,6 +126,7 @@
     
     return ![newVersion isEqualToString:currentVersion];
 }
+
 
 /**************************************************************************************/
 #pragma mark - Install URL 
@@ -170,27 +145,18 @@
     return installUrl;
 }
 
+
 /**************************************************************************************************/
-#pragma mark - UIAlertViewDelegate
+#pragma mark - Appaloosa service delegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)downloadNewVersionOfTheApp
 {
-    if (buttonIndex == OK_ALERT_INDEX)
+    if (storeID && bundleID && storeToken)
     {
-        [self downloadNewVersionOfTheApp];
+        NSString *installUrl = [self installUrlWithStoreID:storeID appID:bundleID storeToken:storeToken];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:installUrl]];
     }
-}
-
-/**************************************************************************************/
-#pragma mark - URL Encode 
-
-- (NSString *)url:(NSString*)url usingEncoding:(NSStringEncoding)encoding
-{
-	return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                 (CFStringRef)url,
-                                                                                 NULL,
-                                                                                 (CFStringRef)@"!*'\"();:@&=+$,./?%#[]% ",
-                                                                                 CFStringConvertNSStringEncodingToEncoding(encoding)));
 }
 
 @end
