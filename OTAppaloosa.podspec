@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.source_files = 'OTAppaloosa'
   s.requires_arc = true
   
-  s.dependency     'JSONKit'
+  s.dependency     'JSONKit', '~> 1.4'
 end
 

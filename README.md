@@ -28,8 +28,8 @@ How to integrate manually?
  4. Into your AppDelegate.m file (launch of the autoupdate during application start)
     4.1. Import the plugin: `#import "AppaloosaAutoUpdate.h"`
     4.2. Into method `- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`, add the following code line:
-   
-    [[AppaloosaService sharedInstance]checkForUpdateWithStoreID:VOTRE_STORE_ID storeToken:VOTRE_STORE_TOKEN];
+
+        [[AppaloosaService sharedInstance]checkForUpdateWithStoreID:VOTRE_STORE_ID storeToken:VOTRE_STORE_TOKEN];
 
 Want some documentation?
 ------------------------
@@ -52,6 +52,6 @@ Comment l’intégrer dans un projet iOS ?
  4. Dans l’AppDelegate.m (déclenchement de l’AutoUpdate au lancement de l’application)
     4.1. faire un import : #import "AppaloosaAutoUpdate.h"
     4.2. dans la fonction - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions , implémenter le code suivant : 
-   
-    [[AppaloosaService sharedInstance]checkForUpdateWithStoreID:VOTRE_STORE_ID     storeToken:VOTRE_STORE_TOKEN];
+
+        [[AppaloosaService sharedInstance]checkForUpdateWithStoreID:VOTRE_STORE_ID storeToken:VOTRE_STORE_TOKEN];
 
