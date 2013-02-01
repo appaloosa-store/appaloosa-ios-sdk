@@ -15,7 +15,7 @@ Appaloosa SDK library use ARC.
 Using CocoaPods?
 ----------------
 
-Simply add `pod 'OTAppaloosa'` in your Podfile.
+Simply add `pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/master/OTAppaloosa.podspec"` in your Podfile.
 
 Refer to [CocoaPods](https://github.com/CocoaPods/CocoaPods) for more information about it.
 
@@ -92,7 +92,7 @@ Appaloosa SDK for iOS use [AppleDoc](https://github.com/tomaz/appledoc) to gener
 Vous utilisez CocoaPods ?
 -------------------------
 
-Ajouter simplement `pod 'AppaloosaAutoUpdate'` dans votre fichier Podfile.
+Ajouter simplement `pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/master/OTAppaloosa.podspec"` dans votre fichier Podfile.
 
 Plus d'informations sur [CocoaPods](https://github.com/CocoaPods/CocoaPods).
 
