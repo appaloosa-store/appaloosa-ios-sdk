@@ -19,10 +19,7 @@
 //
 //
 
-#ifndef __OTAPPALOOSA__
-#define __OTAPPALOOSA__
-
 #import "OTAppaloosaUpdateService.h"
 #import "OTAppaloosaSimpleUpdateService.h"
+#import "OTAppaloosaInAppFeedbackService.h"
 
-#endif
