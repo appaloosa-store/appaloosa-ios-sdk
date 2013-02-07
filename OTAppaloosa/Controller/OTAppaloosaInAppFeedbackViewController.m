@@ -89,7 +89,6 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 
 - (void)viewDidLoad
 {
-    [self initializeScreenshotImageViewSizeForScreenHeight:[[UIScreen mainScreen] bounds].size.height];
     [self initializeTitleAndDescriptionViews];
     
     [self initializeScreenshotViews];
@@ -261,11 +260,12 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 
 - (void)initializeScreenshotViews
 {
-    // hide screenshot :
+    [self initializeScreenshotImageViewSizeForScreenHeight:[[UIScreen mainScreen] bounds].size.height];
+    [self.screenshotImageView setImage:self.screenshotImage];
+    
+    // hide screenshot (it will appear in viewDidAppear: method) :
     [self.useScreenshotSwitch setOn:NO animated:NO];
     [self onUseScreenshotSwitchChange:self.useScreenshotSwitch];
-    
-    [self.screenshotImageView setImage:self.screenshotImage];
 }
 
 - (void)initializeTitleAndDescriptionViews
