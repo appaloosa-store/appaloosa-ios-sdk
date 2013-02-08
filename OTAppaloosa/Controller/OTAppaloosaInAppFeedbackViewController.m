@@ -22,7 +22,7 @@
 - (void)updateMainScrollViewContentSize;
 - (void)initializeScreenshotImageViewFrameForScreenHeight:(CGFloat)screenHeight;
 - (void)initializeBorderForView:(UIView *)view;
-- (void)initializeScreenshotView;
+- (void)initializeScreenshotViewWithImage:(UIImage *)image;
 - (void)initializeTitleAndDescriptionViews;
 - (void)hideKeyboard;
 
@@ -94,7 +94,7 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 {
     [self initializeTitleAndDescriptionViews];
     
-    [self initializeScreenshotView];
+    [self initializeScreenshotViewWithImage:self.screenshotImage];
     
     [self.mainScrollView setDelegate:self];
     [self.mainScrollView setScrollsToTop:YES];
@@ -115,6 +115,7 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 
 - (IBAction)onUseScreenshotSwitchChange:(UISwitch *)sender
 {
+        // hide or show screenshot imageView switch change :
     BOOL shouldUseScreenshot = sender.on;
     
     [UIView animateWithDuration:kAnimationDuration animations:^
@@ -129,10 +130,11 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 }
 
 
-- (IBAction)onSendButtonTap:(id)sender
+- (IBAction)onValidateButtonTap:(id)sender
 {
     [self hideKeyboard];
     
+    // get feedback title, description and image :
     NSString *feedbackType = [self.feedbackTypeSegmentedControl titleForSegmentAtIndex:self.feedbackTypeSegmentedControl.selectedSegmentIndex];
     NSString *title = [NSString stringWithFormat:@"%@ %@ : %@", kInAppFeedbackPreTitle, feedbackType, self.titleTextField.text];
     UIImage *screenshotImage = (self.useScreenshotSwitch.on ? self.screenshotImage : nil);
@@ -235,6 +237,7 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
     self.screenshotImageView.frame = frame;
 }
 
+
 - (void)initializeBorderForView:(UIView *)view
 {
     view.layer.cornerRadius = kRoundedCornerRadius;
@@ -243,12 +246,21 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
     view.layer.borderWidth= 1;
 }
 
-- (void)initializeScreenshotView
+
+/**
+ * @brief Initialize screenshot imageView frame and set its image
+ * @param image
+ */
+- (void)initializeScreenshotViewWithImage:(UIImage *)image
 {
     [self initializeScreenshotImageViewFrameForScreenHeight:[[UIScreen mainScreen] bounds].size.height];
-    [self.screenshotImageView setImage:self.screenshotImage];
+    [self.screenshotImageView setImage:image];
 }
 
+
+/**
+ * @brief Initialize title and description placeholders, backgrounds and borders
+ */
 - (void)initializeTitleAndDescriptionViews
 {
     // set placeholders :
@@ -306,6 +318,9 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 }
 
 
+/**
+ * @brief Close this (self) viewController and set default feedback button alpha to 1
+ */
 - (void)closeFeedbackViewController
 {
     [UIView animateWithDuration:kAnimationDuration animations:^
@@ -316,6 +331,9 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 }
 
 
+/**
+ * @brief Enable or disable validate button switch title is empty or not
+ */
 - (void)updateValidateButtonState
 {
     BOOL isTitleNotEmpty = ([self.titleTextField.text length] > 0);

@@ -1,12 +1,12 @@
 //
-//  OTAppaloosaInAppFeedbackService.m
+//  OTAppaloosaInAppFeedbackManager.m
 //  OTFeedback
 //
 //  Created by Maxence Walbrou on 06/02/13.
 //  Copyright (c) 2013 OCTO. All rights reserved.
 //
 
-#import "OTAppaloosaInAppFeedbackService.h"
+#import "OTAppaloosaInAppFeedbackManager.h"
 
 
 // Controllers :
@@ -28,22 +28,33 @@ static const CGFloat kFeedbackButtonHeight = 41;
 
 static const CGFloat kAnimationDuration = 0.9;
 
-static const NSUInteger kFeedbackButtonTag = 1212; // arbitrary tag
+@interface OTAppaloosaInAppFeedbackManager ()
 
-
-@interface OTAppaloosaInAppFeedbackService ()
+- (void)onFeedbackButtonTap;
 
 + (UIImage *)getScreenshotImageFromCurrentScreen;
-+ (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray andFeedbackButton:(UIButton *)feedbackButton;
-
-+ (UIButton *)recoverFeedbackButtonFromWindow;
+- (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray andFeedbackButton:(UIButton *)feedbackButton;
 
 @end
 
 
-@implementation OTAppaloosaInAppFeedbackService
+@implementation OTAppaloosaInAppFeedbackManager
 
 
+/**************************************************************************************************/
+#pragma mark - Singleton
+
+static OTAppaloosaInAppFeedbackManager *manager;
+
++ (OTAppaloosaInAppFeedbackManager *)sharedManager
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        manager = [[self alloc] init];
+    });
+    
+    return manager;
+}
 
 /**************************************************************************************************/
 #pragma mark - Birth & Death
@@ -63,10 +74,9 @@ static const NSUInteger kFeedbackButtonTag = 1212; // arbitrary tag
 /**************************************************************************************************/
 #pragma mark - UI
 
-+ (void)showDefaultFeedbackButton:(BOOL)shouldShow
+- (void)showDefaultFeedbackButton:(BOOL)shouldShow
 {
-    UIButton *feedbackButton = [OTAppaloosaInAppFeedbackService recoverFeedbackButtonFromWindow];
-    [feedbackButton setHidden:!shouldShow];
+    [self.feedbackButton setHidden:!shouldShow];
 }
 
 
@@ -75,32 +85,39 @@ static const NSUInteger kFeedbackButtonTag = 1212; // arbitrary tag
 
 - (void)onFeedbackButtonTap
 {
-    [OTAppaloosaInAppFeedbackService triggerFeedbackWithRecipientsEmailArray:self.recipientsEmailArray
-                                                           andFeedbackButton:[OTAppaloosaInAppFeedbackService recoverFeedbackButtonFromWindow]];
+    [self triggerFeedbackWithRecipientsEmailArray:self.recipientsEmailArray
+                                andFeedbackButton:self.feedbackButton];
 }
 
 
 /**************************************************************************************************/
 #pragma mark - Feedback 
 
+/**
+ * @brief Create and display default feedback button
+ * @param emailsArray - NSArray containing feedback e-mail(s) adresses
+ */
 - (void)initializeDefaultFeedbackButtonForRecipientsEmailArray:(NSArray *)emailsArray
 {
     self.recipientsEmailArray = emailsArray;
-    [OTAppaloosaInAppFeedbackService showDefaultFeedbackButton:YES];
+    [self showDefaultFeedbackButton:YES];
 }
 
 
-+ (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray
+/**
+ * @brief Trigger screenshot + feedback viewController launch
+ * @param emailsArray - NSArray containing feedback e-mail(s) adresses
+ */
+- (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray
 {
-    UIButton *feedbackButton = [OTAppaloosaInAppFeedbackService recoverFeedbackButtonFromWindow];
-    [OTAppaloosaInAppFeedbackService triggerFeedbackWithRecipientsEmailArray:emailsArray andFeedbackButton:feedbackButton];
+    [self triggerFeedbackWithRecipientsEmailArray:emailsArray andFeedbackButton:self.feedbackButton];
 }
 
 
-+ (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray andFeedbackButton:(UIButton *)feedbackButton
+- (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray andFeedbackButton:(UIButton *)feedbackButton
 {
     // take screenshot :
-    UIImage *screenshotImage = [OTAppaloosaInAppFeedbackService getScreenshotImageFromCurrentScreen];
+    UIImage *screenshotImage = [OTAppaloosaInAppFeedbackManager getScreenshotImageFromCurrentScreen];
     
     // display white blink screen (to copy iOS screenshot effect) before opening feedback controller :
     UIView *whiteView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -128,6 +145,9 @@ static const NSUInteger kFeedbackButtonTag = 1212; // arbitrary tag
 #pragma mark - Private
 
 
+/**
+ * @brief Create the default feedback button and add it as subview on application window
+ */
 - (void)initializeDefaultFeedbackButton
 {
     UIWindow *applicationWindow = [[[UIApplication sharedApplication] delegate] window];
@@ -136,13 +156,12 @@ static const NSUInteger kFeedbackButtonTag = 1212; // arbitrary tag
                                             kFeedbackButtonTopMargin,
                                             kFeedbackButtonWidth,
                                             kFeedbackButtonHeight);
-    UIButton *feedbackButton = [[UIButton alloc] initWithFrame:feedbackButtonFrame];
-    [feedbackButton setImage:[UIImage imageNamed:@"btn_feedback"] forState:UIControlStateNormal];
-    [feedbackButton addTarget:self action:@selector(onFeedbackButtonTap) forControlEvents:UIControlEventTouchUpInside];
-    [feedbackButton setTag:kFeedbackButtonTag];
-    [feedbackButton setHidden:YES]; // button is hidden by default
+    self.feedbackButton = [[UIButton alloc] initWithFrame:feedbackButtonFrame];
+    [self.feedbackButton setImage:[UIImage imageNamed:@"btn_feedback"] forState:UIControlStateNormal];
+    [self.feedbackButton addTarget:self action:@selector(onFeedbackButtonTap) forControlEvents:UIControlEventTouchUpInside];
+    [self.feedbackButton setHidden:YES]; // button is hidden by default
     
-    [applicationWindow addSubview:feedbackButton];
+    [applicationWindow addSubview:self.feedbackButton];
 }
 
 
@@ -156,14 +175,6 @@ static const NSUInteger kFeedbackButtonTag = 1212; // arbitrary tag
     UIGraphicsEndImageContext();
     
     return screenImage;
-}
-
-
-+ (UIButton *)recoverFeedbackButtonFromWindow
-{
-    UIWindow *applicationWindow = [[[UIApplication sharedApplication] delegate] window];
-    UIButton *button = (UIButton *)[applicationWindow viewWithTag:kFeedbackButtonTag];
-    return button;
 }
 
 

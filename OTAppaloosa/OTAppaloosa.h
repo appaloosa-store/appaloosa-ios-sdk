@@ -21,5 +21,5 @@
 
 #import "OTAppaloosaUpdateService.h"
 #import "OTAppaloosaSimpleUpdateService.h"
-#import "OTAppaloosaInAppFeedbackService.h"
+#import "OTAppaloosaInAppFeedbackManager.h"
 
