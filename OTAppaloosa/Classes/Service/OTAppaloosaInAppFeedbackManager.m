@@ -22,8 +22,8 @@
 // Constants :
 static const CGFloat kFeedbackButtonTopMargin = 70;
 
-static const CGFloat kFeedbackButtonWidth = 34;
-static const CGFloat kFeedbackButtonHeight = 41;
+static const CGFloat kFeedbackButtonWidth = 35;
+static const CGFloat kFeedbackButtonHeight = 35;
 
 static const CGFloat kAnimationDuration = 0.9;
 
@@ -34,6 +34,9 @@ static const CGFloat kAnimationDuration = 0.9;
 + (UIImage *)getScreenshotImageFromCurrentScreen;
 - (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray andFeedbackButton:(UIButton *)feedbackButton;
 + (UIView *)getApplicationWindowView;
+
+- (void)onOrientationChange;
+- (void)updateFeedbackButtonFrame;
 
 @end
 
@@ -65,7 +68,8 @@ static OTAppaloosaInAppFeedbackManager *manager;
     self = [super init];
     if (self)
     {      
-        [self initializeDefaultFeedbackButton];        
+        [self initializeDefaultFeedbackButton];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOrientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
     return self;
 }
@@ -117,7 +121,9 @@ static OTAppaloosaInAppFeedbackManager *manager;
 - (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray andFeedbackButton:(UIButton *)feedbackButton
 {
     // take screenshot :
+    [self.feedbackButton setAlpha:0];
     UIImage *screenshotImage = [OTAppaloosaInAppFeedbackManager getScreenshotImageFromCurrentScreen];
+    [self.feedbackButton setAlpha:1];
     
     // display white blink screen (to copy iOS screenshot effect) before opening feedback controller :
     UIView *whiteView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -158,17 +164,14 @@ static OTAppaloosaInAppFeedbackManager *manager;
 {
     UIView *windowView = [OTAppaloosaInAppFeedbackManager getApplicationWindowView];
 
-    CGRect feedbackButtonFrame = CGRectMake(windowView.frame.size.width - kFeedbackButtonWidth,
-                                            kFeedbackButtonTopMargin,
-                                            kFeedbackButtonWidth,
-                                            kFeedbackButtonHeight);
-    self.feedbackButton = [[UIButton alloc] initWithFrame:feedbackButtonFrame];
-    [self.feedbackButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
+    self.feedbackButton = [[UIButton alloc] init];
     [self.feedbackButton setImage:[UIImage imageNamed:@"btn_feedback"] forState:UIControlStateNormal];
     [self.feedbackButton addTarget:self action:@selector(onFeedbackButtonTap) forControlEvents:UIControlEventTouchUpInside];
     [self.feedbackButton setHidden:YES]; // button is hidden by default
     
     [windowView addSubview:self.feedbackButton];
+    
+    [self updateFeedbackButtonFrame];
 }
 
 
@@ -195,7 +198,64 @@ static OTAppaloosaInAppFeedbackManager *manager;
         window = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
     }
     
-    return [[window subviews] objectAtIndex:0];
+    return window;
+}
+
+- (void)onOrientationChange
+{
+    [self updateFeedbackButtonFrame];
+}
+
+
+- (void)updateFeedbackButtonFrame
+{
+    [self.feedbackButton setAlpha:0];
+    
+    UIView *windowView = [OTAppaloosaInAppFeedbackManager getApplicationWindowView];
+    UIDeviceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    BOOL isInLandscapeMode = (UIDeviceOrientationIsLandscape(currentOrientation));
+    
+    CGFloat x;
+    CGFloat y;
+    CGFloat translationAngle;
+    if (!isInLandscapeMode)
+    {
+        if (currentOrientation == UIDeviceOrientationPortraitUpsideDown)
+        {
+            x = 0;
+            y = windowView.frame.size.height - kFeedbackButtonTopMargin - kFeedbackButtonHeight;
+            translationAngle = M_PI;
+        }
+        else
+        {
+            x = windowView.frame.size.width - kFeedbackButtonWidth;
+            y = kFeedbackButtonTopMargin;
+            translationAngle = 0;
+        }
+    }
+    else
+    {
+        if (currentOrientation == UIDeviceOrientationLandscapeRight)
+        {
+            x = kFeedbackButtonTopMargin;
+            y = 0;
+            translationAngle = -M_PI / 2;
+        }
+        else
+        {
+            x = windowView.frame.size.width - kFeedbackButtonTopMargin - kFeedbackButtonWidth;
+            y = windowView.frame.size.height - kFeedbackButtonHeight;
+            translationAngle = M_PI / 2;
+        }
+    }
+    CGRect feedbackButtonFrame = CGRectMake(x, y, kFeedbackButtonWidth, kFeedbackButtonHeight);
+    self.feedbackButton.transform = CGAffineTransformIdentity;
+    self.feedbackButton.frame = feedbackButtonFrame;
+    self.feedbackButton.transform = CGAffineTransformMakeRotation(translationAngle);
+    
+    [UIView animateWithDuration:kAnimationDuration animations:^{
+        [self.feedbackButton setAlpha:1];
+    }];
 }
 
 
