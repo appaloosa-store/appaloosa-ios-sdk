@@ -14,7 +14,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 // Utils :
-#import "NSObject+performBlockAfterDelay.h"
 #import "UIViewController+CurrentPresentedController.h"
 
 
@@ -232,7 +231,8 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 {
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]))
+    BOOL isInLandscapeMode = UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]);
+    if (isInLandscapeMode)
     {
         CGFloat temp = screenHeight;
         screenHeight = screenWidth - CGRectGetHeight(self.navigationBar.frame);

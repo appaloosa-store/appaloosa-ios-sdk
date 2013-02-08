@@ -16,7 +16,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 // Utils :
-#import "NSObject+performBlockAfterDelay.h"
 #import "UIViewController+CurrentPresentedController.h"
 
 
@@ -34,6 +33,7 @@ static const CGFloat kAnimationDuration = 0.9;
 
 + (UIImage *)getScreenshotImageFromCurrentScreen;
 - (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray andFeedbackButton:(UIButton *)feedbackButton;
++ (UIView *)getApplicationWindowView;
 
 @end
 
@@ -122,8 +122,8 @@ static OTAppaloosaInAppFeedbackManager *manager;
     // display white blink screen (to copy iOS screenshot effect) before opening feedback controller :
     UIView *whiteView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [whiteView setBackgroundColor:[UIColor whiteColor]];
-    UIWindow *applicationWindow = [[[UIApplication sharedApplication] delegate] window];
-    [applicationWindow addSubview:whiteView];
+    UIView *windowView = [OTAppaloosaInAppFeedbackManager getApplicationWindowView];
+    [windowView addSubview:whiteView];
     [UIView animateWithDuration:kAnimationDuration animations:^
      {
          [whiteView setAlpha:0];
@@ -156,18 +156,19 @@ static OTAppaloosaInAppFeedbackManager *manager;
  */
 - (void)initializeDefaultFeedbackButton
 {
-    UIWindow *applicationWindow = [[[UIApplication sharedApplication] delegate] window];
-    
-    CGRect feedbackButtonFrame = CGRectMake(applicationWindow.frame.size.width - kFeedbackButtonWidth,
+    UIView *windowView = [OTAppaloosaInAppFeedbackManager getApplicationWindowView];
+
+    CGRect feedbackButtonFrame = CGRectMake(windowView.frame.size.width - kFeedbackButtonWidth,
                                             kFeedbackButtonTopMargin,
                                             kFeedbackButtonWidth,
                                             kFeedbackButtonHeight);
     self.feedbackButton = [[UIButton alloc] initWithFrame:feedbackButtonFrame];
+    [self.feedbackButton setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
     [self.feedbackButton setImage:[UIImage imageNamed:@"btn_feedback"] forState:UIControlStateNormal];
     [self.feedbackButton addTarget:self action:@selector(onFeedbackButtonTap) forControlEvents:UIControlEventTouchUpInside];
     [self.feedbackButton setHidden:YES]; // button is hidden by default
     
-    [applicationWindow addSubview:self.feedbackButton];
+    [windowView addSubview:self.feedbackButton];
 }
 
 
@@ -181,6 +182,20 @@ static OTAppaloosaInAppFeedbackManager *manager;
     UIGraphicsEndImageContext();
     
     return screenImage;
+}
+
+/**
+ * @return First window's view (to keep orientation when device rotates)
+ */
++ (UIView *)getApplicationWindowView
+{
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    if (!window)
+    {
+        window = [[[UIApplication sharedApplication] windows] objectAtIndex:0];
+    }
+    
+    return [[window subviews] objectAtIndex:0];
 }
 
 
