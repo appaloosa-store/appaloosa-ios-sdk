@@ -14,21 +14,20 @@
 /**************************************************************************************************/
 #pragma mark - Getters and Setters
 
-@property (strong, nonatomic) UIButton *feedbackButton;
-@property (strong, nonatomic) UIWindow *applicationWindow;
-
-
-
-/**************************************************************************************************/
-#pragma mark - Birth & Death
-
-- (id)initOnWindow:(UIWindow *)window;
+@property (strong, nonatomic) NSArray *recipientsEmailArray;
 
 
 /**************************************************************************************************/
 #pragma mark - UI
 
-- (void)showFeedbackButton:(BOOL)shouldShow;
++ (void)showDefaultFeedbackButton:(BOOL)shouldShow;
+
+
+/**************************************************************************************************/
+#pragma mark - Feedback
+
+- (void)initializeDefaultFeedbackButtonForRecipientsEmailArray:(NSArray *)emailsArray;
++ (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray;
 
 
 @end

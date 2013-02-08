@@ -20,9 +20,9 @@
 @interface OTAppaloosaInAppFeedbackViewController ()
 
 - (void)updateMainScrollViewContentSize;
-- (void)initializeScreenshotImageViewSizeForScreenHeight:(CGFloat)screenHeight;
+- (void)initializeScreenshotImageViewFrameForScreenHeight:(CGFloat)screenHeight;
 - (void)initializeBorderForView:(UIView *)view;
-- (void)initializeScreenshotViews;
+- (void)initializeScreenshotView;
 - (void)initializeTitleAndDescriptionViews;
 - (void)hideKeyboard;
 
@@ -32,8 +32,6 @@
 
 - (void)closeFeedbackViewController;
 - (void)updateValidateButtonState;
-
-- (CGFloat)statusBarHeight;
 
 @end
 
@@ -61,7 +59,9 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 #pragma mark - Birth & Death
 
 
-- (id)initWithFeedbackButton:(UIButton *)button recipientsEmailArray:(NSArray *)recipientsEmailArray andScreenshotImage:(UIImage *)screenshotImage
+- (id)initWithFeedbackButton:(UIButton *)button
+        recipientsEmailArray:(NSArray *)recipientsEmailArray
+          andScreenshotImage:(UIImage *)screenshotImage
 {
     self = [super init];
     if (self)
@@ -80,7 +80,10 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.feedbackButton setHidden:YES];
+    [UIView animateWithDuration:kAnimationDuration animations:^
+    {
+         [self.feedbackButton setAlpha:0];
+    }];
     [self updateValidateButtonState];
     
     [super viewWillAppear:animated];
@@ -91,7 +94,7 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 {
     [self initializeTitleAndDescriptionViews];
     
-    [self initializeScreenshotViews];
+    [self initializeScreenshotView];
     
     [self.mainScrollView setDelegate:self];
     [self.mainScrollView setScrollsToTop:YES];
@@ -99,25 +102,6 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
     
     [super viewDidLoad];
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    if (self.screenshotImageView.alpha == 0)
-    {
-        [self performBlock:^
-         {
-             [UIView animateWithDuration:kAnimationDuration animations:^
-              {
-                  [self.useScreenshotSwitch setOn:YES animated:NO];
-                  [self onUseScreenshotSwitchChange:self.useScreenshotSwitch];
-              }];
-             
-         } afterDelay:kAnimationDuration];
-    }
-    
-    [super viewDidAppear:animated];
-}
-
 
 
 /**************************************************************************************************/
@@ -240,10 +224,11 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 }
 
 
-- (void)initializeScreenshotImageViewSizeForScreenHeight:(CGFloat)screenHeight
+
+- (void)initializeScreenshotImageViewFrameForScreenHeight:(CGFloat)screenHeight
 {
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat screenshotHeight = CGRectGetWidth(self.screenshotImageView.frame) * (screenHeight - [self statusBarHeight]) / screenWidth;
+    CGFloat screenshotHeight = CGRectGetWidth(self.screenshotImageView.frame) *screenHeight / screenWidth;
 
     CGRect frame = self.screenshotImageView.frame;
     frame.size.height = screenshotHeight;
@@ -258,14 +243,10 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
     view.layer.borderWidth= 1;
 }
 
-- (void)initializeScreenshotViews
+- (void)initializeScreenshotView
 {
-    [self initializeScreenshotImageViewSizeForScreenHeight:[[UIScreen mainScreen] bounds].size.height];
+    [self initializeScreenshotImageViewFrameForScreenHeight:[[UIScreen mainScreen] bounds].size.height];
     [self.screenshotImageView setImage:self.screenshotImage];
-    
-    // hide screenshot (it will appear in viewDidAppear: method) :
-    [self.useScreenshotSwitch setOn:NO animated:NO];
-    [self onUseScreenshotSwitchChange:self.useScreenshotSwitch];
 }
 
 - (void)initializeTitleAndDescriptionViews
@@ -327,7 +308,10 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 
 - (void)closeFeedbackViewController
 {
-    [self.feedbackButton setHidden:NO];
+    [UIView animateWithDuration:kAnimationDuration animations:^
+    {
+        [self.feedbackButton setAlpha:1];
+    }];
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -336,12 +320,6 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 {
     BOOL isTitleNotEmpty = ([self.titleTextField.text length] > 0);
     [self.validateButton setEnabled:isTitleNotEmpty];
-}
-
-- (CGFloat)statusBarHeight
-{
-    CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
-    return statusBarFrame.size.height;
 }
 
 
