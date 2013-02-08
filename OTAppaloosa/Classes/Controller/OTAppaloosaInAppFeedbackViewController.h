@@ -25,6 +25,7 @@
 @property (strong, nonatomic) UIImage *screenshotImage;
 @property (strong, nonatomic) NSArray *recipientsEmailArray;
 
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet SSTextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *screenshotImageView;

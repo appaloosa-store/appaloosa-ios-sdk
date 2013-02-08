@@ -15,12 +15,13 @@
 
 // Utils :
 #import "NSObject+performBlockAfterDelay.h"
+#import "UIViewController+CurrentPresentedController.h"
 
 
 @interface OTAppaloosaInAppFeedbackViewController ()
 
 - (void)updateMainScrollViewContentSize;
-- (void)initializeScreenshotImageViewFrameForScreenHeight:(CGFloat)screenHeight;
+- (void)initializeScreenshotImageViewFrame;
 - (void)initializeBorderForView:(UIView *)view;
 - (void)initializeScreenshotViewWithImage:(UIImage *)image;
 - (void)initializeTitleAndDescriptionViews;
@@ -90,7 +91,7 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 }
 
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
     [self initializeTitleAndDescriptionViews];
     
@@ -100,7 +101,7 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
     [self.mainScrollView setScrollsToTop:YES];
     [self updateMainScrollViewContentSize];
     
-    [super viewDidLoad];
+    [super viewDidAppear:animated];
 }
 
 
@@ -227,10 +228,17 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 
 
 
-- (void)initializeScreenshotImageViewFrameForScreenHeight:(CGFloat)screenHeight
+- (void)initializeScreenshotImageViewFrame
 {
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat screenshotHeight = CGRectGetWidth(self.screenshotImageView.frame) *screenHeight / screenWidth;
+    if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]))
+    {
+        CGFloat temp = screenHeight;
+        screenHeight = screenWidth - CGRectGetHeight(self.navigationBar.frame);
+        screenWidth = temp;
+    }
+    CGFloat screenshotHeight = screenHeight * CGRectGetWidth(self.screenshotImageView.frame) / screenWidth;
 
     CGRect frame = self.screenshotImageView.frame;
     frame.size.height = screenshotHeight;
@@ -253,8 +261,15 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
  */
 - (void)initializeScreenshotViewWithImage:(UIImage *)image
 {
-    [self initializeScreenshotImageViewFrameForScreenHeight:[[UIScreen mainScreen] bounds].size.height];
+    [self initializeScreenshotImageViewFrame];
+    
+    // set screenshotImageView image with fade in effect :
+    [self.screenshotImageView setAlpha:0];
     [self.screenshotImageView setImage:image];
+    [UIView animateWithDuration:kAnimationDuration animations:^
+    {
+        [self.screenshotImageView setAlpha:1];
+    }];
 }
 
 
@@ -341,4 +356,8 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 }
 
 
+- (void)viewDidUnload {
+    [self setNavigationBar:nil];
+    [super viewDidUnload];
+}
 @end

@@ -137,6 +137,12 @@ static OTAppaloosaInAppFeedbackManager *manager;
             [[OTAppaloosaInAppFeedbackViewController alloc] initWithFeedbackButton:feedbackButton
                                                               recipientsEmailArray:emailsArray
                                                                 andScreenshotImage:screenshotImage];
+         
+         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+         {
+             [feedbackViewController setModalPresentationStyle:UIModalPresentationFormSheet];
+         }
+         
          [[UIViewController currentPresentedController] presentModalViewController:feedbackViewController animated:YES];
      }];
 }
