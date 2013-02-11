@@ -193,7 +193,7 @@ static OTAppaloosaInAppFeedbackManager *manager;
 }
 
 /**
- * @return First window's view (to keep orientation when device rotates)
+ * @return First window's view
  */
 + (UIView *)getApplicationWindowView
 {
