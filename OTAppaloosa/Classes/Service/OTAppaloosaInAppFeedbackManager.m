@@ -212,52 +212,61 @@ static OTAppaloosaInAppFeedbackManager *manager;
 }
 
 
+/**
+ * @brief Update feedback button frame switch device orientation.
+ */
 - (void)updateFeedbackButtonFrame
 {
+    // hide button to prevent rotation glitch (button stays at the same place during rotation) :
     [self.feedbackButton setAlpha:0];
     
+    // recover device orientation :
     UIView *windowView = [OTAppaloosaInAppFeedbackManager getApplicationWindowView];
     UIDeviceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     BOOL isInLandscapeMode = (UIDeviceOrientationIsLandscape(currentOrientation));
     
+    // calculate new origin point and rotation angle for feedback button switch orientation :
     CGFloat x;
     CGFloat y;
-    CGFloat translationAngle;
-    if (!isInLandscapeMode)
-    {
-        if (currentOrientation == UIDeviceOrientationPortraitUpsideDown)
-        {
-            x = 0;
-            y = windowView.frame.size.height - kFeedbackButtonTopMargin - kFeedbackButtonHeight;
-            translationAngle = M_PI;
-        }
-        else
-        {
-            x = windowView.frame.size.width - kFeedbackButtonWidth;
-            y = kFeedbackButtonTopMargin;
-            translationAngle = 0;
-        }
-    }
-    else
+    CGFloat rotationAngle;
+    if (isInLandscapeMode)
     {
         if (currentOrientation == UIDeviceOrientationLandscapeRight)
         {
             x = kFeedbackButtonTopMargin;
             y = 0;
-            translationAngle = -M_PI / 2;
+            rotationAngle = -M_PI / 2;
         }
         else
         {
             x = windowView.frame.size.width - kFeedbackButtonTopMargin - kFeedbackButtonWidth;
             y = windowView.frame.size.height - kFeedbackButtonHeight;
-            translationAngle = M_PI / 2;
+            rotationAngle = M_PI / 2;
         }
     }
+    else
+    {
+        if (currentOrientation == UIDeviceOrientationPortraitUpsideDown)
+        {
+            x = 0;
+            y = windowView.frame.size.height - kFeedbackButtonTopMargin - kFeedbackButtonHeight;
+            rotationAngle = M_PI;
+        }
+        else
+        {
+            x = windowView.frame.size.width - kFeedbackButtonWidth;
+            y = kFeedbackButtonTopMargin;
+            rotationAngle = 0;
+        }
+    }
+    
+    // apply new frame and rotation :
     CGRect feedbackButtonFrame = CGRectMake(x, y, kFeedbackButtonWidth, kFeedbackButtonHeight);
     self.feedbackButton.transform = CGAffineTransformIdentity;
     self.feedbackButton.frame = feedbackButtonFrame;
-    self.feedbackButton.transform = CGAffineTransformMakeRotation(translationAngle);
+    self.feedbackButton.transform = CGAffineTransformMakeRotation(rotationAngle);
     
+    // show button :
     [UIView animateWithDuration:kAnimationDuration animations:^{
         [self.feedbackButton setAlpha:1];
     }];
