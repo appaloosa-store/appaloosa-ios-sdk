@@ -117,7 +117,7 @@ static OTAppaloosaInAppFeedbackManager *manager;
  * @brief Trigger screenshot + feedback viewController launch
  * @param emailsArray - NSArray containing feedback e-mail(s) adresses
  */
-- (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray
+- (void)presentFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray
 {
     [self triggerFeedbackWithRecipientsEmailArray:emailsArray andFeedbackButton:self.feedbackButton];
 }

@@ -34,7 +34,7 @@
 #pragma mark - Feedback
 
 - (void)initializeDefaultFeedbackButtonForRecipientsEmailArray:(NSArray *)emailsArray;
-- (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray;
+- (void)presentFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray;
 
 
 @end
