@@ -1,0 +1,2 @@
+platform :ios, '5.0'
+pod 'OTAppaloosa', :podspec => "https://gist.github.com/mwalbrou/4960697/raw/456c09163daca2b1bd3bca7fff08ccc0c0721d94/OTAppaloosa.podspec"
