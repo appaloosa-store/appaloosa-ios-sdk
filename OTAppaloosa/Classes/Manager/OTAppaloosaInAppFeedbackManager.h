@@ -22,6 +22,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum FeedbackButtonPosition
+{
+    kFeedbackButtonPositionRightBottom = 0,
+    kFeedbackButtonPositionBottomRight = 1
+} FeedbackButtonPosition;
+
+
 @interface OTAppaloosaInAppFeedbackManager : NSObject
 
 
@@ -30,6 +37,8 @@
 
 @property (strong, nonatomic) UIButton *feedbackButton;
 @property (strong, nonatomic) NSArray *recipientsEmailArray;
+
+@property (assign, nonatomic) FeedbackButtonPosition feedbackButtonPosition;
 
 
 /**************************************************************************************************/
@@ -47,7 +56,7 @@
 /**************************************************************************************************/
 #pragma mark - Feedback
 
-- (void)initializeDefaultFeedbackButtonForRecipientsEmailArray:(NSArray *)emailsArray;
+- (void)initializeDefaultFeedbackButtonWithPosition:(FeedbackButtonPosition)position forRecipientsEmailArray:(NSArray *)emailsArray;
 - (void)presentFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray;
 
 

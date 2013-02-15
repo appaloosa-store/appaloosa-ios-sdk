@@ -33,7 +33,8 @@
 
 
 // Constants :
-static const CGFloat kFeedbackButtonTopMargin = 70;
+static const CGFloat kFeedbackButtonRightMargin = 20;
+static const CGFloat kFeedbackButtonBottomMargin = 70;
 
 static const CGFloat kFeedbackButtonWidth = 35;
 static const CGFloat kFeedbackButtonHeight = 35;
@@ -41,6 +42,8 @@ static const CGFloat kFeedbackButtonHeight = 35;
 static const CGFloat kAnimationDuration = 0.9;
 
 @interface OTAppaloosaInAppFeedbackManager ()
+
+- (void)initializeDefaultFeedbackButtonWithPosition:(FeedbackButtonPosition)position;
 
 - (void)onFeedbackButtonTap;
 
@@ -81,7 +84,6 @@ static OTAppaloosaInAppFeedbackManager *manager;
     self = [super init];
     if (self)
     {      
-        [self initializeDefaultFeedbackButton];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOrientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
     return self;
@@ -98,7 +100,14 @@ static OTAppaloosaInAppFeedbackManager *manager;
 
 - (void)showDefaultFeedbackButton:(BOOL)shouldShow
 {
-    [self.feedbackButton setHidden:!shouldShow];
+    if (!self.feedbackButton)
+    {
+        NSLog(@"ERROR : Default feedback button must be initalized before changing its visibility");
+    }
+    else
+    {
+        [self.feedbackButton setHidden:!shouldShow];
+    }
 }
 
 
@@ -117,10 +126,13 @@ static OTAppaloosaInAppFeedbackManager *manager;
 
 /**
  * @brief Create and display default feedback button
+ * @param position - button position in screen
  * @param emailsArray - NSArray containing feedback e-mail(s) adresses
  */
-- (void)initializeDefaultFeedbackButtonForRecipientsEmailArray:(NSArray *)emailsArray
+- (void)initializeDefaultFeedbackButtonWithPosition:(FeedbackButtonPosition)position
+                            forRecipientsEmailArray:(NSArray *)emailsArray
 {
+    [self initializeDefaultFeedbackButtonWithPosition:position];
     self.recipientsEmailArray = emailsArray;
     [self showDefaultFeedbackButton:YES];
 }
@@ -178,16 +190,19 @@ static OTAppaloosaInAppFeedbackManager *manager;
 /**
  * @brief Create the default feedback button and add it as subview on application window
  */
-- (void)initializeDefaultFeedbackButton
+- (void)initializeDefaultFeedbackButtonWithPosition:(FeedbackButtonPosition)position
 {
     UIView *windowView = [OTAppaloosaInAppFeedbackManager getApplicationWindowView];
 
     self.feedbackButton = [[UIButton alloc] init];
-    [self.feedbackButton setImage:[UIImage imageNamed:@"btn_feedback"] forState:UIControlStateNormal];
+    NSString *imageName = (position == kFeedbackButtonPositionBottomRight ? @"btn_bottomFeedback" : @"btn_rightFeedback");
+    [self.feedbackButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [self.feedbackButton addTarget:self action:@selector(onFeedbackButtonTap) forControlEvents:UIControlEventTouchUpInside];
     [self.feedbackButton setHidden:YES]; // button is hidden by default
     
     [windowView addSubview:self.feedbackButton];
+    
+    self.feedbackButtonPosition = position;
     
     [self updateFeedbackButtonFrame];
 }
@@ -246,14 +261,30 @@ static OTAppaloosaInAppFeedbackManager *manager;
     {
         if (currentOrientation == UIDeviceOrientationLandscapeRight)
         {
-            x = kFeedbackButtonTopMargin;
-            y = 0;
+            if (self.feedbackButtonPosition == kFeedbackButtonPositionBottomRight)
+            {
+                x = windowView.frame.size.width - kFeedbackButtonHeight;
+                y = kFeedbackButtonRightMargin;
+            }
+            else
+            {
+                x = windowView.frame.size.width - kFeedbackButtonBottomMargin - kFeedbackButtonHeight;
+                y = 0;
+            }
             rotationAngle = -M_PI / 2;
         }
         else
         {
-            x = windowView.frame.size.width - kFeedbackButtonTopMargin - kFeedbackButtonWidth;
-            y = windowView.frame.size.height - kFeedbackButtonHeight;
+            if (self.feedbackButtonPosition == kFeedbackButtonPositionBottomRight)
+            {
+                x = 0;
+                y = windowView.frame.size.height - kFeedbackButtonWidth - kFeedbackButtonRightMargin;
+            }
+            else
+            {
+                x = kFeedbackButtonBottomMargin;
+                y = windowView.frame.size.height - kFeedbackButtonWidth;
+            }
             rotationAngle = M_PI / 2;
         }
     }
@@ -261,14 +292,30 @@ static OTAppaloosaInAppFeedbackManager *manager;
     {
         if (currentOrientation == UIDeviceOrientationPortraitUpsideDown)
         {
-            x = 0;
-            y = windowView.frame.size.height - kFeedbackButtonTopMargin - kFeedbackButtonHeight;
+            if (self.feedbackButtonPosition == kFeedbackButtonPositionBottomRight)
+            {
+                x = kFeedbackButtonRightMargin;
+                y = 0;
+            }
+            else
+            {
+                x = 0;
+                y = kFeedbackButtonBottomMargin;
+            }
             rotationAngle = M_PI;
         }
         else
         {
-            x = windowView.frame.size.width - kFeedbackButtonWidth;
-            y = kFeedbackButtonTopMargin;
+            if (self.feedbackButtonPosition == kFeedbackButtonPositionBottomRight)
+            {
+                x = windowView.frame.size.width - kFeedbackButtonWidth - kFeedbackButtonRightMargin;
+                y = windowView.frame.size.height - kFeedbackButtonHeight;
+            }
+            else
+            {
+                x = windowView.frame.size.width - kFeedbackButtonWidth;
+                y = windowView.frame.size.height - kFeedbackButtonBottomMargin - kFeedbackButtonHeight;
+            }
             rotationAngle = 0;
         }
     }
