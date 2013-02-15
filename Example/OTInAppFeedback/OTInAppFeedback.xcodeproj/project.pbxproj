@@ -12,14 +12,14 @@
 		69515B1716C2B70C0090AB82 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69515B1616C2B70C0090AB82 /* CoreGraphics.framework */; };
 		69515B1D16C2B70C0090AB82 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69515B1B16C2B70C0090AB82 /* InfoPlist.strings */; };
 		69515B1F16C2B70C0090AB82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69515B1E16C2B70C0090AB82 /* main.m */; };
-		69515B2316C2B70C0090AB82 /* OTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69515B2216C2B70C0090AB82 /* OTAppDelegate.m */; };
 		69515B2516C2B70C0090AB82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 69515B2416C2B70C0090AB82 /* Default.png */; };
 		69515B2716C2B70C0090AB82 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69515B2616C2B70C0090AB82 /* Default@2x.png */; };
 		69515B2916C2B70C0090AB82 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69515B2816C2B70C0090AB82 /* Default-568h@2x.png */; };
-		69515B2C16C2B70C0090AB82 /* OTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69515B2B16C2B70C0090AB82 /* OTViewController.m */; };
-		69515B2F16C2B70C0090AB82 /* OTViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69515B2D16C2B70C0090AB82 /* OTViewController~iphone.xib */; };
-		69515B3216C2B70C0090AB82 /* OTViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69515B3016C2B70C0090AB82 /* OTViewController~ipad.xib */; };
-		6952CEC416C50F7C003CD14C /* OTSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6952CEC316C50F7C003CD14C /* OTSecondViewController.m */; };
+		695F174516CEBDCF009B820F /* OTSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F174016CEBDCF009B820F /* OTSecondViewController.m */; };
+		695F174616CEBDCF009B820F /* OTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F174216CEBDCF009B820F /* OTViewController.m */; };
+		695F174716CEBDCF009B820F /* OTViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 695F174316CEBDCF009B820F /* OTViewController~ipad.xib */; };
+		695F174816CEBDCF009B820F /* OTViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 695F174416CEBDCF009B820F /* OTViewController~iphone.xib */; };
+		695F174B16CEBDDC009B820F /* OTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F174A16CEBDDC009B820F /* OTAppDelegate.m */; };
 		696DCB1716C40C7000B8E6CB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696DCB1616C40C7000B8E6CB /* MessageUI.framework */; };
 		69D204A16EB34DD4A7BDC52F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E9740852474EDFADE536DE /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -33,17 +33,17 @@
 		69515B1C16C2B70C0090AB82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		69515B1E16C2B70C0090AB82 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		69515B2016C2B70C0090AB82 /* OTInAppFeedback-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OTInAppFeedback-Prefix.pch"; sourceTree = "<group>"; };
-		69515B2116C2B70C0090AB82 /* OTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OTAppDelegate.h; path = ../OTAppDelegate.h; sourceTree = "<group>"; };
-		69515B2216C2B70C0090AB82 /* OTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OTAppDelegate.m; path = ../OTAppDelegate.m; sourceTree = "<group>"; };
 		69515B2416C2B70C0090AB82 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		69515B2616C2B70C0090AB82 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		69515B2816C2B70C0090AB82 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		69515B2A16C2B70C0090AB82 /* OTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OTViewController.h; path = ../../OTViewController.h; sourceTree = "<group>"; };
-		69515B2B16C2B70C0090AB82 /* OTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OTViewController.m; path = ../../OTViewController.m; sourceTree = "<group>"; };
-		69515B2E16C2B70C0090AB82 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/OTViewController~iphone.xib"; sourceTree = "<group>"; };
-		69515B3116C2B70C0090AB82 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/OTViewController~ipad.xib"; sourceTree = "<group>"; };
-		6952CEC216C50F7C003CD14C /* OTSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTSecondViewController.h; path = ../../OTSecondViewController.h; sourceTree = "<group>"; };
-		6952CEC316C50F7C003CD14C /* OTSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTSecondViewController.m; path = ../../OTSecondViewController.m; sourceTree = "<group>"; };
+		695F173F16CEBDCF009B820F /* OTSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTSecondViewController.h; sourceTree = "<group>"; };
+		695F174016CEBDCF009B820F /* OTSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTSecondViewController.m; sourceTree = "<group>"; };
+		695F174116CEBDCF009B820F /* OTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTViewController.h; sourceTree = "<group>"; };
+		695F174216CEBDCF009B820F /* OTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTViewController.m; sourceTree = "<group>"; };
+		695F174316CEBDCF009B820F /* OTViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OTViewController~ipad.xib"; sourceTree = "<group>"; };
+		695F174416CEBDCF009B820F /* OTViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OTViewController~iphone.xib"; sourceTree = "<group>"; };
+		695F174916CEBDDC009B820F /* OTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppDelegate.h; sourceTree = "<group>"; };
+		695F174A16CEBDDC009B820F /* OTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppDelegate.m; sourceTree = "<group>"; };
 		696DCB1616C40C7000B8E6CB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		72E9740852474EDFADE536DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82D169D6E134C88ABC7B178 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -121,8 +121,8 @@
 		6952CEC516C5262D003CD14C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				69515B2116C2B70C0090AB82 /* OTAppDelegate.h */,
-				69515B2216C2B70C0090AB82 /* OTAppDelegate.m */,
+				695F174916CEBDDC009B820F /* OTAppDelegate.h */,
+				695F174A16CEBDDC009B820F /* OTAppDelegate.m */,
 				6952CEC616C52642003CD14C /* Controller */,
 			);
 			path = Classes;
@@ -131,12 +131,12 @@
 		6952CEC616C52642003CD14C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				69515B2A16C2B70C0090AB82 /* OTViewController.h */,
-				69515B2B16C2B70C0090AB82 /* OTViewController.m */,
-				69515B2D16C2B70C0090AB82 /* OTViewController~iphone.xib */,
-				69515B3016C2B70C0090AB82 /* OTViewController~ipad.xib */,
-				6952CEC216C50F7C003CD14C /* OTSecondViewController.h */,
-				6952CEC316C50F7C003CD14C /* OTSecondViewController.m */,
+				695F173F16CEBDCF009B820F /* OTSecondViewController.h */,
+				695F174016CEBDCF009B820F /* OTSecondViewController.m */,
+				695F174116CEBDCF009B820F /* OTViewController.h */,
+				695F174216CEBDCF009B820F /* OTViewController.m */,
+				695F174316CEBDCF009B820F /* OTViewController~ipad.xib */,
+				695F174416CEBDCF009B820F /* OTViewController~iphone.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -198,8 +198,8 @@
 				69515B2516C2B70C0090AB82 /* Default.png in Resources */,
 				69515B2716C2B70C0090AB82 /* Default@2x.png in Resources */,
 				69515B2916C2B70C0090AB82 /* Default-568h@2x.png in Resources */,
-				69515B2F16C2B70C0090AB82 /* OTViewController~iphone.xib in Resources */,
-				69515B3216C2B70C0090AB82 /* OTViewController~ipad.xib in Resources */,
+				695F174716CEBDCF009B820F /* OTViewController~ipad.xib in Resources */,
+				695F174816CEBDCF009B820F /* OTViewController~iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,9 +228,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				69515B1F16C2B70C0090AB82 /* main.m in Sources */,
-				69515B2316C2B70C0090AB82 /* OTAppDelegate.m in Sources */,
-				69515B2C16C2B70C0090AB82 /* OTViewController.m in Sources */,
-				6952CEC416C50F7C003CD14C /* OTSecondViewController.m in Sources */,
+				695F174516CEBDCF009B820F /* OTSecondViewController.m in Sources */,
+				695F174616CEBDCF009B820F /* OTViewController.m in Sources */,
+				695F174B16CEBDDC009B820F /* OTAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,24 +243,6 @@
 				69515B1C16C2B70C0090AB82 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		69515B2D16C2B70C0090AB82 /* OTViewController~iphone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				69515B2E16C2B70C0090AB82 /* en */,
-			);
-			name = "OTViewController~iphone.xib";
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		69515B3016C2B70C0090AB82 /* OTViewController~ipad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				69515B3116C2B70C0090AB82 /* en */,
-			);
-			name = "OTViewController~ipad.xib";
-			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
