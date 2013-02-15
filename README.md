@@ -5,40 +5,46 @@ Overview
 --------
 
 Appaloosa SDK library is a simple library that helps you to:
+ 
+* Auto-update your application stored on [Appaloosa Store](http://www.appaloosa-store.com/) server
+* Receive feedback from your users directly from the app (iPhone and iPad)
 
-* Auto-update your application stored on [Appaloosa Store](http://www.appaloosa-store.com/) server.
 
 Requirements
 ------------
 
-Appaloosa SDK library use ARC.
+Appaloosa SDK library use ARC and is compatible with iOS 5+.
 
-Using CocoaPods?
-----------------
+
+Integrate Appaloosa SDK with CocoaPods
+----------------------------------------
 
 Simply add `pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.1.0/OTAppaloosa.podspec"` in your Podfile.
 
 Refer to [CocoaPods](https://github.com/CocoaPods/CocoaPods) for more information about it.
 
-How to integrate manually - quick version?
-------------------------------------------
+Integrate Appaloosa SDK the old fashioned way
+-----------------------------------------------
 
- 1. Appaloosa AutoUpdate needs [JSONKit](https://github.com/johnezang/JSONKit).
- 2. Import JSONKit into your project. JSONKit is not using ARC. Fix its project compiled options with `-fno-objc-arc`.
- 3. Import into your project the following all source files.
- 4. Into your AppDelegate.m file (launch of the autoupdate during application start)
+Download and import OTAppaloosa sources and its dependancies : [JSONKit](https://github.com/johnezang/JSONKit) and [TPKeyboardAvoiding](https://github.com/michaeltyson/TPKeyboardAvoiding).
+
+Note: JSONKit is not using ARC. Fix its project compiled options with `-fno-objc-arc`.
+
+
+Check for application update - simple version
+-----------------------------------------------
+
+In your AppDelegate.m file, launch the autoupdate when your application starts : 
     1. Import the plugin: `#import "OTAppaloosa.h"`
-    2. Into method `- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`, add the following code line:
+    2. In method `- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`, add the following code line:
 
-            [[OTAppaloosaSimpleUpdateService sharedInstance]checkForUpdateWithStoreID:VOTRE_STORE_ID storeToken:VOTRE_STORE_TOKEN];
+	[[OTAppaloosaSimpleUpdateService sharedInstance]checkForUpdateWithStoreID:STORE_ID storeToken:STORE\_TOKEN];
 
-How to integrate manually - clever version?
--------------------------------------------
+Check for application update - clever version
+-----------------------------------------------
 
- 1. Appaloosa AutoUpdate needs [JSONKit](https://github.com/johnezang/JSONKit).
- 2. Import JSONKit into your project. JSONKit is not using ARC. Fix its project compiled options with `-fno-objc-arc`.
- 3. Import into your project the following all source files.
- 4. Into your AppDelegate.h file
+
+1. Into your AppDelegate.h file
     1. Add the OTAppaloosaUpdateServiceDelegate into your interface:
 
             @interface AppDelegate : UIResponder <UIApplicationDelegate, AppaloosaServiceDelegate>
@@ -47,18 +53,18 @@ How to integrate manually - clever version?
 
             @property (nonatomic, strong) AppaloosaService *appaloosaService;
 
- 5. Into your AppDelegate.m file (launch of the autoupdate during application start)
+2. Into your AppDelegate.m file (launch of the autoupdate during application start)
     1. Import the plugin: `#import "OTAppaloosa.h"`
     2. Add the OTAppaloosaUpdateService synthesize:
 
             @synthesize appaloosaService;
 
-    3. Into method `- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`, add the following code line:
+	3. Into method `- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`, add the following code line:
 
         NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
         NSString *bundleIDFormatted = [bundleID urlEncodeUsingEncoding:NSUTF8StringEncoding];
         appaloosaService = [[OTAppaloosaUpdateService alloc] initWithDelegate:self];
-        [appaloosaService checkForUpdateWithStoreID:VOTRE_STORE_ID appID:bundleIDFormatted storeToken:VOTRE_STORE_TOKEN];
+        [appaloosaService checkForUpdateWithStoreID:STORE\_ID appID:bundleIDFormatted storeToken:STORE_TOKEN];
 
     4. Call the OTAppaloosaUpdateServiceDelegate method « updateIsAvailableOnAppaloosaStore »:
 
@@ -82,6 +88,16 @@ How to integrate manually - clever version?
                 }
             }
 
+Add in-app-feedback to your app
+---------------------------------
+
+This SDK provides a fully integrated solution to send feedback to your dev team. In your appDelegate file, add the following line: 
+
+	 [[OTAppaloosaInAppFeedbackManager sharedManager] initializeDefaultFeedbackButtonWithPosition:kFeedbackButtonPositionRightBottom forRecipientsEmailArray:@[@"e.mail@address.com"]];
+	
+You have 2 possible positions for the default feedback button. If you prefer to use your own button/action to trigger feedback, you can use the following line: 
+
+ 	[[OTAppaloosaInAppFeedbackManager sharedManager] presentFeedbackWithRecipientsEmailArray:@[@"e.mail@address.com"]];
 
 Want some documentation?
 ------------------------
