@@ -99,6 +99,8 @@ You have 2 possible positions for the default feedback button. If you prefer to 
 
  	[[OTAppaloosaInAppFeedbackManager sharedManager] presentFeedbackWithRecipientsEmailArray:@[@"e.mail@address.com"]];
 
+To see how to use this feature, take a look at the Example/OTInAppFeedback/ project.
+
 Want some documentation?
 ------------------------
 
