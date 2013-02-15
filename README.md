@@ -19,7 +19,7 @@ Appaloosa SDK library use ARC and is compatible with iOS 5+.
 Integrate Appaloosa SDK with CocoaPods
 ----------------------------------------
 
-Simply add `pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.1.0/OTAppaloosa.podspec"` in your Podfile.
+Simply add `pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.2.0/OTAppaloosa.podspec"` in your Podfile.
 
 Refer to [CocoaPods](https://github.com/CocoaPods/CocoaPods) for more information about it.
 
