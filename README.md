@@ -38,7 +38,7 @@ In your AppDelegate.m file, launch the autoupdate when your application starts :
     1. Import the plugin: `#import "OTAppaloosa.h"`
     2. In method `- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`, add the following code line:
 
-	[[OTAppaloosaSimpleUpdateService sharedInstance]checkForUpdateWithStoreID:STORE_ID storeToken:STORE\_TOKEN];
+	[[OTAppaloosaSimpleUpdateService sharedInstance]checkForUpdateWithStoreID:STORE_ID storeToken:STORE_TOKEN];
 
 Check for application update - clever version
 -----------------------------------------------
@@ -59,12 +59,12 @@ Check for application update - clever version
 
             @synthesize appaloosaService;
 
-	3. Into method `- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`, add the following code line:
+	3. Into method `- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`, add the following code lines:
 
-        NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
-        NSString *bundleIDFormatted = [bundleID urlEncodeUsingEncoding:NSUTF8StringEncoding];
-        appaloosaService = [[OTAppaloosaUpdateService alloc] initWithDelegate:self];
-        [appaloosaService checkForUpdateWithStoreID:STORE\_ID appID:bundleIDFormatted storeToken:STORE_TOKEN];
+        	NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
+        	NSString *bundleIDFormatted = [bundleID urlEncodeUsingEncoding:NSUTF8StringEncoding];
+        	appaloosaService = [[OTAppaloosaUpdateService alloc] initWithDelegate:self];
+        	[appaloosaService checkForUpdateWithStoreID:STORE\_ID appID:bundleIDFormatted storeToken:STORE_TOKEN];
 
     4. Call the OTAppaloosaUpdateServiceDelegate method « updateIsAvailableOnAppaloosaStore »:
 

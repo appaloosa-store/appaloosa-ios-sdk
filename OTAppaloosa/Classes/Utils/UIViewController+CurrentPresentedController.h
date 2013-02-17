@@ -23,7 +23,9 @@
 
 @interface UIViewController (CurrentPresentedController)
 
-
+/**
+ * @return Application current displayed ViewController
+ */
 + (UIViewController *)currentPresentedController;
 
 

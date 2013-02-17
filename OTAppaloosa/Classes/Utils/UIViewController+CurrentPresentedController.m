@@ -25,9 +25,6 @@
 
 
 
-/**
- * @return Application current displayed ViewController
- */
 + (UIViewController *)currentPresentedController
 {
     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
