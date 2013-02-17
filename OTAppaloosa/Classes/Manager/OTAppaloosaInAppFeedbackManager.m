@@ -124,11 +124,7 @@ static OTAppaloosaInAppFeedbackManager *manager;
 /**************************************************************************************************/
 #pragma mark - Feedback 
 
-/**
- * @brief Create and display default feedback button
- * @param position - button position in screen
- * @param emailsArray - NSArray containing feedback e-mail(s) adresses
- */
+
 - (void)initializeDefaultFeedbackButtonWithPosition:(FeedbackButtonPosition)position
                             forRecipientsEmailArray:(NSArray *)emailsArray
 {
@@ -138,10 +134,6 @@ static OTAppaloosaInAppFeedbackManager *manager;
 }
 
 
-/**
- * @brief Trigger screenshot + feedback viewController launch
- * @param emailsArray - NSArray containing feedback e-mail(s) adresses
- */
 - (void)presentFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray
 {
     [self triggerFeedbackWithRecipientsEmailArray:emailsArray andFeedbackButton:self.feedbackButton];
@@ -245,6 +237,8 @@ static OTAppaloosaInAppFeedbackManager *manager;
  */
 - (void)updateFeedbackButtonFrame
 {
+    BOOL shouldShowButton = (self.feedbackButton.alpha != 0);
+    
     // hide button to prevent rotation glitch (button stays at the same place during rotation) :
     [self.feedbackButton setAlpha:0];
     
@@ -326,10 +320,13 @@ static OTAppaloosaInAppFeedbackManager *manager;
     self.feedbackButton.frame = feedbackButtonFrame;
     self.feedbackButton.transform = CGAffineTransformMakeRotation(rotationAngle);
     
-    // show button :
-    [UIView animateWithDuration:kAnimationDuration animations:^{
-        [self.feedbackButton setAlpha:1];
-    }];
+    if (shouldShowButton)
+    {
+        // show button :
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [self.feedbackButton setAlpha:1];
+        }];
+    }
 }
 
 

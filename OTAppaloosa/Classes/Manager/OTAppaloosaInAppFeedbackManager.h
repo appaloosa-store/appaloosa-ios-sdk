@@ -56,7 +56,17 @@ typedef enum FeedbackButtonPosition
 /**************************************************************************************************/
 #pragma mark - Feedback
 
+/**
+ * @brief Create and display default feedback button
+ * @param position - button position in screen
+ * @param emailsArray - NSArray containing feedback e-mail(s) adresses
+ */
 - (void)initializeDefaultFeedbackButtonWithPosition:(FeedbackButtonPosition)position forRecipientsEmailArray:(NSArray *)emailsArray;
+
+/**
+ * @brief Trigger screenshot + feedback viewController launch
+ * @param emailsArray - NSArray containing feedback e-mail(s) adresses
+ */
 - (void)presentFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray;
 
 
