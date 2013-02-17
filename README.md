@@ -64,7 +64,7 @@ Check for application update - clever version
         	NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
         	NSString *bundleIDFormatted = [bundleID urlEncodeUsingEncoding:NSUTF8StringEncoding];
         	appaloosaService = [[OTAppaloosaUpdateService alloc] initWithDelegate:self];
-        	[appaloosaService checkForUpdateWithStoreID:STORE\_ID appID:bundleIDFormatted storeToken:STORE_TOKEN];
+        	[appaloosaService checkForUpdateWithStoreID:STORE_ID appID:bundleIDFormatted storeToken:STORE_TOKEN];
 
     4. Call the OTAppaloosaUpdateServiceDelegate method « updateIsAvailableOnAppaloosaStore »:
 
