@@ -1,4 +1,4 @@
-To use this project : 
+To use this project: 
 
-1) $ pod install
+1) Download dependancies with cocoapods ($ pod install)
 2) Open OTInAppFeedback.xcworkspace project
