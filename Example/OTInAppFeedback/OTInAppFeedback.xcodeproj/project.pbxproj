@@ -22,6 +22,24 @@
 		695F174B16CEBDDC009B820F /* OTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F174A16CEBDDC009B820F /* OTAppDelegate.m */; };
 		696DCB1716C40C7000B8E6CB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696DCB1616C40C7000B8E6CB /* MessageUI.framework */; };
 		69D204A16EB34DD4A7BDC52F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E9740852474EDFADE536DE /* libPods.a */; };
+		BF5BF2741796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF2591796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController.m */; };
+		BF5BF2751796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF5BF25A1796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~ipad.xib */; };
+		BF5BF2761796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF5BF25B1796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~iphone.xib */; };
+		BF5BF2771796E83100E3FA38 /* OTAppaloosaInAppFeedbackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF25E1796E83100E3FA38 /* OTAppaloosaInAppFeedbackManager.m */; };
+		BF5BF2781796E83100E3FA38 /* OTAppaloosaSimpleUpdateService.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF2621796E83100E3FA38 /* OTAppaloosaSimpleUpdateService.m */; };
+		BF5BF2791796E83100E3FA38 /* OTAppaloosaUpdateService.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF2641796E83100E3FA38 /* OTAppaloosaUpdateService.m */; };
+		BF5BF27A1796E83100E3FA38 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF2671796E83100E3FA38 /* NSString+URLEncoding.m */; };
+		BF5BF27B1796E83100E3FA38 /* UIViewController+CurrentPresentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF2691796E83100E3FA38 /* UIViewController+CurrentPresentedController.m */; };
+		BF5BF27C1796E83100E3FA38 /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = BF5BF26B1796E83100E3FA38 /* LICENCE */; };
+		BF5BF27D1796E83100E3FA38 /* SSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF26D1796E83100E3FA38 /* SSTextView.m */; };
+		BF5BF27E1796E83100E3FA38 /* btn_bottomFeedback.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5BF2701796E83100E3FA38 /* btn_bottomFeedback.png */; };
+		BF5BF27F1796E83100E3FA38 /* btn_bottomFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5BF2711796E83100E3FA38 /* btn_bottomFeedback@2x.png */; };
+		BF5BF2801796E83100E3FA38 /* btn_rightFeedback.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5BF2721796E83100E3FA38 /* btn_rightFeedback.png */; };
+		BF5BF2811796E83100E3FA38 /* btn_rightFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5BF2731796E83100E3FA38 /* btn_rightFeedback@2x.png */; };
+		BF5BF2851796F52200E3FA38 /* OTAppaloosaDevPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF2831796F52200E3FA38 /* OTAppaloosaDevPanelViewController.m */; };
+		BF5BF2861796F52200E3FA38 /* OTAppaloosaDevPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF5BF2841796F52200E3FA38 /* OTAppaloosaDevPanelViewController.xib */; };
+		BF5BF2891797DBB200E3FA38 /* OTAppaloosaSystemPropertyService.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF2881797DBB200E3FA38 /* OTAppaloosaSystemPropertyService.m */; };
+		BF5BF28D1797DD4500E3FA38 /* OTAppaloosaConfigProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = BF5BF28C1797DD4500E3FA38 /* OTAppaloosaConfigProperty.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +65,35 @@
 		696DCB1616C40C7000B8E6CB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		72E9740852474EDFADE536DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82D169D6E134C88ABC7B178 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		BF5BF2581796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaInAppFeedbackViewController.h; sourceTree = "<group>"; };
+		BF5BF2591796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaInAppFeedbackViewController.m; sourceTree = "<group>"; };
+		BF5BF25A1796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OTAppaloosaInAppFeedbackViewController~ipad.xib"; sourceTree = "<group>"; };
+		BF5BF25B1796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OTAppaloosaInAppFeedbackViewController~iphone.xib"; sourceTree = "<group>"; };
+		BF5BF25D1796E83100E3FA38 /* OTAppaloosaInAppFeedbackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaInAppFeedbackManager.h; sourceTree = "<group>"; };
+		BF5BF25E1796E83100E3FA38 /* OTAppaloosaInAppFeedbackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaInAppFeedbackManager.m; sourceTree = "<group>"; };
+		BF5BF25F1796E83100E3FA38 /* OTAppaloosa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosa.h; sourceTree = "<group>"; };
+		BF5BF2611796E83100E3FA38 /* OTAppaloosaSimpleUpdateService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaSimpleUpdateService.h; sourceTree = "<group>"; };
+		BF5BF2621796E83100E3FA38 /* OTAppaloosaSimpleUpdateService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaSimpleUpdateService.m; sourceTree = "<group>"; };
+		BF5BF2631796E83100E3FA38 /* OTAppaloosaUpdateService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaUpdateService.h; sourceTree = "<group>"; };
+		BF5BF2641796E83100E3FA38 /* OTAppaloosaUpdateService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaUpdateService.m; sourceTree = "<group>"; };
+		BF5BF2661796E83100E3FA38 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		BF5BF2671796E83100E3FA38 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		BF5BF2681796E83100E3FA38 /* UIViewController+CurrentPresentedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CurrentPresentedController.h"; sourceTree = "<group>"; };
+		BF5BF2691796E83100E3FA38 /* UIViewController+CurrentPresentedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CurrentPresentedController.m"; sourceTree = "<group>"; };
+		BF5BF26B1796E83100E3FA38 /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
+		BF5BF26C1796E83100E3FA38 /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTextView.h; sourceTree = "<group>"; };
+		BF5BF26D1796E83100E3FA38 /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTextView.m; sourceTree = "<group>"; };
+		BF5BF2701796E83100E3FA38 /* btn_bottomFeedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bottomFeedback.png; sourceTree = "<group>"; };
+		BF5BF2711796E83100E3FA38 /* btn_bottomFeedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_bottomFeedback@2x.png"; sourceTree = "<group>"; };
+		BF5BF2721796E83100E3FA38 /* btn_rightFeedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_rightFeedback.png; sourceTree = "<group>"; };
+		BF5BF2731796E83100E3FA38 /* btn_rightFeedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_rightFeedback@2x.png"; sourceTree = "<group>"; };
+		BF5BF2821796F52200E3FA38 /* OTAppaloosaDevPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaDevPanelViewController.h; sourceTree = "<group>"; };
+		BF5BF2831796F52200E3FA38 /* OTAppaloosaDevPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaDevPanelViewController.m; sourceTree = "<group>"; };
+		BF5BF2841796F52200E3FA38 /* OTAppaloosaDevPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OTAppaloosaDevPanelViewController.xib; sourceTree = "<group>"; };
+		BF5BF2871797DBB200E3FA38 /* OTAppaloosaSystemPropertyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaSystemPropertyService.h; sourceTree = "<group>"; };
+		BF5BF2881797DBB200E3FA38 /* OTAppaloosaSystemPropertyService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaSystemPropertyService.m; sourceTree = "<group>"; };
+		BF5BF28B1797DD4500E3FA38 /* OTAppaloosaConfigProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaConfigProperty.h; sourceTree = "<group>"; };
+		BF5BF28C1797DD4500E3FA38 /* OTAppaloosaConfigProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaConfigProperty.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +145,7 @@
 		69515B1816C2B70C0090AB82 /* OTInAppFeedback */ = {
 			isa = PBXGroup;
 			children = (
+				BF5BF2551796E83100E3FA38 /* OTAppaloosa */,
 				6952CEC516C5262D003CD14C /* Classes */,
 				69515B1916C2B70C0090AB82 /* Supporting Files */,
 			);
@@ -139,6 +187,115 @@
 				695F174416CEBDCF009B820F /* OTViewController~iphone.xib */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF5BF2551796E83100E3FA38 /* OTAppaloosa */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF2561796E83100E3FA38 /* Classes */,
+				BF5BF26E1796E83100E3FA38 /* Resources */,
+			);
+			name = OTAppaloosa;
+			path = ../../../OTAppaloosa;
+			sourceTree = "<group>";
+		};
+		BF5BF2561796E83100E3FA38 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF28A1797DCFD00E3FA38 /* Model */,
+				BF5BF2571796E83100E3FA38 /* Controller */,
+				BF5BF25C1796E83100E3FA38 /* Manager */,
+				BF5BF25F1796E83100E3FA38 /* OTAppaloosa.h */,
+				BF5BF2601796E83100E3FA38 /* Service */,
+				BF5BF2651796E83100E3FA38 /* Utils */,
+				BF5BF26A1796E83100E3FA38 /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BF5BF2571796E83100E3FA38 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF2581796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController.h */,
+				BF5BF2591796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController.m */,
+				BF5BF25A1796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~ipad.xib */,
+				BF5BF25B1796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~iphone.xib */,
+				BF5BF2821796F52200E3FA38 /* OTAppaloosaDevPanelViewController.h */,
+				BF5BF2831796F52200E3FA38 /* OTAppaloosaDevPanelViewController.m */,
+				BF5BF2841796F52200E3FA38 /* OTAppaloosaDevPanelViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF5BF25C1796E83100E3FA38 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF25D1796E83100E3FA38 /* OTAppaloosaInAppFeedbackManager.h */,
+				BF5BF25E1796E83100E3FA38 /* OTAppaloosaInAppFeedbackManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		BF5BF2601796E83100E3FA38 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF2611796E83100E3FA38 /* OTAppaloosaSimpleUpdateService.h */,
+				BF5BF2621796E83100E3FA38 /* OTAppaloosaSimpleUpdateService.m */,
+				BF5BF2631796E83100E3FA38 /* OTAppaloosaUpdateService.h */,
+				BF5BF2641796E83100E3FA38 /* OTAppaloosaUpdateService.m */,
+				BF5BF2871797DBB200E3FA38 /* OTAppaloosaSystemPropertyService.h */,
+				BF5BF2881797DBB200E3FA38 /* OTAppaloosaSystemPropertyService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		BF5BF2651796E83100E3FA38 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF2661796E83100E3FA38 /* NSString+URLEncoding.h */,
+				BF5BF2671796E83100E3FA38 /* NSString+URLEncoding.m */,
+				BF5BF2681796E83100E3FA38 /* UIViewController+CurrentPresentedController.h */,
+				BF5BF2691796E83100E3FA38 /* UIViewController+CurrentPresentedController.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BF5BF26A1796E83100E3FA38 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF26B1796E83100E3FA38 /* LICENCE */,
+				BF5BF26C1796E83100E3FA38 /* SSTextView.h */,
+				BF5BF26D1796E83100E3FA38 /* SSTextView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF5BF26E1796E83100E3FA38 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF26F1796E83100E3FA38 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BF5BF26F1796E83100E3FA38 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF2701796E83100E3FA38 /* btn_bottomFeedback.png */,
+				BF5BF2711796E83100E3FA38 /* btn_bottomFeedback@2x.png */,
+				BF5BF2721796E83100E3FA38 /* btn_rightFeedback.png */,
+				BF5BF2731796E83100E3FA38 /* btn_rightFeedback@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		BF5BF28A1797DCFD00E3FA38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF5BF28B1797DD4500E3FA38 /* OTAppaloosaConfigProperty.h */,
+				BF5BF28C1797DD4500E3FA38 /* OTAppaloosaConfigProperty.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +357,14 @@
 				69515B2916C2B70C0090AB82 /* Default-568h@2x.png in Resources */,
 				695F174716CEBDCF009B820F /* OTViewController~ipad.xib in Resources */,
 				695F174816CEBDCF009B820F /* OTViewController~iphone.xib in Resources */,
+				BF5BF2751796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~ipad.xib in Resources */,
+				BF5BF2761796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController~iphone.xib in Resources */,
+				BF5BF27C1796E83100E3FA38 /* LICENCE in Resources */,
+				BF5BF27E1796E83100E3FA38 /* btn_bottomFeedback.png in Resources */,
+				BF5BF27F1796E83100E3FA38 /* btn_bottomFeedback@2x.png in Resources */,
+				BF5BF2801796E83100E3FA38 /* btn_rightFeedback.png in Resources */,
+				BF5BF2811796E83100E3FA38 /* btn_rightFeedback@2x.png in Resources */,
+				BF5BF2861796F52200E3FA38 /* OTAppaloosaDevPanelViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +396,16 @@
 				695F174516CEBDCF009B820F /* OTSecondViewController.m in Sources */,
 				695F174616CEBDCF009B820F /* OTViewController.m in Sources */,
 				695F174B16CEBDDC009B820F /* OTAppDelegate.m in Sources */,
+				BF5BF2741796E83100E3FA38 /* OTAppaloosaInAppFeedbackViewController.m in Sources */,
+				BF5BF2771796E83100E3FA38 /* OTAppaloosaInAppFeedbackManager.m in Sources */,
+				BF5BF2781796E83100E3FA38 /* OTAppaloosaSimpleUpdateService.m in Sources */,
+				BF5BF2791796E83100E3FA38 /* OTAppaloosaUpdateService.m in Sources */,
+				BF5BF27A1796E83100E3FA38 /* NSString+URLEncoding.m in Sources */,
+				BF5BF27B1796E83100E3FA38 /* UIViewController+CurrentPresentedController.m in Sources */,
+				BF5BF27D1796E83100E3FA38 /* SSTextView.m in Sources */,
+				BF5BF2851796F52200E3FA38 /* OTAppaloosaDevPanelViewController.m in Sources */,
+				BF5BF2891797DBB200E3FA38 /* OTAppaloosaSystemPropertyService.m in Sources */,
+				BF5BF28D1797DD4500E3FA38 /* OTAppaloosaConfigProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,13 +479,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A82D169D6E134C88ABC7B178 /* Pods.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maxence Walbrou (LQS6E8TQ5R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mahmoud Mouhamed-Reda (HVWKB4C8KC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OTInAppFeedback/OTInAppFeedback-Prefix.pch";
 				INFOPLIST_FILE = "OTInAppFeedback/OTInAppFeedback-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1D951439-FFA0-45AD-842A-CD7187854E2F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BA27C526-594C-4F2F-A040-12655DAA31B3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

@@ -322,6 +322,17 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
                            description:(NSString *)description
                     andScreenshotImage:(UIImage *)screenshotImage
 {
+    if ([MFMailComposeViewController canSendMail] == NO) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Service unavailable", @"Service unavailable")
+                                                        message:NSLocalizedString(@"No email account configured on the device.", @"No email account configured on the device.")
+                                                       delegate:nil
+                                              cancelButtonTitle:NSLocalizedString(@"Ok", @"Ok")
+                                              otherButtonTitles:nil,
+                                                nil];
+        [alert show];
+        return ;
+    }
+    
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
     

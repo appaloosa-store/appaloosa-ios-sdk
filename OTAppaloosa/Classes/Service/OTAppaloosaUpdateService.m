@@ -21,9 +21,6 @@
 
 #import "OTAppaloosaUpdateService.h"
 
-//Parsing
-#import "JSONKit.h"
-
 #define APPALOOSA_BEGIN_URL @"https://www.appaloosa-store.com/"
 #define APPALOOSA_MIDDLE_URL @"/mobile_applications/"
 #define APPALOOSA_JSON_END_URL @".json?token="
@@ -100,9 +97,9 @@
 {
     if (!error)
     {
-        NSString *dataString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        
-        NSDictionary *dataDictionnary = [dataString objectFromJSONString];
+        NSDictionary *dataDictionnary = [NSJSONSerialization JSONObjectWithData: data
+                                                                        options: NSJSONReadingMutableContainers
+                                                                          error: nil];
                 
         self.appID = [dataDictionnary objectForKey:JSON_ID_KEY];
         
