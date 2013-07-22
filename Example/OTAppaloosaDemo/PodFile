@@ -1,3 +1,2 @@
 platform :ios, '5.0'
-
-pod 'TPKeyboardAvoiding'
+pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.2.2/OTAppaloosa.podspec"
