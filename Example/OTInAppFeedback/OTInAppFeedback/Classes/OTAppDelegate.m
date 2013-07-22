@@ -41,7 +41,10 @@
     [self.window makeKeyAndVisible];
        
     // Initialize in app feedback custom button (necessary only if you use default feedback in the app) :
-    [[OTAppaloosaInAppFeedbackManager sharedManager] initializeDefaultFeedbackButtonWithPosition:kFeedbackButtonPositionRightBottom forRecipientsEmailArray:@[@"mwalbrou@octo.com"]];
+    [[OTAppaloosaActionButtonsManager sharedManager] initializeDefaultFeedbackButtonWithPosition:kAppaloosaButtonPositionRightBottom forRecipientsEmailArray:@[@"mwalbrou@octo.com"]];
+
+    // Initialize dev panel custom button (necessary only if you use default dev panel in the app) :
+    [[OTAppaloosaActionButtonsManager sharedManager] initializeDefaultDevPanelButtonWithPosition:kAppaloosaButtonPositionRightBottom];
     
     return YES;
 }

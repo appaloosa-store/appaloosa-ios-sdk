@@ -71,8 +71,7 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 /**************************************************************************************************/
 #pragma mark - Birth & Death
 
-
-- (id)initWithFeedbackButton:(UIButton *)button
+- (id)initWithAppaloosaButtons:(NSArray *)buttonsArray
         recipientsEmailArray:(NSArray *)recipientsEmailArray
           andScreenshotImage:(UIImage *)screenshotImage
 {
@@ -81,11 +80,10 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
     {
         self.recipientsEmailArray = recipientsEmailArray;
         self.screenshotImage = screenshotImage;
-        self.feedbackButton = button;
+        self.appaloosaButtonsArray = buttonsArray;
     }
     return self;
 }
-
 
 
 /**************************************************************************************************/
@@ -95,7 +93,10 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 {
     [UIView animateWithDuration:kAnimationDuration animations:^
     {
-         [self.feedbackButton setAlpha:0];
+        for (UIButton *button in self.appaloosaButtonsArray)
+        {
+            [button setAlpha:0];
+        }
     }];
     [self updateValidateButtonState];
     
@@ -364,7 +365,10 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 {
     [UIView animateWithDuration:kAnimationDuration animations:^
     {
-        [self.feedbackButton setAlpha:1];
+        for (UIButton *button in self.appaloosaButtonsArray)
+        {
+            [button setAlpha:1];
+        }
     }];
     [self dismissModalViewControllerAnimated:YES];
 }

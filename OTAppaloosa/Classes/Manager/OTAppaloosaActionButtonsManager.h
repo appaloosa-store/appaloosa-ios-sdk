@@ -21,37 +21,35 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef enum FeedbackButtonPosition
-{
-    kFeedbackButtonPositionRightBottom = 0,
-    kFeedbackButtonPositionBottomRight = 1
-} FeedbackButtonPosition;
+#import "OTAppaloosaActionButtonUtil.h"
 
 
-@interface OTAppaloosaInAppFeedbackManager : NSObject
+@interface OTAppaloosaActionButtonsManager : NSObject
 
 
 /**************************************************************************************************/
 #pragma mark - Getters and Setters
 
+@property (strong, nonatomic) UIButton *devPanelButton;
 @property (strong, nonatomic) UIButton *feedbackButton;
+
 @property (strong, nonatomic) NSArray *recipientsEmailArray;
 
-@property (assign, nonatomic) FeedbackButtonPosition feedbackButtonPosition;
+@property (assign, nonatomic) AppaloosaButtonPosition devPanelButtonPosition;
+@property (assign, nonatomic) AppaloosaButtonPosition feedbackButtonPosition;
 
 
 /**************************************************************************************************/
 #pragma mark - Singleton
 
-+ (OTAppaloosaInAppFeedbackManager *)sharedManager;
++ (OTAppaloosaActionButtonsManager *)sharedManager;
 
 
 /**************************************************************************************************/
 #pragma mark - UI
 
 - (void)showDefaultFeedbackButton:(BOOL)shouldShow;
-
+- (void)showDefaultDevPanelButton:(BOOL)shouldShow;
 
 /**************************************************************************************************/
 #pragma mark - Feedback
@@ -61,7 +59,13 @@ typedef enum FeedbackButtonPosition
  * @param position - button position in screen
  * @param emailsArray - NSArray containing feedback e-mail(s) adresses
  */
-- (void)initializeDefaultFeedbackButtonWithPosition:(FeedbackButtonPosition)position forRecipientsEmailArray:(NSArray *)emailsArray;
+- (void)initializeDefaultFeedbackButtonWithPosition:(AppaloosaButtonPosition)position forRecipientsEmailArray:(NSArray *)emailsArray;
+
+/**
+ * @brief Create and display default dev panel button
+ * @param position - button position in screen
+ */
+- (void)initializeDefaultDevPanelButtonWithPosition:(AppaloosaButtonPosition)position;
 
 /**
  * @brief Trigger screenshot + feedback viewController launch
@@ -69,5 +73,9 @@ typedef enum FeedbackButtonPosition
  */
 - (void)presentFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray;
 
+/**
+ * @brief Dev panel viewController launch
+ */
+- (void)presentDevPanel;
 
 @end

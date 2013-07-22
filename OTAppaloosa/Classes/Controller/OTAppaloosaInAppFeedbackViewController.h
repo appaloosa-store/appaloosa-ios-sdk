@@ -34,7 +34,8 @@
 /**************************************************************************************************/
 #pragma mark - Getters and Setters
 
-@property (strong, nonatomic) UIButton *feedbackButton;
+//@property (strong, nonatomic) UIButton *feedbackButton;
+@property (strong, nonatomic) NSArray *appaloosaButtonsArray;
 @property (strong, nonatomic) UIImage *screenshotImage;
 @property (strong, nonatomic) NSArray *recipientsEmailArray;
 
@@ -47,12 +48,11 @@
 @property (weak, nonatomic) IBOutlet UISwitch *useScreenshotSwitch;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *feedbackTypeSegmentedControl;
 
-
 /**************************************************************************************************/
 #pragma mark - Birth & Death
 
 
-- (id)initWithFeedbackButton:(UIButton *)button recipientsEmailArray:(NSArray *)recipientsEmailArray andScreenshotImage:(UIImage *)screenshotImage;
+- (id)initWithAppaloosaButtons:(NSArray *)buttonsArray recipientsEmailArray:(NSArray *)recipientsEmailArray andScreenshotImage:(UIImage *)screenshotImage;
 
 
 @end
