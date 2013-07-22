@@ -93,13 +93,26 @@ Add in-app-feedback to your app
 
 This SDK provides a fully integrated solution to send feedback to your dev team. In your appDelegate file, add the following line: 
 
-	 [[OTAppaloosaInAppFeedbackManager sharedManager] initializeDefaultFeedbackButtonWithPosition:kFeedbackButtonPositionRightBottom forRecipientsEmailArray:@[@"e.mail@address.com"]];
+	 [[OTAppaloosaActionButtonsManager sharedManager] initializeDefaultFeedbackButtonWithPosition:kAppaloosaButtonPositionRightBottom forRecipientsEmailArray:@[@"e.mail@address.com"]];
 	
 You have 2 possible positions for the default feedback button. If you prefer to use your own button/action to trigger feedback, you can use the following line: 
 
- 	[[OTAppaloosaInAppFeedbackManager sharedManager] presentFeedbackWithRecipientsEmailArray:@[@"e.mail@address.com"]];
+ 	[[OTAppaloosaActionButtonsManager sharedManager] presentFeedbackWithRecipientsEmailArray:@[@"e.mail@address.com"]];
 
-To see how to use this feature, take a look at the Example/OTInAppFeedback/ project.
+To see how to use this feature, take a look at the Example/OTAppaloosaDemo/ project.
+
+Add the dev panel to your app
+---------------------------------
+
+This SDK provides also a dev panel which gives information about the device and the application. In your appDelegate file, add the following line:
+
+     	 [[OTAppaloosaActionButtonsManager sharedManager] initializeDefaultDevPanelButtonWithPosition:kAppaloosaButtonPositionRightBottom];
+
+You have 2 possible positions for the default dev-panel button. If you prefer to use your own button/action to trigger the dev panel, you can use the following line:
+
+    	 [[OTAppaloosaActionButtonsManager sharedManager] presentDevPanel];
+
+To see how to use this feature, take a look at the Example/OTAppaloosaDemo/ project.
 
 Want some documentation?
 ------------------------
