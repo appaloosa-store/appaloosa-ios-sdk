@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 OCTO. All rights reserved.
 //
 
-#import "OTViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface OTAppaloosaDevPanelViewController : OTViewController
+@interface OTAppaloosaDevPanelViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableViewConfigProperty;
 @property (nonatomic, strong) NSDictionary *appConfigPropertiesDictionary;
