@@ -57,7 +57,6 @@
     [[OTAppaloosaActionButtonsManager sharedManager] presentDevPanel];
 }
 
-
 - (IBAction)onDefaultFeedbackButtonSwitchChange:(UISwitch *)sender
 {
     [[OTAppaloosaActionButtonsManager sharedManager] showDefaultFeedbackButton:sender.on];
