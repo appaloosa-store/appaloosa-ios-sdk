@@ -1,0 +1,576 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		69515B1316C2B70C0090AB82 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69515B1216C2B70C0090AB82 /* UIKit.framework */; };
+		69515B1516C2B70C0090AB82 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69515B1416C2B70C0090AB82 /* Foundation.framework */; };
+		69515B1716C2B70C0090AB82 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69515B1616C2B70C0090AB82 /* CoreGraphics.framework */; };
+		69515B1D16C2B70C0090AB82 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69515B1B16C2B70C0090AB82 /* InfoPlist.strings */; };
+		69515B1F16C2B70C0090AB82 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69515B1E16C2B70C0090AB82 /* main.m */; };
+		69515B2516C2B70C0090AB82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 69515B2416C2B70C0090AB82 /* Default.png */; };
+		69515B2716C2B70C0090AB82 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69515B2616C2B70C0090AB82 /* Default@2x.png */; };
+		69515B2916C2B70C0090AB82 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69515B2816C2B70C0090AB82 /* Default-568h@2x.png */; };
+		695F174516CEBDCF009B820F /* OTSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F174016CEBDCF009B820F /* OTSecondViewController.m */; };
+		695F174616CEBDCF009B820F /* OTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F174216CEBDCF009B820F /* OTViewController.m */; };
+		695F174716CEBDCF009B820F /* OTViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 695F174316CEBDCF009B820F /* OTViewController~ipad.xib */; };
+		695F174816CEBDCF009B820F /* OTViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 695F174416CEBDCF009B820F /* OTViewController~iphone.xib */; };
+		695F174B16CEBDDC009B820F /* OTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 695F174A16CEBDDC009B820F /* OTAppDelegate.m */; };
+		696DCB1716C40C7000B8E6CB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696DCB1616C40C7000B8E6CB /* MessageUI.framework */; };
+		69D204A16EB34DD4A7BDC52F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72E9740852474EDFADE536DE /* libPods.a */; };
+		BF1F5192179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F5165179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.m */; };
+		BF1F5193179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1F5166179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.xib */; };
+		BF1F5194179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F5168179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController.m */; };
+		BF1F5195179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1F5169179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~ipad.xib */; };
+		BF1F5196179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1F516A179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~iphone.xib */; };
+		BF1F5197179D83F9002F7AE9 /* OTAppaloosaActionButtonsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F516D179D83F9002F7AE9 /* OTAppaloosaActionButtonsManager.m */; };
+		BF1F5198179D83F9002F7AE9 /* OTAppaloosaConfigProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F5170179D83F9002F7AE9 /* OTAppaloosaConfigProperty.m */; };
+		BF1F5199179D83F9002F7AE9 /* OTAppaloosaSimpleUpdateService.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F5174179D83F9002F7AE9 /* OTAppaloosaSimpleUpdateService.m */; };
+		BF1F519A179D83F9002F7AE9 /* OTAppaloosaSystemPropertyService.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F5176179D83F9002F7AE9 /* OTAppaloosaSystemPropertyService.m */; };
+		BF1F519B179D83F9002F7AE9 /* OTAppaloosaUpdateService.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F5178179D83F9002F7AE9 /* OTAppaloosaUpdateService.m */; };
+		BF1F519C179D83F9002F7AE9 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F517B179D83F9002F7AE9 /* NSString+URLEncoding.m */; };
+		BF1F519D179D83F9002F7AE9 /* OTAppaloosaActionButtonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F517D179D83F9002F7AE9 /* OTAppaloosaActionButtonUtil.m */; };
+		BF1F519E179D83F9002F7AE9 /* UIColor+Appaloosa.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F517F179D83F9002F7AE9 /* UIColor+Appaloosa.m */; };
+		BF1F519F179D83F9002F7AE9 /* UIViewController+CurrentPresentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F5181179D83F9002F7AE9 /* UIViewController+CurrentPresentedController.m */; };
+		BF1F51A0179D83F9002F7AE9 /* OTConfigPropertyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F5186179D83F9002F7AE9 /* OTConfigPropertyCell.m */; };
+		BF1F51A1179D83F9002F7AE9 /* OTConfigPropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1F5187179D83F9002F7AE9 /* OTConfigPropertyCell.xib */; };
+		BF1F51A2179D83F9002F7AE9 /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = BF1F5189179D83F9002F7AE9 /* LICENCE */; };
+		BF1F51A3179D83F9002F7AE9 /* SSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1F518B179D83F9002F7AE9 /* SSTextView.m */; };
+		BF1F51A4179D83F9002F7AE9 /* btn_bottomFeedback.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1F518E179D83F9002F7AE9 /* btn_bottomFeedback.png */; };
+		BF1F51A5179D83F9002F7AE9 /* btn_bottomFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1F518F179D83F9002F7AE9 /* btn_bottomFeedback@2x.png */; };
+		BF1F51A6179D83F9002F7AE9 /* btn_rightFeedback.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1F5190179D83F9002F7AE9 /* btn_rightFeedback.png */; };
+		BF1F51A7179D83F9002F7AE9 /* btn_rightFeedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1F5191179D83F9002F7AE9 /* btn_rightFeedback@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		69515B0E16C2B70C0090AB82 /* OTAppaloosaDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OTAppaloosaDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69515B1216C2B70C0090AB82 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		69515B1416C2B70C0090AB82 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		69515B1616C2B70C0090AB82 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		69515B1A16C2B70C0090AB82 /* OTAppaloosaDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OTAppaloosaDemo-Info.plist"; sourceTree = "<group>"; };
+		69515B1C16C2B70C0090AB82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		69515B1E16C2B70C0090AB82 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		69515B2016C2B70C0090AB82 /* OTAppaloosaDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OTAppaloosaDemo-Prefix.pch"; sourceTree = "<group>"; };
+		69515B2416C2B70C0090AB82 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		69515B2616C2B70C0090AB82 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		69515B2816C2B70C0090AB82 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		695F173F16CEBDCF009B820F /* OTSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTSecondViewController.h; sourceTree = "<group>"; };
+		695F174016CEBDCF009B820F /* OTSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTSecondViewController.m; sourceTree = "<group>"; };
+		695F174116CEBDCF009B820F /* OTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTViewController.h; sourceTree = "<group>"; };
+		695F174216CEBDCF009B820F /* OTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTViewController.m; sourceTree = "<group>"; };
+		695F174316CEBDCF009B820F /* OTViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OTViewController~ipad.xib"; sourceTree = "<group>"; };
+		695F174416CEBDCF009B820F /* OTViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OTViewController~iphone.xib"; sourceTree = "<group>"; };
+		695F174916CEBDDC009B820F /* OTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppDelegate.h; sourceTree = "<group>"; };
+		695F174A16CEBDDC009B820F /* OTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppDelegate.m; sourceTree = "<group>"; };
+		696DCB1616C40C7000B8E6CB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		72E9740852474EDFADE536DE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A82D169D6E134C88ABC7B178 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		BF1F5164179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaDevPanelViewController.h; sourceTree = "<group>"; };
+		BF1F5165179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaDevPanelViewController.m; sourceTree = "<group>"; };
+		BF1F5166179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OTAppaloosaDevPanelViewController.xib; sourceTree = "<group>"; };
+		BF1F5167179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaInAppFeedbackViewController.h; sourceTree = "<group>"; };
+		BF1F5168179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaInAppFeedbackViewController.m; sourceTree = "<group>"; };
+		BF1F5169179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OTAppaloosaInAppFeedbackViewController~ipad.xib"; sourceTree = "<group>"; };
+		BF1F516A179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OTAppaloosaInAppFeedbackViewController~iphone.xib"; sourceTree = "<group>"; };
+		BF1F516C179D83F9002F7AE9 /* OTAppaloosaActionButtonsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaActionButtonsManager.h; sourceTree = "<group>"; };
+		BF1F516D179D83F9002F7AE9 /* OTAppaloosaActionButtonsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaActionButtonsManager.m; sourceTree = "<group>"; };
+		BF1F516F179D83F9002F7AE9 /* OTAppaloosaConfigProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaConfigProperty.h; sourceTree = "<group>"; };
+		BF1F5170179D83F9002F7AE9 /* OTAppaloosaConfigProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaConfigProperty.m; sourceTree = "<group>"; };
+		BF1F5171179D83F9002F7AE9 /* OTAppaloosa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosa.h; sourceTree = "<group>"; };
+		BF1F5173179D83F9002F7AE9 /* OTAppaloosaSimpleUpdateService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaSimpleUpdateService.h; sourceTree = "<group>"; };
+		BF1F5174179D83F9002F7AE9 /* OTAppaloosaSimpleUpdateService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaSimpleUpdateService.m; sourceTree = "<group>"; };
+		BF1F5175179D83F9002F7AE9 /* OTAppaloosaSystemPropertyService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaSystemPropertyService.h; sourceTree = "<group>"; };
+		BF1F5176179D83F9002F7AE9 /* OTAppaloosaSystemPropertyService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaSystemPropertyService.m; sourceTree = "<group>"; };
+		BF1F5177179D83F9002F7AE9 /* OTAppaloosaUpdateService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaUpdateService.h; sourceTree = "<group>"; };
+		BF1F5178179D83F9002F7AE9 /* OTAppaloosaUpdateService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaUpdateService.m; sourceTree = "<group>"; };
+		BF1F517A179D83F9002F7AE9 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		BF1F517B179D83F9002F7AE9 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		BF1F517C179D83F9002F7AE9 /* OTAppaloosaActionButtonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTAppaloosaActionButtonUtil.h; sourceTree = "<group>"; };
+		BF1F517D179D83F9002F7AE9 /* OTAppaloosaActionButtonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTAppaloosaActionButtonUtil.m; sourceTree = "<group>"; };
+		BF1F517E179D83F9002F7AE9 /* UIColor+Appaloosa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Appaloosa.h"; sourceTree = "<group>"; };
+		BF1F517F179D83F9002F7AE9 /* UIColor+Appaloosa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Appaloosa.m"; sourceTree = "<group>"; };
+		BF1F5180179D83F9002F7AE9 /* UIViewController+CurrentPresentedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CurrentPresentedController.h"; sourceTree = "<group>"; };
+		BF1F5181179D83F9002F7AE9 /* UIViewController+CurrentPresentedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CurrentPresentedController.m"; sourceTree = "<group>"; };
+		BF1F5185179D83F9002F7AE9 /* OTConfigPropertyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTConfigPropertyCell.h; sourceTree = "<group>"; };
+		BF1F5186179D83F9002F7AE9 /* OTConfigPropertyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTConfigPropertyCell.m; sourceTree = "<group>"; };
+		BF1F5187179D83F9002F7AE9 /* OTConfigPropertyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OTConfigPropertyCell.xib; sourceTree = "<group>"; };
+		BF1F5189179D83F9002F7AE9 /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
+		BF1F518A179D83F9002F7AE9 /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTextView.h; sourceTree = "<group>"; };
+		BF1F518B179D83F9002F7AE9 /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTextView.m; sourceTree = "<group>"; };
+		BF1F518E179D83F9002F7AE9 /* btn_bottomFeedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_bottomFeedback.png; sourceTree = "<group>"; };
+		BF1F518F179D83F9002F7AE9 /* btn_bottomFeedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_bottomFeedback@2x.png"; sourceTree = "<group>"; };
+		BF1F5190179D83F9002F7AE9 /* btn_rightFeedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_rightFeedback.png; sourceTree = "<group>"; };
+		BF1F5191179D83F9002F7AE9 /* btn_rightFeedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_rightFeedback@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		69515B0B16C2B70C0090AB82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				696DCB1716C40C7000B8E6CB /* MessageUI.framework in Frameworks */,
+				69515B1316C2B70C0090AB82 /* UIKit.framework in Frameworks */,
+				69515B1516C2B70C0090AB82 /* Foundation.framework in Frameworks */,
+				69515B1716C2B70C0090AB82 /* CoreGraphics.framework in Frameworks */,
+				69D204A16EB34DD4A7BDC52F /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		69515B0316C2B70C0090AB82 = {
+			isa = PBXGroup;
+			children = (
+				69515B1816C2B70C0090AB82 /* OTAppaloosaDemo */,
+				69515B1116C2B70C0090AB82 /* Frameworks */,
+				69515B0F16C2B70C0090AB82 /* Products */,
+				A82D169D6E134C88ABC7B178 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		69515B0F16C2B70C0090AB82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				69515B0E16C2B70C0090AB82 /* OTAppaloosaDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69515B1116C2B70C0090AB82 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				696DCB1616C40C7000B8E6CB /* MessageUI.framework */,
+				69515B1216C2B70C0090AB82 /* UIKit.framework */,
+				69515B1416C2B70C0090AB82 /* Foundation.framework */,
+				69515B1616C2B70C0090AB82 /* CoreGraphics.framework */,
+				72E9740852474EDFADE536DE /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		69515B1816C2B70C0090AB82 /* OTAppaloosaDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F5161179D83F9002F7AE9 /* OTAppaloosa */,
+				6952CEC516C5262D003CD14C /* Classes */,
+				69515B1916C2B70C0090AB82 /* Supporting Files */,
+			);
+			path = OTAppaloosaDemo;
+			sourceTree = "<group>";
+		};
+		69515B1916C2B70C0090AB82 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				69515B1A16C2B70C0090AB82 /* OTAppaloosaDemo-Info.plist */,
+				69515B1B16C2B70C0090AB82 /* InfoPlist.strings */,
+				69515B1E16C2B70C0090AB82 /* main.m */,
+				69515B2016C2B70C0090AB82 /* OTAppaloosaDemo-Prefix.pch */,
+				69515B2416C2B70C0090AB82 /* Default.png */,
+				69515B2616C2B70C0090AB82 /* Default@2x.png */,
+				69515B2816C2B70C0090AB82 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6952CEC516C5262D003CD14C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				695F174916CEBDDC009B820F /* OTAppDelegate.h */,
+				695F174A16CEBDDC009B820F /* OTAppDelegate.m */,
+				6952CEC616C52642003CD14C /* Controller */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		6952CEC616C52642003CD14C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				695F173F16CEBDCF009B820F /* OTSecondViewController.h */,
+				695F174016CEBDCF009B820F /* OTSecondViewController.m */,
+				695F174116CEBDCF009B820F /* OTViewController.h */,
+				695F174216CEBDCF009B820F /* OTViewController.m */,
+				695F174316CEBDCF009B820F /* OTViewController~ipad.xib */,
+				695F174416CEBDCF009B820F /* OTViewController~iphone.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF1F5161179D83F9002F7AE9 /* OTAppaloosa */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F5162179D83F9002F7AE9 /* Classes */,
+				BF1F518C179D83F9002F7AE9 /* Resources */,
+			);
+			name = OTAppaloosa;
+			path = ../../../OTAppaloosa;
+			sourceTree = "<group>";
+		};
+		BF1F5162179D83F9002F7AE9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F5163179D83F9002F7AE9 /* Controller */,
+				BF1F516B179D83F9002F7AE9 /* Manager */,
+				BF1F516E179D83F9002F7AE9 /* Model */,
+				BF1F5171179D83F9002F7AE9 /* OTAppaloosa.h */,
+				BF1F5172179D83F9002F7AE9 /* Service */,
+				BF1F5179179D83F9002F7AE9 /* Utils */,
+				BF1F5182179D83F9002F7AE9 /* View */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BF1F5163179D83F9002F7AE9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F5164179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.h */,
+				BF1F5165179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.m */,
+				BF1F5166179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.xib */,
+				BF1F5167179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController.h */,
+				BF1F5168179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController.m */,
+				BF1F5169179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~ipad.xib */,
+				BF1F516A179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~iphone.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BF1F516B179D83F9002F7AE9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F516C179D83F9002F7AE9 /* OTAppaloosaActionButtonsManager.h */,
+				BF1F516D179D83F9002F7AE9 /* OTAppaloosaActionButtonsManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		BF1F516E179D83F9002F7AE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F516F179D83F9002F7AE9 /* OTAppaloosaConfigProperty.h */,
+				BF1F5170179D83F9002F7AE9 /* OTAppaloosaConfigProperty.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF1F5172179D83F9002F7AE9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F5173179D83F9002F7AE9 /* OTAppaloosaSimpleUpdateService.h */,
+				BF1F5174179D83F9002F7AE9 /* OTAppaloosaSimpleUpdateService.m */,
+				BF1F5175179D83F9002F7AE9 /* OTAppaloosaSystemPropertyService.h */,
+				BF1F5176179D83F9002F7AE9 /* OTAppaloosaSystemPropertyService.m */,
+				BF1F5177179D83F9002F7AE9 /* OTAppaloosaUpdateService.h */,
+				BF1F5178179D83F9002F7AE9 /* OTAppaloosaUpdateService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		BF1F5179179D83F9002F7AE9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F517A179D83F9002F7AE9 /* NSString+URLEncoding.h */,
+				BF1F517B179D83F9002F7AE9 /* NSString+URLEncoding.m */,
+				BF1F517C179D83F9002F7AE9 /* OTAppaloosaActionButtonUtil.h */,
+				BF1F517D179D83F9002F7AE9 /* OTAppaloosaActionButtonUtil.m */,
+				BF1F517E179D83F9002F7AE9 /* UIColor+Appaloosa.h */,
+				BF1F517F179D83F9002F7AE9 /* UIColor+Appaloosa.m */,
+				BF1F5180179D83F9002F7AE9 /* UIViewController+CurrentPresentedController.h */,
+				BF1F5181179D83F9002F7AE9 /* UIViewController+CurrentPresentedController.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BF1F5182179D83F9002F7AE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F5183179D83F9002F7AE9 /* Cell */,
+				BF1F5188179D83F9002F7AE9 /* Header */,
+				BF1F5189179D83F9002F7AE9 /* LICENCE */,
+				BF1F518A179D83F9002F7AE9 /* SSTextView.h */,
+				BF1F518B179D83F9002F7AE9 /* SSTextView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BF1F5183179D83F9002F7AE9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F5184179D83F9002F7AE9 /* ConfigPropertyCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BF1F5184179D83F9002F7AE9 /* ConfigPropertyCell */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F5185179D83F9002F7AE9 /* OTConfigPropertyCell.h */,
+				BF1F5186179D83F9002F7AE9 /* OTConfigPropertyCell.m */,
+				BF1F5187179D83F9002F7AE9 /* OTConfigPropertyCell.xib */,
+			);
+			path = ConfigPropertyCell;
+			sourceTree = "<group>";
+		};
+		BF1F5188179D83F9002F7AE9 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		BF1F518C179D83F9002F7AE9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F518D179D83F9002F7AE9 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BF1F518D179D83F9002F7AE9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				BF1F518E179D83F9002F7AE9 /* btn_bottomFeedback.png */,
+				BF1F518F179D83F9002F7AE9 /* btn_bottomFeedback@2x.png */,
+				BF1F5190179D83F9002F7AE9 /* btn_rightFeedback.png */,
+				BF1F5191179D83F9002F7AE9 /* btn_rightFeedback@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		69515B0D16C2B70C0090AB82 /* OTAppaloosaDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 69515B3516C2B70C0090AB82 /* Build configuration list for PBXNativeTarget "OTAppaloosaDemo" */;
+			buildPhases = (
+				69515B0A16C2B70C0090AB82 /* Sources */,
+				69515B0B16C2B70C0090AB82 /* Frameworks */,
+				69515B0C16C2B70C0090AB82 /* Resources */,
+				51246C4B66B2418BA13EDAFB /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OTAppaloosaDemo;
+			productName = OTInAppFeedback;
+			productReference = 69515B0E16C2B70C0090AB82 /* OTAppaloosaDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		69515B0516C2B70C0090AB82 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OT;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = OCTO;
+			};
+			buildConfigurationList = 69515B0816C2B70C0090AB82 /* Build configuration list for PBXProject "OTAppaloosaDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 69515B0316C2B70C0090AB82;
+			productRefGroup = 69515B0F16C2B70C0090AB82 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				69515B0D16C2B70C0090AB82 /* OTAppaloosaDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		69515B0C16C2B70C0090AB82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69515B1D16C2B70C0090AB82 /* InfoPlist.strings in Resources */,
+				69515B2516C2B70C0090AB82 /* Default.png in Resources */,
+				69515B2716C2B70C0090AB82 /* Default@2x.png in Resources */,
+				69515B2916C2B70C0090AB82 /* Default-568h@2x.png in Resources */,
+				695F174716CEBDCF009B820F /* OTViewController~ipad.xib in Resources */,
+				695F174816CEBDCF009B820F /* OTViewController~iphone.xib in Resources */,
+				BF1F5193179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.xib in Resources */,
+				BF1F5195179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~ipad.xib in Resources */,
+				BF1F5196179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController~iphone.xib in Resources */,
+				BF1F51A1179D83F9002F7AE9 /* OTConfigPropertyCell.xib in Resources */,
+				BF1F51A2179D83F9002F7AE9 /* LICENCE in Resources */,
+				BF1F51A4179D83F9002F7AE9 /* btn_bottomFeedback.png in Resources */,
+				BF1F51A5179D83F9002F7AE9 /* btn_bottomFeedback@2x.png in Resources */,
+				BF1F51A6179D83F9002F7AE9 /* btn_rightFeedback.png in Resources */,
+				BF1F51A7179D83F9002F7AE9 /* btn_rightFeedback@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		51246C4B66B2418BA13EDAFB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		69515B0A16C2B70C0090AB82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69515B1F16C2B70C0090AB82 /* main.m in Sources */,
+				695F174516CEBDCF009B820F /* OTSecondViewController.m in Sources */,
+				695F174616CEBDCF009B820F /* OTViewController.m in Sources */,
+				695F174B16CEBDDC009B820F /* OTAppDelegate.m in Sources */,
+				BF1F5192179D83F9002F7AE9 /* OTAppaloosaDevPanelViewController.m in Sources */,
+				BF1F5194179D83F9002F7AE9 /* OTAppaloosaInAppFeedbackViewController.m in Sources */,
+				BF1F5197179D83F9002F7AE9 /* OTAppaloosaActionButtonsManager.m in Sources */,
+				BF1F5198179D83F9002F7AE9 /* OTAppaloosaConfigProperty.m in Sources */,
+				BF1F5199179D83F9002F7AE9 /* OTAppaloosaSimpleUpdateService.m in Sources */,
+				BF1F519A179D83F9002F7AE9 /* OTAppaloosaSystemPropertyService.m in Sources */,
+				BF1F519B179D83F9002F7AE9 /* OTAppaloosaUpdateService.m in Sources */,
+				BF1F519C179D83F9002F7AE9 /* NSString+URLEncoding.m in Sources */,
+				BF1F519D179D83F9002F7AE9 /* OTAppaloosaActionButtonUtil.m in Sources */,
+				BF1F519E179D83F9002F7AE9 /* UIColor+Appaloosa.m in Sources */,
+				BF1F519F179D83F9002F7AE9 /* UIViewController+CurrentPresentedController.m in Sources */,
+				BF1F51A0179D83F9002F7AE9 /* OTConfigPropertyCell.m in Sources */,
+				BF1F51A3179D83F9002F7AE9 /* SSTextView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		69515B1B16C2B70C0090AB82 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				69515B1C16C2B70C0090AB82 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		69515B3316C2B70C0090AB82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		69515B3416C2B70C0090AB82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		69515B3616C2B70C0090AB82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A82D169D6E134C88ABC7B178 /* Pods.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mahmoud Mouhamed-Reda (HVWKB4C8KC)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OTAppaloosaDemo/OTAppaloosaDemo-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/OTAppaloosaDemo/OTAppaloosaDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = OTAppaloosaDemo;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BA27C526-594C-4F2F-A040-12655DAA31B3";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		69515B3716C2B70C0090AB82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A82D169D6E134C88ABC7B178 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OTAppaloosaDemo/OTAppaloosaDemo-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/OTAppaloosaDemo/OTAppaloosaDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = OTAppaloosaDemo;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		69515B0816C2B70C0090AB82 /* Build configuration list for PBXProject "OTAppaloosaDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69515B3316C2B70C0090AB82 /* Debug */,
+				69515B3416C2B70C0090AB82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		69515B3516C2B70C0090AB82 /* Build configuration list for PBXNativeTarget "OTAppaloosaDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69515B3616C2B70C0090AB82 /* Debug */,
+				69515B3716C2B70C0090AB82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 69515B0516C2B70C0090AB82 /* Project object */;
+}
