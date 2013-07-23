@@ -145,7 +145,7 @@ static OTAppaloosaActionButtonsManager *manager;
 {
     UIView *windowView = [OTAppaloosaActionButtonUtil getApplicationWindowView];
     
-    NSString *imageName = (position == kAppaloosaButtonPositionBottomRight ? @"btn_bottomFeedback" : @"btn_rightFeedback");
+    NSString *imageName = (position == kAppaloosaButtonPositionBottomRight ? @"btn_bottomDevPanel" : @"btn_rightDevPanel");
     self.devPanelButton = [self initializeButtonWithImageName:imageName andTargetSelector:@selector(onDevPanelButtonTap)];
     
     [windowView addSubview:self.devPanelButton];
