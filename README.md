@@ -1,6 +1,8 @@
 Appaloosa SDK
 =============
 
+For iOS 5+
+
 Overview
 --------
 
@@ -8,7 +10,7 @@ Appaloosa SDK library is a simple library that helps you to:
  
 * Auto-update your application stored on [Appaloosa Store](http://www.appaloosa-store.com/) server
 * Receive feedback from your users directly from the app (iPhone and iPad)
-
+* Launch a dev-panel giving information about the device and the application
 
 Requirements
 ------------
@@ -19,17 +21,17 @@ Appaloosa SDK library use ARC and is compatible with iOS 5+.
 Integrate Appaloosa SDK with CocoaPods
 ----------------------------------------
 
-Simply add `pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.2.1/OTAppaloosa.podspec"` in your Podfile.
+Simply add the following line to your Podfile :
+       
+`pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.3.2/OTAppaloosa.podspec"`
 
 Refer to [CocoaPods](https://github.com/CocoaPods/CocoaPods) for more information about it.
 
 Integrate Appaloosa SDK the old fashioned way
 -----------------------------------------------
 
-Download and import OTAppaloosa sources and its dependancies : [JSONKit](https://github.com/johnezang/JSONKit) and [TPKeyboardAvoiding](https://github.com/michaeltyson/TPKeyboardAvoiding).
-
-Note: JSONKit is not using ARC. Fix its project compiled options with `-fno-objc-arc`.
-
+- Download and import OTAppaloosa sources and its dependency : [TPKeyboardAvoiding](https://github.com/michaeltyson/TPKeyboardAvoiding).
+- Add OTAppaloosa sources to your project.
 
 Check for application update - simple version
 -----------------------------------------------
@@ -95,9 +97,15 @@ This SDK provides a fully integrated solution to send feedback to your dev team.
 
 	 [[OTAppaloosaActionButtonsManager sharedManager] initializeDefaultFeedbackButtonWithPosition:kAppaloosaButtonPositionRightBottom forRecipientsEmailArray:@[@"e.mail@address.com"]];
 	
-You have 2 possible positions for the default feedback button. If you prefer to use your own button/action to trigger feedback, you can use the following line: 
+You have 2 possible positions for the default feedback button :
+    - kAppaloosaButtonPositionRightBottom
+    - kAppaloosaButtonPositionBottomRight
+
+
+If you prefer to use your own button/action to trigger feedback, you can use the following line: 
 
  	[[OTAppaloosaActionButtonsManager sharedManager] presentFeedbackWithRecipientsEmailArray:@[@"e.mail@address.com"]];
+
 
 To see how to use this feature, take a look at the Example/OTAppaloosaDemo/ project.
 
@@ -108,9 +116,16 @@ This SDK provides also a dev panel which gives information about the device and 
 
      	 [[OTAppaloosaActionButtonsManager sharedManager] initializeDefaultDevPanelButtonWithPosition:kAppaloosaButtonPositionRightBottom];
 
-You have 2 possible positions for the default dev-panel button. If you prefer to use your own button/action to trigger the dev panel, you can use the following line:
+
+You have 2 possible positions for the default dev-panel button :
+    - kAppaloosaButtonPositionRightBottom
+    - kAppaloosaButtonPositionBottomRight
+
+
+If you prefer to use your own button/action to trigger the dev panel, you can use the following line:
 
     	 [[OTAppaloosaActionButtonsManager sharedManager] presentDevPanel];
+
 
 To see how to use this feature, take a look at the Example/OTAppaloosaDemo/ project.
 
@@ -118,3 +133,20 @@ Want some documentation?
 ------------------------
 
 Appaloosa SDK for iOS use [AppleDoc](https://github.com/tomaz/appledoc) to generate its API's documentation.
+
+License
+-------
+
+  Copyright (C) 2012 Octo Technology (http://www.octo.com)
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+       
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
