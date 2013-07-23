@@ -96,8 +96,8 @@ This SDK provides a fully integrated solution to send feedback to your dev team.
 	 [[OTAppaloosaActionButtonsManager sharedManager] initializeDefaultFeedbackButtonWithPosition:kAppaloosaButtonPositionRightBottom forRecipientsEmailArray:@[@"e.mail@address.com"]];
 	
 You have 2 possible positions for the default feedback button :
-    * kAppaloosaButtonPositionRightBottom
-    * kAppaloosaButtonPositionBottomRight
+* kAppaloosaButtonPositionRightBottom
+* kAppaloosaButtonPositionBottomRight
 
 
 If you prefer to use your own button/action to trigger feedback, you can use the following line: 
@@ -116,8 +116,8 @@ This SDK provides also a dev panel which gives information about the device and 
 
 
 You have 2 possible positions for the default dev-panel button :
-    * kAppaloosaButtonPositionRightBottom
-    * kAppaloosaButtonPositionBottomRight
+* kAppaloosaButtonPositionRightBottom
+* kAppaloosaButtonPositionBottomRight
 
 
 If you prefer to use your own button/action to trigger the dev panel, you can use the following line:
