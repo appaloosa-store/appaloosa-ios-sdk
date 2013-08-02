@@ -7,9 +7,10 @@
 //
 
 #import <sys/utsname.h>
-
 #import "OTAppaloosaSystemPropertyService.h"
 #import "OTAppaloosaConfigProperty.h"
+
+#include <stdio.h>
 
 NSString * const kAppaloosaDevRegionPropertyLabel = @"Bundle Development Region";
 NSString * const kAppaloosaExecutablePropertyLabel = @"Bundle Executable";
@@ -21,6 +22,7 @@ NSString * const kAppaloosaSignaturePropertyLabel = @"Bundle Signature";
 NSString * const kAppaloosaRequiredDeviceCapabilitiesPropertyLabel = @"Required Device Capabilities";
 NSString * const kAppaloosaModelPropertyLabel = @"Model";
 NSString * const kAppaloosaOSVersionPropertyLabel = @"iOS version";
+NSString * const kAppaloosaIsJailbrokenPropertyLabel = @"Jailbroken device";
 
 NSString * const kAppaloosaDevRegionPropertyValue = @"CFBundleDevelopmentRegion";
 NSString * const kAppaloosaExecutablePropertyValue = @"CFBundleExecutable";
@@ -93,6 +95,10 @@ NSString * const kAppaloosaConfigPropertyPaysageRight = @"Paysage Right";
     [configPropertyMutableArray addObject:[[OTAppaloosaConfigProperty alloc]
                                            initWithLabel:kAppaloosaOSVersionPropertyLabel
                                            andValue:[NSString stringWithFormat:@"%@", [[UIDevice currentDevice] systemVersion]]]];
+    
+    [configPropertyMutableArray addObject:[[OTAppaloosaConfigProperty alloc]
+                                           initWithLabel:kAppaloosaIsJailbrokenPropertyLabel
+                                           andValue:([OTAppaloosaSystemPropertyService isJailbroken] ? @"YES" : @"NO")]];
     
     [bundlePropertyMutableDictionary setObject:[NSArray arrayWithArray:configPropertyMutableArray] forKey:@"Device"];
         
@@ -192,10 +198,31 @@ NSString * const kAppaloosaConfigPropertyPaysageRight = @"Paysage Right";
     return configProperty;
 }
 
++ (BOOL)isJailbroken
+{
+#if TARGET_IPHONE_SIMULATOR
+    return NO;
+#else
+
+    BOOL isJailbroken = NO;
+
+    BOOL cydiaInstalled = [[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app"];
+    FILE *f = fopen("/bin/bash", "r");
+    
+    if (!(errno == ENOENT) || cydiaInstalled)
+    {
+        isJailbroken = YES;
+    }
+    fclose(f);
+    
+    return isJailbroken;
+#endif
+}
+
 /*
  * Content of the method from stackoverflow : http://stackoverflow.com/a/15719809
  */
-+ (NSString *) deviceModel
++ (NSString *)deviceModel
 {
     struct utsname systemInfo;
     uname(&systemInfo);
