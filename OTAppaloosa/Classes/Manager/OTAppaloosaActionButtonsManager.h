@@ -42,7 +42,7 @@
 /**************************************************************************************************/
 #pragma mark - Singleton
 
-+ (OTAppaloosaActionButtonsManager *)sharedManager;
++ (OTAppaloosaActionButtonsManager *)sharedManager DEPRECATED_ATTRIBUTE;
 
 
 /**************************************************************************************************/

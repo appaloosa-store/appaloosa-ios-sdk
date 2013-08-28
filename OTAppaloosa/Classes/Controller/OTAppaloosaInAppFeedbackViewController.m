@@ -192,7 +192,8 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 {
     // animate mail controller dismiss only if feedback is finished (because double animated dismiss do not work) :
     BOOL isFeedbackFinished = (result == MFMailComposeResultSaved || result == MFMailComposeResultSent);
-    [controller dismissModalViewControllerAnimated:!isFeedbackFinished];
+    [controller dismissViewControllerAnimated:!isFeedbackFinished
+                                   completion:nil];
     
     if (isFeedbackFinished)
     {
@@ -354,7 +355,9 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
     NSString *emailBody = description;
     [picker setMessageBody:emailBody isHTML:NO];
     
-    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker
+                       animated:YES
+                     completion:nil];
 }
 
 
@@ -370,7 +373,8 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
             [button setAlpha:1];
         }
     }];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 

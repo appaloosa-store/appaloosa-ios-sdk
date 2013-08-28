@@ -38,7 +38,7 @@
 /** @name Birth & Death */
 
 /** Retrieve the common instance of the service */
-+ (OTAppaloosaSimpleUpdateService *)sharedInstance;
++ (OTAppaloosaSimpleUpdateService *)sharedInstance DEPRECATED_ATTRIBUTE;
 
 /**************************************************************************************************/
 #pragma mark - Manage updates

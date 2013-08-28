@@ -146,7 +146,8 @@ CGFloat const kAppaloosaDevPanelVCAnimation = 0.9f;
              [button setAlpha:1];
          }
      }];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 @end

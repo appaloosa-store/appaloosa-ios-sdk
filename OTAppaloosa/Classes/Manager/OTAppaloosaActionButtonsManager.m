@@ -165,7 +165,9 @@ static OTAppaloosaActionButtonsManager *manager;
     OTAppaloosaDevPanelViewController *devControllerViewController =
     [[OTAppaloosaDevPanelViewController alloc] initWithAppaloosaButtonsArray:appaloosaButtons];
     
-    [[UIViewController currentPresentedController] presentModalViewController:devControllerViewController animated:YES];
+    [[UIViewController currentPresentedController] presentViewController:devControllerViewController
+                                                                animated:YES
+                                                              completion:nil];
 }
 
 /**************************************************************************************************/
@@ -236,7 +238,9 @@ static OTAppaloosaActionButtonsManager *manager;
              [feedbackViewController setModalPresentationStyle:UIModalPresentationFormSheet];
          }
          
-         [[UIViewController currentPresentedController] presentModalViewController:feedbackViewController animated:YES];
+         [[UIViewController currentPresentedController] presentViewController:feedbackViewController
+                                                                     animated:YES
+                                                                   completion:nil];
      }];
 }
 
