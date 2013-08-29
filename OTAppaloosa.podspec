@@ -13,7 +13,4 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency     'TPKeyboardAvoiding'
-  s.dependency     'UIDeviceAddition'
-  s.dependency     'Reachability'
-  s.dependency     'Base64'
 end
