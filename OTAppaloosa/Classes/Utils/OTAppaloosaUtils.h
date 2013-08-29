@@ -23,7 +23,11 @@
 
 #import <Foundation/Foundation.h>
 
+#ifdef DEBUG
 #define AppaloosaLog(fmt, ...) if([OTAppaloosaAgent sharedAgent].isLogEnabled) { NSLog((@"[AppaloosaSDK] " fmt), ##__VA_ARGS__); }
+#else
+#define AppaloosaLog(fmt, ...) /* */
+#endif
 
 @interface OTAppaloosaUtils : NSObject
 
