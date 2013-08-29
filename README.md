@@ -135,7 +135,7 @@ Check authorizations for application
 
 This SDK provides a mecanism of kill switch. Since the web interface (http://www.appaloosa-store.com/), you are able to authorize or not a device to access to the application.
 
-In your appDelegate file, add the following line to check authorizations:
+In your appDelegate file, add the following line to check authorizations when the application become active `- (void)applicationDidBecomeActive:(UIApplication *)application`:
 
 ```objective-c
 [[OTAppaloosaAgent sharedAgent] checkAuthorizations];
