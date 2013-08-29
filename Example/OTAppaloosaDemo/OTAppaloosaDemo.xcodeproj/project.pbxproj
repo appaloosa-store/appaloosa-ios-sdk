@@ -304,13 +304,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A82D169D6E134C88ABC7B178 /* Pods.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mahmoud Mouhamed-Reda (HVWKB4C8KC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OTAppaloosaDemo/OTAppaloosaDemo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/OTAppaloosaDemo/OTAppaloosaDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = OTAppaloosaDemo;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BA27C526-594C-4F2F-A040-12655DAA31B3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
