@@ -1,6 +1,19 @@
+// Copyright 2013 OCTO Technology
 //
-//  OTAppaloosaManager.m
-//  Apploosa-SDK-HOME
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//
+//  OTAppaloosaAgent.m
 //
 //  Created by Cedric Pointel on 06/08/13.
 //  Copyright (c) 2013 OCTO. All rights reserved.
@@ -103,6 +116,22 @@ static OTAppaloosaAgent *manager;
     _delegate = delegate;
 }
 
+- (BOOL)hasRegisteringInformation
+{
+    BOOL result = YES;
+    
+    if ((self.storeId == nil) &&
+        (self.storeToken == nil))
+    {
+        result = NO;
+        AppaloosaLog(@"You should provide a storeId and storeToken");
+        AppaloosaLog(@"use - (void)registerWithStoreId:(NSString*)storeId storeToken:(NSString*)storeToken;");
+        AppaloosaLog(@"or - (void)registerWithStoreId:(NSString*)storeId storeToken:(NSString*)storeToken andDelegate:(id<OTAppaloosaAgentDelegate>)delegate;");
+    }
+    
+    return result;
+}
+
 /**************************************************************************************************/
 #pragma mark - Authorizations
 
@@ -111,6 +140,8 @@ static OTAppaloosaAgent *manager;
  */
 - (void)checkAuthorizations
 {
+    if ([self hasRegisteringInformation] == NO) return;
+    
     [self.appaloosaService checkAuthorizationsWithStoreId:self.storeId
                                                  bundleId:self.bundleId
                                                storeToken:self.storeToken
@@ -182,21 +213,29 @@ static OTAppaloosaAgent *manager;
 
 - (void)checkUpdates
 {
-    if (self.appaloosaApplication)
-    {
-        [self checkUpdatsWithAppaloosaApplication:self.appaloosaApplication];
-    }
-    else
-    {
-        [self loadApplicationInformationWithSuccess:^(OTAppaloosaApplication *application)
-         {
-             [self checkUpdatsWithAppaloosaApplication:application];
-         }
-                                            failure:^(NSString *message)
-         {
-             
-         }];
-    }
+    if ([self hasRegisteringInformation] == NO) return;
+    
+    [self.appaloosaService checkApplicationUpdateWithStoreId:self.storeId
+                                                    bundleId:self.bundleId
+                                                  storeToken:self.storeToken
+                                                 withSuccess:^(BOOL shouldUpdate) {
+                                                     
+                                                     if (shouldUpdate)
+                                                     {
+                                                         AppaloosaLog(@"application is not up to date, need to update");
+                                                         [self applicationIsNotUpToDateWithInstalledVersion:@""
+                                                                                        andAppaloosaVersion:@""];
+                                                     }
+                                                     else
+                                                     {
+                                                         AppaloosaLog(@"application is up to date, no need to update");
+                                                         [self applicationIsUpToDate];
+                                                     }
+                                                 }
+                                                     failure:^(NSString *message) {
+                                                         
+                                                         
+                                                     }];
 }
 
 - (void)checkUpdatsWithAppaloosaApplication:(OTAppaloosaApplication *)application
