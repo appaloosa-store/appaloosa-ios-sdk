@@ -11,9 +11,8 @@ Pod::Spec.new do |s|
   s.resources    = "{OTAppaloosa/**/*.{png,xib}"
   s.frameworks   = 'QuartzCore', 'MessageUI'
   s.requires_arc = true
-  
-  s.dependency     'TPKeyboardAvoiding', '~>1.1'
-  s.dependency     'UIDeviceAddition', '~>1.0'
-  s.dependency     'Reachability', '~>3.1.1'
-  s.dependency     'Base64', '~>1.0.1'
+  s.dependency     'TPKeyboardAvoiding', '~> 1.1'
+  s.dependency     'UIDeviceAddition', '~> 1.0'
+  s.dependency     'Reachability', '~> 3.1.1'
+  s.dependency     'Base64', '~> 1.0.1'
 end
