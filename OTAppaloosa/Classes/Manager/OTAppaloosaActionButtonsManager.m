@@ -145,6 +145,8 @@ static OTAppaloosaActionButtonsManager *manager;
 {
     UIView *windowView = [OTAppaloosaActionButtonUtil getApplicationWindowView];
     
+    [self.devPanelButton removeFromSuperview];
+    
     NSString *imageName = (position == kAppaloosaButtonPositionBottomRight ? @"btn_bottomDevPanel" : @"btn_rightDevPanel");
     self.devPanelButton = [self initializeButtonWithImageName:imageName andTargetSelector:@selector(onDevPanelButtonTap)];
     
@@ -179,6 +181,8 @@ static OTAppaloosaActionButtonsManager *manager;
 - (void)initializeDefaultFeedbackButtonWithPosition:(AppaloosaButtonPosition)position
 {
     UIView *windowView = [OTAppaloosaActionButtonUtil getApplicationWindowView];
+    
+    [self.feedbackButton removeFromSuperview];
     
     NSString *imageName = (position == kAppaloosaButtonPositionBottomRight ? @"btn_bottomFeedback" : @"btn_rightFeedback");
     self.feedbackButton = [self initializeButtonWithImageName:imageName andTargetSelector:@selector(onFeedbackButtonTap)];
