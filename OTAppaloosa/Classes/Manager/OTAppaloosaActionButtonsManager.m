@@ -36,8 +36,8 @@
 static const CGFloat kFeedbackButtonRightMargin = 20;
 static const CGFloat kFeedbackButtonBottomMargin = 60;
 
-static const CGFloat kDevPanelButtonRightMargin = 10;
-static const CGFloat kDevPanelButtonBottomMargin = 10;
+static const CGFloat kDevPanelButtonRightMargin = 60;
+static const CGFloat kDevPanelButtonBottomMargin = 20;
 
 static const CGFloat kAppaloosaFeedbackScreenshotAnimationDuration = 0.9;
 
@@ -82,7 +82,7 @@ static OTAppaloosaActionButtonsManager *manager;
 {
     self = [super init];
     if (self)
-    {      
+    {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onOrientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
     return self;
@@ -152,9 +152,9 @@ static OTAppaloosaActionButtonsManager *manager;
     
     self.devPanelButtonPosition = position;
     [OTAppaloosaActionButtonUtil updateButtonFrame:self.devPanelButton
-                                    atPosition:self.devPanelButtonPosition
-                               withRightMargin:kDevPanelButtonRightMargin
-                               andBottomMargin:kDevPanelButtonBottomMargin];
+                                        atPosition:self.devPanelButtonPosition
+                                   withRightMargin:kDevPanelButtonRightMargin
+                                   andBottomMargin:kDevPanelButtonBottomMargin];
     [self showDefaultDevPanelButton:YES];
 }
 
@@ -188,9 +188,9 @@ static OTAppaloosaActionButtonsManager *manager;
     self.feedbackButtonPosition = position;
     
     [OTAppaloosaActionButtonUtil updateButtonFrame:self.feedbackButton
-                                    atPosition:self.feedbackButtonPosition
-                               withRightMargin:kFeedbackButtonRightMargin
-                               andBottomMargin:kFeedbackButtonBottomMargin];
+                                        atPosition:self.feedbackButtonPosition
+                                   withRightMargin:kFeedbackButtonRightMargin
+                                   andBottomMargin:kFeedbackButtonBottomMargin];
     
 }
 
@@ -220,28 +220,28 @@ static OTAppaloosaActionButtonsManager *manager;
     UIView *windowView = [OTAppaloosaActionButtonUtil getApplicationWindowView];
     [windowView addSubview:whiteView];
     [UIView animateWithDuration:kAppaloosaFeedbackScreenshotAnimationDuration animations:^{
-         [whiteView setAlpha:0];
-     } completion:^(BOOL finished) {
-         
-         [whiteView removeFromSuperview];
-         
-         NSArray *buttonsArray = [[NSArray alloc] initWithObjects:feedbackButton, self.devPanelButton, nil];
-         
-         // open feedback controller :
-         OTAppaloosaInAppFeedbackViewController *feedbackViewController =
-         [[OTAppaloosaInAppFeedbackViewController alloc] initWithAppaloosaButtons:buttonsArray
-                                                              recipientsEmailArray:emailsArray
-                                                                andScreenshotImage:screenshotImage];
-         
-         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-         {
-             [feedbackViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-         }
-         
-         [[UIViewController currentPresentedController] presentViewController:feedbackViewController
-                                                                     animated:YES
-                                                                   completion:nil];
-     }];
+        [whiteView setAlpha:0];
+    } completion:^(BOOL finished) {
+        
+        [whiteView removeFromSuperview];
+        
+        NSArray *buttonsArray = [[NSArray alloc] initWithObjects:feedbackButton, self.devPanelButton, nil];
+        
+        // open feedback controller :
+        OTAppaloosaInAppFeedbackViewController *feedbackViewController =
+        [[OTAppaloosaInAppFeedbackViewController alloc] initWithAppaloosaButtons:buttonsArray
+                                                            recipientsEmailArray:emailsArray
+                                                              andScreenshotImage:screenshotImage];
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            [feedbackViewController setModalPresentationStyle:UIModalPresentationFormSheet];
+        }
+        
+        [[UIViewController currentPresentedController] presentViewController:feedbackViewController
+                                                                    animated:YES
+                                                                  completion:nil];
+    }];
 }
 
 /**************************************************************************************************/
@@ -253,7 +253,7 @@ static OTAppaloosaActionButtonsManager *manager;
     [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [button addTarget:self action:targetSelector forControlEvents:UIControlEventTouchUpInside];
     [button setHidden:YES]; // button is hidden by default
-
+    
     return button;
 }
 
@@ -272,14 +272,14 @@ static OTAppaloosaActionButtonsManager *manager;
 - (void)onOrientationChange
 {
     [OTAppaloosaActionButtonUtil updateButtonFrame:self.feedbackButton
-                                    atPosition:self.feedbackButtonPosition
-                               withRightMargin:kFeedbackButtonRightMargin
-                               andBottomMargin:kFeedbackButtonBottomMargin];
-
+                                        atPosition:self.feedbackButtonPosition
+                                   withRightMargin:kFeedbackButtonRightMargin
+                                   andBottomMargin:kFeedbackButtonBottomMargin];
+    
     [OTAppaloosaActionButtonUtil updateButtonFrame:self.devPanelButton
-                                    atPosition:self.devPanelButtonPosition
-                               withRightMargin:kDevPanelButtonRightMargin
-                               andBottomMargin:kDevPanelButtonBottomMargin];
+                                        atPosition:self.devPanelButtonPosition
+                                   withRightMargin:kDevPanelButtonRightMargin
+                                   andBottomMargin:kDevPanelButtonBottomMargin];
 }
 
 
