@@ -21,12 +21,14 @@
 
 #import "OTAppDelegate.h"
 
-// ViewController :
+// ViewController:
 #import "OTViewController.h"
 
 // Framework :
 #import "OTAppaloosa.h"
 
+#define APPALOOSA_STORE_ID @"STORE_ID"
+#define APPALOOSA_STORE_TOKEN @"STORE_TOKEN"
 
 @implementation OTAppDelegate
 
@@ -39,12 +41,22 @@
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
-       
+    
+    
+    // Registering the Appaloosa Agent with your StoreId and StoreToken
+    [[OTAppaloosaAgent sharedAgent] registerWithStoreId:APPALOOSA_STORE_ID
+                                             storeToken:APPALOOSA_STORE_TOKEN];
+
+    
+    // Enable logs
+    [[OTAppaloosaAgent sharedAgent] setLogEnabled:YES];
+    
     // Initialize in app feedback custom button (necessary only if you use default feedback in the app) :
-    [[OTAppaloosaActionButtonsManager sharedManager] initializeDefaultFeedbackButtonWithPosition:kAppaloosaButtonPositionRightBottom forRecipientsEmailArray:@[@"mwalbrou@octo.com"]];
+    [[OTAppaloosaAgent sharedAgent] feedbackControllerWithDefaultButtonAtPosition:kAppaloosaButtonPositionBottomRight
+                                                          forRecipientsEmailArray:nil];
 
     // Initialize dev panel custom button (necessary only if you use default dev panel in the app) :
-    [[OTAppaloosaActionButtonsManager sharedManager] initializeDefaultDevPanelButtonWithPosition:kAppaloosaButtonPositionRightBottom];
+    [[OTAppaloosaAgent sharedAgent] devPanelWithDefaultButtonAtPosition:kAppaloosaButtonPositionBottomRight];
     
     return YES;
 }

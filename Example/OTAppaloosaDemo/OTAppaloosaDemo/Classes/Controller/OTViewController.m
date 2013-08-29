@@ -25,12 +25,11 @@
 #import "OTSecondViewController.h"
 
 
-// Services :
-#import "OTAppaloosaActionButtonsManager.h"
+// Fmk :
+#import "OTAppaloosa.h"
 
 
 @implementation OTViewController
-
 
 /**************************************************************************************************/
 #pragma mark - IBActions
@@ -49,23 +48,22 @@
 
 - (IBAction)onTriggerFeedbackButtonTap:(id)sender
 {
-    [[OTAppaloosaActionButtonsManager sharedManager] presentFeedbackWithRecipientsEmailArray:@[@"mwalbrou@gmail.com"]];
+    [[OTAppaloosaAgent sharedAgent] openFeedbackControllerWithRecipientsEmailArray:nil];
 }
 
 - (IBAction)onTriggerDevPanelButtonTap:(id)sender
 {
-    [[OTAppaloosaActionButtonsManager sharedManager] presentDevPanel];
+    [[OTAppaloosaAgent sharedAgent] openDevPanelController];
 }
 
 - (IBAction)onDefaultFeedbackButtonSwitchChange:(UISwitch *)sender
 {
-    [[OTAppaloosaActionButtonsManager sharedManager] showDefaultFeedbackButton:sender.on];
+    [[OTAppaloosaAgent sharedAgent] showDefaultFeedbackButton:sender.on];
 }
 
 - (IBAction)onDefaultDevPanelButtonSwitchChange:(UISwitch *)sender
 {
-    [[OTAppaloosaActionButtonsManager sharedManager] showDefaultDevPanelButton:sender.on];
+    [[OTAppaloosaAgent sharedAgent] showDefaultDevPanelButton:sender.on];
 }
-
 
 @end
