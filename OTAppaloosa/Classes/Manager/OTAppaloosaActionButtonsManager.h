@@ -13,7 +13,6 @@
 // limitations under the License.
 
 //
-//
 //  OTAppaloosaInAppFeedbackManager.h
 //
 //  Created by Maxence Walbrou on 06/02/13.

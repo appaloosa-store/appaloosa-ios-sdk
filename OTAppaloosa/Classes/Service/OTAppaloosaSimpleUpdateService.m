@@ -14,10 +14,8 @@
 
 //
 //  OTAppaloosaSimpleUpdateService.h
-//  OTAppaloosaSimpleUpdateService
 //
 //  Created by Abdou Benhamouche on 10/12/12.
-//
 //
 
 #import "OTAppaloosaSimpleUpdateService.h"
