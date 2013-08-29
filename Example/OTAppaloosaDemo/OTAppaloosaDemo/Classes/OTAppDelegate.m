@@ -42,11 +42,20 @@
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
-    
+    return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [self configureAppaloosa];
+}
+
+- (void)configureAppaloosa
+{
     // Registering the Appaloosa Agent with your StoreId and StoreToken
     [[OTAppaloosaAgent sharedAgent] registerWithStoreId:APPALOOSA_STORE_ID
                                              storeToken:APPALOOSA_STORE_TOKEN];
-
+    
     
     // Enable logs
     [[OTAppaloosaAgent sharedAgent] setLogEnabled:YES];
@@ -54,11 +63,9 @@
     // Initialize in app feedback custom button (necessary only if you use default feedback in the app) :
     [[OTAppaloosaAgent sharedAgent] feedbackControllerWithDefaultButtonAtPosition:kAppaloosaButtonPositionBottomRight
                                                           forRecipientsEmailArray:nil];
-
+    
     // Initialize dev panel custom button (necessary only if you use default dev panel in the app) :
     [[OTAppaloosaAgent sharedAgent] devPanelWithDefaultButtonAtPosition:kAppaloosaButtonPositionBottomRight];
-    
-    return YES;
 }
 
 @end
