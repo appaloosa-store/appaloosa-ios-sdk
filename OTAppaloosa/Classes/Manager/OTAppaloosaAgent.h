@@ -110,6 +110,13 @@
 - (void)feedbackControllerWithDefaultButtonAtPosition:(AppaloosaButtonPosition)position
                     forRecipientsEmailArray:(NSArray *)recipientsEmail;
 
+/*
+ * This method shows the default feedback button
+ *
+ * @param shouldShow - BOOL to show/hide the default button
+ */
+- (void)showDefaultFeedbackButton:(BOOL)shouldShow;
+
 /**************************************************************************************************/
 #pragma mark - Debug Panel Feedback
 
@@ -125,6 +132,13 @@
  * @param position - AppaloosaButtonPosition in the view (kAppaloosaButtonPositionRightBottom or kAppaloosaButtonPositionBottomRight)
  */
 - (void)devPanelWithDefaultButtonAtPosition:(AppaloosaButtonPosition)position;
+
+/*
+ * This method shows the default devpanl button
+ *
+ * @param shouldShow - BOOL to show/hide the default button
+ */
+- (void)showDefaultDevPanelButton:(BOOL)shouldShow;
 
 /**************************************************************************************************/
 #pragma mark - Getters and Setters

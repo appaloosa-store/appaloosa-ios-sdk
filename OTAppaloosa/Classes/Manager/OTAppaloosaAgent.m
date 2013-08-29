@@ -339,6 +339,16 @@ static OTAppaloosaAgent *manager;
                                                    forRecipientsEmailArray:emailsArray];
 }
 
+- (void)showDefaultFeedbackButton:(BOOL)shouldShow
+{
+    if (self.actionButtonsManager == nil)
+    {
+        self.actionButtonsManager = [[OTAppaloosaActionButtonsManager alloc] init];
+    }
+    
+    [self.actionButtonsManager showDefaultFeedbackButton:shouldShow];
+}
+
 /**************************************************************************************************/
 #pragma mark - Debug Panel Feedback
 
@@ -360,6 +370,16 @@ static OTAppaloosaAgent *manager;
     }
 
     [self.actionButtonsManager initializeDefaultDevPanelButtonWithPosition:position];
+}
+
+- (void)showDefaultDevPanelButton:(BOOL)shouldShow
+{
+    if (self.actionButtonsManager == nil)
+    {
+        self.actionButtonsManager = [[OTAppaloosaActionButtonsManager alloc] init];
+    }
+    
+    [self.actionButtonsManager showDefaultDevPanelButton:shouldShow];
 }
 
 /**************************************************************************************************/
