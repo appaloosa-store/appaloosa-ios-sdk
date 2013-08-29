@@ -114,6 +114,8 @@ static OTAppaloosaAgent *manager;
     _storeToken = storeToken;
     _bundleId = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleIdentifierKey];
     _delegate = delegate;
+    
+    AppaloosaLog(@"Registering application with :\nstoreId : %@\nstoreToken : %@", _storeId, _storeToken);
 }
 
 - (BOOL)hasRegisteringInformation
@@ -215,27 +217,21 @@ static OTAppaloosaAgent *manager;
 {
     if ([self hasRegisteringInformation] == NO) return;
     
-    [self.appaloosaService checkApplicationUpdateWithStoreId:self.storeId
-                                                    bundleId:self.bundleId
-                                                  storeToken:self.storeToken
-                                                 withSuccess:^(BOOL shouldUpdate) {
-                                                     
-                                                     if (shouldUpdate)
-                                                     {
-                                                         AppaloosaLog(@"application is not up to date, need to update");
-                                                         [self applicationIsNotUpToDateWithInstalledVersion:@""
-                                                                                        andAppaloosaVersion:@""];
-                                                     }
-                                                     else
-                                                     {
-                                                         AppaloosaLog(@"application is up to date, no need to update");
-                                                         [self applicationIsUpToDate];
-                                                     }
-                                                 }
-                                                     failure:^(NSString *message) {
-                                                         
-                                                         
-                                                     }];
+    if (self.appaloosaApplication)
+    {
+        [self checkUpdatsWithAppaloosaApplication:self.appaloosaApplication];
+    }
+    else
+    {
+        [self loadApplicationInformationWithSuccess:^(OTAppaloosaApplication *application)
+         {
+             [self checkUpdatsWithAppaloosaApplication:application];
+         }
+                                            failure:^(NSString *message)
+         {
+             
+         }];
+    }
 }
 
 - (void)checkUpdatsWithAppaloosaApplication:(OTAppaloosaApplication *)application
