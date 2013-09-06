@@ -88,6 +88,8 @@
 
 /*
  * This method opens Safari to redirect to Appaloosa store in order to download new version
+ *
+ * @see checkUpdates - Before call this method, it's important to check if an update is available and get the download link
  */
 - (void)downloadNewVersion;
 

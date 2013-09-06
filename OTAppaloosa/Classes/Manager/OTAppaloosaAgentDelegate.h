@@ -22,6 +22,7 @@
 #import <Foundation/Foundation.h>
 
 #import "OTApplicationAuthorization.h"
+#import "OTApplicationUpdate.h"
 
 @protocol OTAppaloosaAgentDelegate <NSObject>
 
@@ -54,23 +55,25 @@
 #pragma mark - Application Updates Methods Delegate
 
 /**
- * Implement to be inform that the application is up to date
+ * Implement to be inform if the application need to be updated
  *
- * By default the SDK does nothing.
- *
- */
-- (void)applicationIsUpToDate;
-
-/**
- * Implement to be inform that the application has to be updated
- *
- * By default the SDK shows an alert view with the appropriated message and the possibility to download the new version.
+ * By default :
+ * - if the application is up to date, the SDK does nothing.
+ * - if the application need to be updated, the SDK shows an alert view with the appropriated message and the possibility to download the new version.
+ * 
  * Implement this method if you want your own behaviour.
  *
  * To download the new version : [[OTAppaloosaAgent sharedAgent] downloadNewVersion];
  *
+ * @param appUpdateStatus - OTAppaloosaUpdateStatus with the status about the update.
  */
-- (void)applicationIsNotUpToDateWithInstalledVersion:(NSString *)installedVersion
-                                 andAppaloosaVersion:(NSString *)appaloosaVersion;
+- (void)applicationUpdateRequestSuccessWithApplicationUpdateStatus:(OTAppaloosaUpdateStatus)appUpdateStatus;
+
+/**
+ * Implement to be inform if something wrong occured during the update request
+ *
+ * @param error - NSError about the request failure
+ */
+- (void)applicationUpdateRequestFailureWithError:(NSError *)error;
 
 @end

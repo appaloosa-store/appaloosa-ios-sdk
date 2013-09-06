@@ -80,6 +80,9 @@ const NSString *kApplicationAuthorizationStatusRequestError = @"REQUEST_ERROR";
     return self;
 }
 
+/**************************************************************************************************/
+#pragma mark - Utilities
+
 - (OTAppaloosaAutorizationsStatus)authorizationStatusAccordingString:(NSString *)statusString
 {
     OTAppaloosaAutorizationsStatus status = OTAppaloosaAutorizationsStatusUnknown;

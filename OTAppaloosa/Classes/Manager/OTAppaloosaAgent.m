@@ -23,6 +23,7 @@
 
 // Model
 #import "OTAppaloosaApplication.h"
+#import "OTApplicationUpdate.h"
 
 // Utils
 #import "OTAppaloosaUtils.h"
@@ -44,8 +45,9 @@ const NSUInteger kAlertViewDownloadUpdate = 2;
 @property (strong, nonatomic) NSString *bundleId;
 @property (strong, nonatomic) NSString *storeToken;
 
-// Appaloosa Application
+// Model
 @property (strong, nonatomic) OTAppaloosaApplication *appaloosaApplication;
+@property (strong, nonatomic) OTApplicationUpdate *appaloosaUpdate;
 
 // Interface buttons
 @property (strong, nonatomic) OTAppaloosaActionButtonsManager *actionButtonsManager;
@@ -135,7 +137,7 @@ static OTAppaloosaAgent *manager;
 }
 
 /**************************************************************************************************/
-#pragma mark - Authorizations
+#pragma mark - Application Authorizations
 
 /*
  * This method checks with Appaloosa backend if the user is authorized to execute the application.
@@ -213,71 +215,62 @@ static OTAppaloosaAgent *manager;
                                                      }];
 }
 
+/**************************************************************************************************/
+#pragma mark - Application Updates
+
 - (void)checkUpdates
 {
     if ([self hasRegisteringInformation] == NO) return;
     
-    if (self.appaloosaApplication)
-    {
-        [self checkUpdatsWithAppaloosaApplication:self.appaloosaApplication];
-    }
-    else
-    {
-        [self loadApplicationInformationWithSuccess:^(OTAppaloosaApplication *application)
-         {
-             [self checkUpdatsWithAppaloosaApplication:application];
-         }
-                                            failure:^(NSString *message)
-         {
-             
-         }];
-    }
+    [self.appaloosaService checkApplicationUpdateWithStoreId:self.storeId
+                                                    bundleId:self.bundleId
+                                                  storeToken:self.storeToken
+                                                 withSuccess:^(OTApplicationUpdate *appUpdate) {
+                                                     
+                                                     self.appaloosaUpdate = appUpdate;
+                                                     [self checkUpdateRequestSuccessWithApplicationUpdate:appUpdate];
+                                                     
+                                                 } failure:^(NSError *error) {
+                                                     
+                                                     [self checkUpdateRequestFailureWithError:error];
+                                                 }];
 }
 
-- (void)checkUpdatsWithAppaloosaApplication:(OTAppaloosaApplication *)application
+- (void)checkUpdateRequestSuccessWithApplicationUpdate:(OTApplicationUpdate *)appUpdate
 {
-    NSString *appaloosaApplicationVersion = application.version;
-    NSString *currentApplicationVersion = [OTAppaloosaUtils currentApplicationVersion];
+    AppaloosaLog(@"Checking Update");
     
-    AppaloosaLog(@"Check Update");
-    AppaloosaLog(@"application version on Appaloosa: %@", appaloosaApplicationVersion);
-    AppaloosaLog(@"installed application version: %@", currentApplicationVersion);
-    
-    if ([appaloosaApplicationVersion isEqualToString:currentApplicationVersion])
+    if ([self.delegate respondsToSelector:@selector(applicationUpdateRequestSuccessWithApplicationUpdateStatus:)])
     {
-        AppaloosaLog(@"application is up to date, no need to update");
-        [self applicationIsUpToDate];
+        [self.delegate applicationUpdateRequestSuccessWithApplicationUpdateStatus:appUpdate.status];
     }
     else
     {
-        AppaloosaLog(@"application is not up to date, need to update");
-        [self applicationIsNotUpToDateWithInstalledVersion:currentApplicationVersion
-                                       andAppaloosaVersion:appaloosaApplicationVersion];
+        if (appUpdate.status == OTAppaloosaUpdateStatusNoUpdateNeeded)
+        {
+            AppaloosaLog(@"application is up to date, no need to update");
+        }
+        else if (appUpdate.status == OTAppaloosaUpdateStatusUpdateNeeded)
+        {
+            AppaloosaLog(@"application is not up to date, need to update");
+            
+            UIAlertView *alert = [OTAppaloosaUtils displayAlertWithMessage:@"An update is available. Would you like to update ?"
+                                                               actionTitle:@"Ok"
+                                                              withDelegate:self];
+            alert.tag = kAlertViewDownloadUpdate;
+        }
+        else
+        {
+            AppaloosaLog(@"Checking update impossible. Finished with status : %@", [appUpdate stringAccordingUpdateStatus]);
+        }
     }
-
 }
 
-- (void)applicationIsUpToDate
+- (void)checkUpdateRequestFailureWithError:(NSError *)error
 {
-    if ([self.delegate respondsToSelector:@selector(applicationIsUpToDate)])
+    if ([self.delegate respondsToSelector:@selector(applicationUpdateRequestFailureWithError:)])
     {
-        [self.delegate applicationIsUpToDate];
-    }
-}
-
-- (void)applicationIsNotUpToDateWithInstalledVersion:(NSString *)installedVersion andAppaloosaVersion:(NSString *)appaloosaVersion;
-{
-    if ([self.delegate respondsToSelector:@selector(applicationIsNotUpToDateWithInstalledVersion:andAppaloosaVersion:)])
-    {
-        [self.delegate applicationIsNotUpToDateWithInstalledVersion:installedVersion
-                                                andAppaloosaVersion:appaloosaVersion];
-    }
-    else
-    {
-        UIAlertView *alert = [OTAppaloosaUtils displayAlertWithMessage:@"An update is available. Would you like to update ?"
-                                                           actionTitle:@"Ok"
-                                                          withDelegate:self];
-        alert.tag = kAlertViewDownloadUpdate;
+        [self.delegate applicationUpdateRequestFailureWithError:error];
     }
 }
 
@@ -286,32 +279,24 @@ static OTAppaloosaAgent *manager;
 
 - (void)downloadNewVersion
 {
-    if (self.appaloosaApplication)
-    {
-        [self openSafariToDownloadApplication];
-    }
-    else
-    {
-        [self loadApplicationInformationWithSuccess:^(OTAppaloosaApplication *application)
-         {
-             [self openSafariToDownloadApplication];
-         }
-                                            failure:^(NSString *message)
-         {
-             
-         }];
-    }
+    [self openSafariToDownloadApplication];
 }
 
 - (void)openSafariToDownloadApplication
 {
-    NSString *installUrl = [OTAppaloosaUrlHelper urlForDownloadApplicationWithId:self.appaloosaApplication.identifier
-                                                                         storeId:self.storeId
-                                                                        bundleId:self.bundleId
-                                                                      storeToken:self.storeToken];
+    NSString *installUrl = [self.appaloosaUpdate downloadUrl];
 
-    AppaloosaLog(@"Open Safari to download IPA at url : %@",installUrl);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:installUrl]];
+    if (installUrl)
+    {
+        installUrl = [OTAppaloosaUrlHelper addParamsToDownloadUrl:installUrl];
+        
+        AppaloosaLog(@"Open Safari to download IPA at url : %@",installUrl);
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:installUrl]];
+    }
+    else
+    {
+        AppaloosaLog(@"No url to download the application. Call 'checkUpdates' before downloading a new version.");
+    }
 }
 
 /**************************************************************************************************/

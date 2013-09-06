@@ -27,7 +27,8 @@
 // Fmk
 #import "NSString+URLEncoding.h"
 
-const NSString *kBaseUrl = @"http://www.appaloosa-store.com/";
+//const NSString *kBaseUrl = @"http://www.appaloosa-store.com/";
+const NSString *kBaseUrl = @"http://appaloosa-int.herokuapp.com/";
 
 // Authorization
 const NSString *kUrlApplicationAuthorization = @"/mobile_application_updates/is_authorized";
@@ -54,16 +55,16 @@ const NSString *kUrlJsonExtension = @".json";
 
 /**
  * This method generates the Appaloosa's URL to check kill switch
- * @param storeId The store identifier in appaloosa-store.com
- * @param appId The app id => bundleId
- * @param tokenId The token identifier in appaloosa-store.com
- 
- store_id/mobile_application_updates/is_authorized?
-    token=(store_token)
-    &application_id=(bundle_id)
-    &device_id=(udid_maison)
-    &version=(app_version)
-    &locale=(:fr,:en);
+ * @param storeId - The store identifier in appaloosa-store.com
+ * @param appId - The app id => bundleId
+ * @param tokenId - The token identifier in appaloosa-store.com
+ *
+ *  store_id/mobile_application_updates/is_authorized?
+ *      token=(store_token)
+ *      &application_id=(bundle_id)
+ *      &device_id=(udid_maison)
+ *      &version=(app_version)
+ *      &locale=(:fr,:en);
  */
 + (NSString *)urlForApplicationAuthorizationWithStoreId:(NSString *)storeId bundleId:(NSString *)bundleId storeToken:(NSString *)storeToken
 {
@@ -90,10 +91,12 @@ const NSString *kUrlJsonExtension = @".json";
 
 /**
  * This method generates the Appaloosa's URL to get application information
- * @param
- 
- store_id/mobile_applications/app_id.json?
-    token=(store_token)
+ * @param storeId - The store identifier in appaloosa-store.com
+ * @param appId - The app id => bundleId
+ * @param tokenId - The token identifier in appaloosa-store.com
+ *
+ *   store_id/mobile_applications/app_id.json?
+ *       token=(store_token)
  */
 + (NSString *)urlForApplicationInformationWithStoreId:(NSString *)storeId bundleId:(NSString *)bundleId storeToken:(NSString *)storeToken
 {
@@ -117,14 +120,26 @@ const NSString *kUrlJsonExtension = @".json";
 
 /**
  * This method generates the Appaloosa's URL to check if an update is available
- * @param
- 
- store_id/mobile_application_updates/is_update_needed?
-    token=(store_token)
-    &application_id=(bundle_id)
-    &device_id=(udid_maison)
-    &version=(app_version)
-    &locale=(:fr,:en);
+ * @param storeId - The store identifier in appaloosa-store.com
+ * @param appId - The app id => bundleId
+ * @param tokenId - The token identifier in appaloosa-store.com
+ *
+ *  store_id/mobile_application_updates/is_update_needed?
+ *      token=(store_token)
+ *      &application_id=(bundle_id)
+ *      &device_id=(udid_maison)
+ *      &version=(app_version)
+ *      &locale=(:fr,:en);
+ *
+ * Result :
+ *  { status: UPDATE_NEEDED, download_url: url_a_ouvrir_dans_safari, id: id_de_la_version }
+ *
+ *  UNREGISTERED_DEVICE
+ *  UNKNOWN_APPLICATION
+ *  NO_UPDATE_NEEDED
+ *  UPDATE_NEEDED
+ *  DEVICE_ID_FORMAT_ERROR
+ *
  */
 + (NSString *)urlForApplicationUpdateWithStoreId:(NSString *)storeId bundleId:(NSString *)bundleId storeToken:(NSString *)storeToken
 {
@@ -132,37 +147,35 @@ const NSString *kUrlJsonExtension = @".json";
     
     if (storeId && bundleId && storeToken)
     {
-        NSString *bundleIdEncoded = [bundleId urlEncodeUsingEncoding:NSUTF8StringEncoding];
+        NSString *bundleVersion = [OTAppaloosaUtils currentApplicationVersion];
         
-        url = [NSMutableString stringWithFormat:@"%@%@%@",kBaseUrl,storeId,kUrlApplicationUpdates];
-        [url appendFormat:@"%@%@?",bundleIdEncoded,kUrlJsonExtension];
+        url = [NSMutableString stringWithFormat:@"%@%@%@?",kBaseUrl,storeId,kUrlApplicationUpdates];
         [url appendFormat:@"%@=%@",kUrlTokenParamaterKey,storeToken];
+        [url appendFormat:@"&%@=%@",kUrlApplicationIdParamaterKey,bundleId];
         [url appendFormat:@"&%@=%@",kUrlDeviceIdParamaterKey,[OTAppaloosaUtils uniqueDeviceEncoded]];
+        [url appendFormat:@"&%@=%@",kUrlVersionParamaterKey,bundleVersion];
     }
     
     return url;
 }
 
 /**
- * This method generates the Appaloosa's URL to download the application
- * @param
- 
- store_id/mobile_applications/app_id/install?
-    token=(store_token)
+ * This method adds parameters to the download url for new application version
+ * @param url - The download url retrieved after call `checkUpdates`
+ *
+ * @see OTAppaloosaAgent # checkUpdates
  */
-+ (NSString *)urlForDownloadApplicationWithId:(NSString *)appId storeId:(NSString *)storeId bundleId:(NSString *)bundleId storeToken:(NSString *)storeToken
++ (NSString *)addParamsToDownloadUrl:(NSString *)url
 {
-    NSMutableString *url = nil;
+    NSMutableString *urlWithParams = nil;
     
-    if (appId && storeId && bundleId && storeToken)
+    if (url)
     {
-        url = [NSMutableString stringWithFormat:@"%@%@%@",kBaseUrl,storeId,kUrlApplicationInformation];
-        [url appendFormat:@"%@%@?",appId,kUrlApplicationDownload];
-        [url appendFormat:@"%@=%@",kUrlTokenParamaterKey,storeToken];
-        [url appendFormat:@"&%@=%@",kUrlDeviceIdParamaterKey,[OTAppaloosaUtils uniqueDeviceEncoded]];
+        urlWithParams = [NSMutableString stringWithFormat:@"%@?",url];
+        [urlWithParams appendFormat:@"%@=%@",kUrlDeviceIdParamaterKey,[OTAppaloosaUtils uniqueDeviceEncoded]];
     }
     
-    return url;
+    return urlWithParams;
 }
 
 @end

@@ -21,8 +21,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class OTApplicationAuthorization;
 @class OTAppaloosaApplication;
+@class OTApplicationAuthorization;
+@class OTApplicationUpdate;
 
 @interface OTAppaloosaService : NSObject
 
@@ -50,6 +51,6 @@
 - (void)checkApplicationUpdateWithStoreId:(NSString *)storeId
                                  bundleId:(NSString *)bundleId
                                storeToken:(NSString *)storeToken
-                              withSuccess:(void (^)(BOOL shouldUpdate))success
-                                  failure:(void (^)(NSString *message))failure;
+                              withSuccess:(void (^)(OTApplicationUpdate *appUpdate))success
+                                  failure:(void (^)(NSError *error))failure;
 @end

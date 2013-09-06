@@ -25,8 +25,9 @@
 #import "Reachability.h"
 
 // Model
-#import "OTApplicationAuthorization.h"
 #import "OTAppaloosaApplication.h"
+#import "OTApplicationAuthorization.h"
+#import "OTApplicationUpdate.h"
 
 // Services
 #import "OTAppaloosaUrlHelper.h"
@@ -194,54 +195,52 @@
 - (void)checkApplicationUpdateWithStoreId:(NSString *)storeId
                                  bundleId:(NSString *)bundleId
                                storeToken:(NSString *)storeToken
-                              withSuccess:(void (^)(BOOL shouldUpdate))success
-                                  failure:(void (^)(NSString *message))failure;
+                              withSuccess:(void (^)(OTApplicationUpdate *appUpdate))success
+                                  failure:(void (^)(NSError *error))failure;
 {
-    if ([[Reachability reachabilityForInternetConnection] isReachable])
-    {
-        NSString *urlString = [OTAppaloosaUrlHelper urlForApplicationUpdateWithStoreId:storeId
-                                                                              bundleId:bundleId
-                                                                            storeToken:storeToken];
-        
-        NSURL *url = [NSURL URLWithString:urlString];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-       
-        AppaloosaLog(@"Check Application Update from %@",urlString);
-
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:self.queue
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                                   
-                                   if (!error)
+    NSString *urlString = [OTAppaloosaUrlHelper urlForApplicationUpdateWithStoreId:storeId
+                                                                          bundleId:bundleId
+                                                                        storeToken:storeToken];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AppaloosaLog(@"Check Application Update from %@",urlString);
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:self.queue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               
+                               OTApplicationUpdate *appUpdate = nil;
+                               
+                               if (error == nil)
+                               {
+                                   NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                                                        options:kNilOptions
+                                                                                          error:&error];
+                                   if (json)
                                    {
-                                       NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
-                                                                                            options:kNilOptions
-                                                                                              error:&error];
+                                       appUpdate = [[OTApplicationUpdate alloc] initWithJsonDictionary:json];
+                                   }
+                               }
+                               
+                               if(success && appUpdate)
+                               {
+                                   dispatch_sync(dispatch_get_main_queue(), ^{
                                        
-                                       if ((error == nil) && json)
-                                       {
-                                           if(success)
-                                           {
-                                               dispatch_sync(dispatch_get_main_queue(), ^{
-                                                   
-                                                   success(NO);
-                                               });
-                                               return;
-                                           }
-                                       }
-                                   }
-                                   
-                                   if(failure)
-                                   {
-                                       dispatch_sync(dispatch_get_main_queue(), ^{
-                                           
-                                           AppaloosaLog(@"Unable to check Application Updates");
-                                           failure(@"An error has occurred");
-                                       });
-                                   }
-                                   
-                               }];
-    }
+                                       success(appUpdate);
+                                   });
+                                   return;
+                               }
+                               else
+                               {
+                                   dispatch_sync(dispatch_get_main_queue(), ^{
+                                       
+                                       AppaloosaLog(@"Unable to check Application Updates with error : %@", error);
+                                       failure(error);
+                                   });
+                               }
+                           }];
 }
 
 @end

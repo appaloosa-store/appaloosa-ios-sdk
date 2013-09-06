@@ -44,9 +44,6 @@
                                         bundleId:(NSString *)bundleId
                                       storeToken:(NSString *)storeToken;
 
-+ (NSString *)urlForDownloadApplicationWithId:(NSString *)appId
-                                      storeId:(NSString *)storeId
-                                     bundleId:(NSString *)bundleId
-                                   storeToken:(NSString *)storeToken;
++ (NSString *)addParamsToDownloadUrl:(NSString *)url;
 
 @end
