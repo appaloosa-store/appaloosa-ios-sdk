@@ -86,7 +86,10 @@ Check for application update - clever version
         By default, 
             - if the application is up to date, nothing occured.
             - if an update is available, an alert view asks to the user to download it.
-        If you want launch the download : [[OTAppaloosaAgent sharedAgent] downloadNewVersion];
+        If you want launch the download : 
+```objective-c
+        [[OTAppaloosaAgent sharedAgent] downloadNewVersion];
+```
     2. The method `- (void)applicationUpdateRequestFailureWithError:(NSError *)error to be inform if something wrong occured during the update request.
 
 
