@@ -261,7 +261,7 @@ static OTAppaloosaAgent *manager;
         }
         else
         {
-            AppaloosaLog(@"Checking update impossible. Finished with status : %@", [appUpdate stringAccordingUpdateStatus]);
+            AppaloosaLog(@"Checking Update impossible. Finished with status : %@", [appUpdate stringAccordingUpdateStatus]);
         }
     }
 }
