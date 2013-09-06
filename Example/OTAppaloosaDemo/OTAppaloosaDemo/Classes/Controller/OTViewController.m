@@ -37,7 +37,7 @@
 - (IBAction)onOpenModalButtonTap:(id)sender
 {
     OTSecondViewController *controller = [[OTSecondViewController alloc] initAsAModal:YES];
-    [self presentModalViewController:controller animated:YES];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (IBAction)onPushButtonTap:(id)sender
