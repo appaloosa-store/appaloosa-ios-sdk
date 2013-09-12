@@ -27,8 +27,7 @@
 // Fmk
 #import "NSString+URLEncoding.h"
 
-//const NSString *kBaseUrl = @"http://www.appaloosa-store.com/";
-const NSString *kBaseUrl = @"http://appaloosa-int.herokuapp.com/";
+const NSString *kBaseUrl = @"https://www.appaloosa-store.com/";
 
 // Authorization
 const NSString *kUrlApplicationAuthorization = @"/mobile_application_updates/is_authorized";
