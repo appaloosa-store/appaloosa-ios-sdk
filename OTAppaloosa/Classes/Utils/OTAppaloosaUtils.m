@@ -21,7 +21,10 @@
 
 #import "OTAppaloosaUtils.h"
 
+#import <Availability.h>
+
 // Fmk
+#import <AdSupport/ASIdentifierManager.h>
 #import <Base64/MF_Base64Additions.h>
 #import "UIDevice+IdentifierAddition.h"
 
@@ -68,8 +71,21 @@
 
 + (NSString *)uniqueDeviceEncoded
 {
-    //NSString *uniqueGlobalDeviceIdentifier = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
-    NSString *uniqueGlobalDeviceIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
+    // Check if advertiserId is available (new in iOS 6 only)
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < __IPHONE_7_0
+    NSString *uniqueGlobalDeviceIdentifier = nil;
+    if (!NSClassFromString(@"ASIdentifierManager"))
+    {
+        uniqueGlobalDeviceIdentifier = [[UIDevice currentDevice] uniqueIdentifier];
+    }
+    else
+    {
+        uniqueGlobalDeviceIdentifier = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    }
+#else
+    NSString *uniqueGlobalDeviceIdentifier = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+#endif
+    
     NSString *uniqueGlobalDeviceIdentifierBase64 = [uniqueGlobalDeviceIdentifier base64String];
     return uniqueGlobalDeviceIdentifierBase64;
 }

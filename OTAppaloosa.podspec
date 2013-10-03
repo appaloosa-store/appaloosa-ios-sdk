@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "OTAppaloosa"
-  s.version      = "0.4.0"
+  s.version      = "0.5.0"
   s.summary      = "Appaloosa SDK for iOS."
   s.homepage     = "http://www.appaloosa-store.com/"
   s.license      = 'Apache License, Version 2.0'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '5.0'
   s.source_files = "OTAppaloosa/**/*.{h,m}"
   s.resources    = "OTAppaloosa/**/*.{png,xib}"
-  s.frameworks   = 'QuartzCore', 'MessageUI'
+  s.frameworks   = 'QuartzCore', 'MessageUI', 'AdSupport'
   s.requires_arc = true
 
   s.dependency     'TPKeyboardAvoiding', '~> 1.1'
