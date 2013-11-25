@@ -59,7 +59,7 @@ static const CGFloat kAnimationDuration = 0.9;
     [button setAlpha:0];
     
     // recover device orientation :
-    UIDeviceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     BOOL isInLandscapeMode = (UIDeviceOrientationIsLandscape(currentOrientation));
     
     
@@ -102,7 +102,7 @@ static const CGFloat kAnimationDuration = 0.9;
     
     // recover device orientation :
     UIView *windowView = [OTAppaloosaActionButtonUtil getApplicationWindowView];
-    UIDeviceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     
     if (currentOrientation == UIDeviceOrientationLandscapeRight)
     {
@@ -140,7 +140,7 @@ static const CGFloat kAnimationDuration = 0.9;
     
     // recover device orientation :
     UIView *windowView = [OTAppaloosaActionButtonUtil getApplicationWindowView];
-    UIDeviceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     
     if (currentOrientation == UIDeviceOrientationPortraitUpsideDown)
     {
@@ -173,13 +173,13 @@ static const CGFloat kAnimationDuration = 0.9;
 
 + (CGFloat)rotationAngleInLandscapeMode
 {
-    UIDeviceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     return (currentOrientation == UIDeviceOrientationLandscapeRight) ? (-M_PI / 2) : (M_PI / 2);
 }
 
 + (CGFloat)rotationAngleInPortraitMode
 {
-    UIDeviceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     return (currentOrientation == UIDeviceOrientationPortraitUpsideDown) ? (M_PI) : (0);
 }
 
