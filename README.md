@@ -22,7 +22,7 @@ Integrate Appaloosa SDK with CocoaPods
 
 Simply add the following line to your Podfile :
        
-`pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.4.0/OTAppaloosa.podspec"`
+`pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.5.0/OTAppaloosa.podspec"`
 
 Refer to [CocoaPods](https://github.com/CocoaPods/CocoaPods) for more information about it.
 
