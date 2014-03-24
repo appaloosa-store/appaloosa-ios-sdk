@@ -72,6 +72,8 @@ const NSString *kUrlJsonExtension = @".json";
     if (storeId && bundleId && storeToken)
     {
         NSString *bundleVersion = [OTAppaloosaUtils currentApplicationVersion];
+        [bundleVersion stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
         NSString *locale = [[NSLocale preferredLanguages] objectAtIndex:0];
         
         url = [NSMutableString stringWithFormat:@"%@%@%@?",kBaseUrl,storeId,kUrlApplicationAuthorization];
@@ -147,7 +149,8 @@ const NSString *kUrlJsonExtension = @".json";
     if (storeId && bundleId && storeToken)
     {
         NSString *bundleVersion = [OTAppaloosaUtils currentApplicationVersion];
-        
+        [bundleVersion stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
         url = [NSMutableString stringWithFormat:@"%@%@%@?",kBaseUrl,storeId,kUrlApplicationUpdates];
         [url appendFormat:@"%@=%@",kUrlTokenParamaterKey,storeToken];
         [url appendFormat:@"&%@=%@",kUrlApplicationIdParamaterKey,bundleId];
