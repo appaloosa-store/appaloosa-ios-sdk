@@ -27,7 +27,7 @@
 // Fmk
 #import "NSString+URLEncoding.h"
 
-const NSString *kBaseUrl = @"https://www.appaloosa-store.com/";
+static NSString *kBaseUrl = @"https://www.appaloosa-store.com/";
 
 // Authorization
 const NSString *kUrlApplicationAuthorization = @"/mobile_application_updates/is_authorized";
@@ -180,4 +180,16 @@ const NSString *kUrlJsonExtension = @".json";
     return urlWithParams;
 }
 
+
+/**************************************************************************************************/
+#pragma mark - Settings
+
+/*
+ * This method changes the server url contacted by the SDK to enable environment specific requests
+ *
+ */
++ (void)setServerBaseURL:(NSString *)serverBaseUrl
+{
+    kBaseUrl = serverBaseUrl;
+}
 @end

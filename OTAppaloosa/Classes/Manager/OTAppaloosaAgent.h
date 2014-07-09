@@ -60,7 +60,8 @@
 #pragma mark - Check
 
 /*
- * This method checks if the application is authorized to be executed
+ * This method checks with Appaloosa backend if the application is authorized to execute the application.
+ *   If no internet connection is availabe, the latest status is read from the keychain.
  *
  * Default behaviour :
  * - a success does nothing
@@ -92,6 +93,13 @@
  * @see checkUpdates - Before call this method, it's important to check if an update is available and get the download link
  */
 - (void)downloadNewVersion;
+
+/*
+ * This method changes the server url contacted by the SDK to enable environment specific requests
+ *
+ * @param serverBaseURL - The server's url you want the sdk to contact 
+ */
+- (void)setServerBaseURL:(NSString *)serverBaseURL;
 
 /**************************************************************************************************/
 #pragma mark - App Feedback

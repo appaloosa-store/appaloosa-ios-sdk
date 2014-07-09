@@ -100,6 +100,7 @@
                                                if (appAuthorization.status == OTAppaloosaAutorizationsStatusAuthorized) {
                                                 
                                                    AppaloosaLog(@"This application is authorized");
+                                                   [OTAppaloosaUtils setIsLocallyBlacklisted:NO];
                                                    if (success)
                                                    {
                                                        dispatch_sync(dispatch_get_main_queue(), ^{
@@ -111,6 +112,9 @@
                                                else
                                                {
                                                    AppaloosaLog(@"This application is not authorized with status %@",[appAuthorization stringAccordingAuthorizationStatus]);
+                                                   if(appAuthorization.status == OTAppaloosaAutorizationsStatusNotAuthorized)
+                                                       [OTAppaloosaUtils setIsLocallyBlacklisted:YES];
+
                                                    if (failure)
                                                    {
                                                        dispatch_sync(dispatch_get_main_queue(), ^{
@@ -123,13 +127,21 @@
     }
     else
     {
-        if (failure)
-        {
-            OTApplicationAuthorization *appAuthorization = [[OTApplicationAuthorization alloc] init];
-            appAuthorization.status = OTAppaloosaAutorizationsStatusNoNetwork;
-            AppaloosaLog(@"Unable to check authorization because connection seems unavaible");
-            failure(appAuthorization);
+        AppaloosaLog(@"Unable to check authorization because connection seems unavaible, reading from latest local blacklist status");
+
+        if(![OTAppaloosaUtils isLocallyBlacklisted]) {
+            AppaloosaLog(@"This application is authorized");
+            success();
+            return;
         }
+
+        [OTAppaloosaUtils setIsLocallyBlacklisted:YES];
+        OTApplicationAuthorization *appAuthorization = [[OTApplicationAuthorization alloc] init];
+        appAuthorization.status =  OTAppaloosaAutorizationsStatusNotAuthorized;
+        appAuthorization.message = @"Your account has been blacklisted (This string must be added as a local)";
+        AppaloosaLog(@"This application is not authorized with status %@",[appAuthorization stringAccordingAuthorizationStatus]);
+        if(failure)
+            failure(appAuthorization);
     }
 }
 
@@ -242,5 +254,4 @@
                                }
                            }];
 }
-
 @end

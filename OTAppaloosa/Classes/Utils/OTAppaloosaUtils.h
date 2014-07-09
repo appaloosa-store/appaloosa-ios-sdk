@@ -45,4 +45,9 @@
 + (NSString *)uniqueDeviceEncoded;
 + (NSString *)currentApplicationVersion;
 
+/**************************************************************************************************/
+#pragma mark - Blacklisting
++ (BOOL)isLocallyBlacklisted;
++ (void)setIsLocallyBlacklisted:(BOOL)isBlacklisted;
+
 @end

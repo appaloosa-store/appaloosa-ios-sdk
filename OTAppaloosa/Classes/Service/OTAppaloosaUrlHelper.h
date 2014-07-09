@@ -46,4 +46,8 @@
 
 + (NSString *)addParamsToDownloadUrl:(NSString *)url;
 
+/**************************************************************************************************/
+#pragma mark - Settings
+
++ (void)setServerBaseURL:(NSString *)serverBaseUrl;
 @end

@@ -136,11 +136,17 @@ static OTAppaloosaAgent *manager;
     return result;
 }
 
+- (void)setServerBaseURL:(NSString *)serverBaseURL
+{
+    [OTAppaloosaUrlHelper setServerBaseURL:serverBaseURL];
+}
+
 /**************************************************************************************************/
 #pragma mark - Application Authorizations
 
 /*
- * This method checks with Appaloosa backend if the user is authorized to execute the application.
+ * This method checks with Appaloosa backend if the user is authorized to execute the application. 
+ *   If no internet connection is availabe, the latest status is read from the keychain.
  */
 - (void)checkAuthorizations
 {

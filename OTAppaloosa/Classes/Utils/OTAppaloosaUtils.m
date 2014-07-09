@@ -27,6 +27,7 @@
 #import <AdSupport/ASIdentifierManager.h>
 #import <Base64/MF_Base64Additions.h>
 #import "UIDevice+IdentifierAddition.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation OTAppaloosaUtils
 
@@ -93,6 +94,30 @@
 + (NSString *)currentApplicationVersion
 {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
+/**************************************************************************************************/
+#pragma mark - Blacklisting
+
++ (BOOL)isLocallyBlacklisted
+{
+    NSString *storedString = [SFHFKeychainUtils getPasswordForUsername:@"appaloosa" andServiceName:@"blacklisting" error:nil];
+    if(!storedString)
+        return YES;
+
+    return [storedString integerValue];
+}
+
++ (void)setIsLocallyBlacklisted:(BOOL)isBlacklisted
+{
+    AppaloosaLog(@"Saving blacklist status: %d", isBlacklisted ? 1 : 0);
+    [SFHFKeychainUtils deleteItemForUsername:@"appaloosa"
+                              andServiceName:@"blacklisting" error:nil];
+    [SFHFKeychainUtils storeUsername:@"appaloosa"
+                         andPassword:[NSString stringWithFormat:@"%d", isBlacklisted ? 1 : 0]
+                      forServiceName:@"blacklisting"
+                      updateExisting:YES
+                               error:nil];
 }
 
 @end

@@ -137,7 +137,7 @@ To see how to use this feature, take a look at the Example/OTAppaloosaDemo/ proj
 Check authorizations for application
 -------------------------------------
 
-This SDK provides a mecanism of kill switch. Since the web interface (http://www.appaloosa-store.com/), you are able to authorize or not a device to access to the application.
+This SDK provides a mecanism of kill switch. Since the web interface (http://www.appaloosa-store.com/), you are able to authorize or not a device to access to the application. The mecanism works offline by reading the blacklisted status from the keychain.
 
 In your appDelegate file, add the following line to check authorizations when the application become active `- (void)applicationDidBecomeActive:(UIApplication *)application`:
 
@@ -152,6 +152,7 @@ By default :
 If you prefer develop your own behaviour, you should implement the `OTAppaloosaAgentDelegate` :
 - to know if the user is authorized : `- (void)applicationAuthorizationsAllowed;`
 - to know if the user is not authorized : `- (void)applicationAuthorizationsNotAllowedWithStatus:(OTAppaloosaAutorizationsStatus)status andMessage:(NSString *)message`
+
 
 Want some documentation?
 ------------------------
