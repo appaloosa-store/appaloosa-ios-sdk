@@ -9,12 +9,13 @@ Appaloosa SDK library is a simple library that helps you to:
 * Auto-update your application stored on [Appaloosa Store](http://www.appaloosa-store.com/) server
 * Receive feedback from your users directly from the app (iPhone and iPad)
 * Launch a dev-panel giving information about the device and the application
-* Authorizations for application
+* Manage authorizations for your application
+* Prevent your application to run on a jailbroken device
 
 Requirements
 ------------
 
-Appaloosa SDK library use ARC and is compatible with iOS 5+.
+Appaloosa SDK library uses ARC and is compatible with iOS 5+.
 
 
 Integrate Appaloosa SDK with CocoaPods
@@ -40,7 +41,7 @@ Integrate Appaloosa SDK the old fashioned way
 Configure Appaloosa Agent
 --------------------------
 
-Once the Appaloosa SDK integrated in your project, you need to configure the agent with the storeId and the storeToken.
+Once the Appaloosa SDK is integrated to your project, you need to configure the agent with the storeId and the storeToken.
 
 - Register the Appaloosa Agent with your storeId and storeToken (you can find the storeId and storeToken on this page : http://www.appaloosa-store.com/settings).
 
@@ -82,11 +83,11 @@ Check for application update - clever version
 ```
         
 3. Implement delegate methods if you want your own behaviour :
-    1. The method `- (void)applicationUpdateRequestSuccessWithApplicationUpdateStatus:(OTApplicationUpdateStatus)appUpdateStatus`to be inform if the application need to be updated. You need to analyze the 'appUpdateStatus' to know if an update is available and download the new version.
+    1. The method `- (void)applicationUpdateRequestSuccessWithApplicationUpdateStatus:(OTApplicationUpdateStatus)appUpdateStatus`to be inform if the application needs to be updated. You need to analyze the 'appUpdateStatus' to know if an update is available and download the new version.
         By default, 
-            - if the application is up to date, nothing occured.
-            - if an update is available, an alert view asks to the user to download it.
-        If you want launch the download : `[[OTAppaloosaAgent sharedAgent] downloadNewVersion];`
+            - if the application is up to date, nothing occures.
+            - if an update is available, an alert view asks the user to download it.
+        If you want to launch the download : `[[OTAppaloosaAgent sharedAgent] downloadNewVersion];`
     2. The method `- (void)applicationUpdateRequestFailureWithError:(NSError *)error to be inform if something wrong occured during the update request.
 
 
@@ -115,7 +116,7 @@ To see how to use this feature, take a look at the Example/OTAppaloosaDemo/ proj
 Add the dev panel to your app
 ---------------------------------
 
-This SDK provides also a dev panel which gives information about the device and the application. In your appDelegate file, add the following line:
+This SDK also provides a dev panel which gives information about the device and the application. In your appDelegate file, add the following line:
 
 ```objective-c
 [[OTAppaloosaAgent sharedAgent] devPanelWithDefaultButtonAtPosition:kAppaloosaButtonPositionRightBottom];
@@ -137,9 +138,9 @@ To see how to use this feature, take a look at the Example/OTAppaloosaDemo/ proj
 Check authorizations for application
 -------------------------------------
 
-This SDK provides a mecanism of kill switch. Since the web interface (http://www.appaloosa-store.com/), you are able to authorize or not a device to access to the application. The mecanism works offline by reading the blacklisted status from the keychain.
+This SDK provides a kill switch mecanism. From the web interface (http://www.appaloosa-store.com/), you are able to authorize or not a device to access the application. The mecanism works offline by reading the blacklisted status from the keychain.
 
-In your appDelegate file, add the following line to check authorizations when the application become active `- (void)applicationDidBecomeActive:(UIApplication *)application`:
+In your appDelegate file, add the following line to check authorizations when the application becomes active `- (void)applicationDidBecomeActive:(UIApplication *)application`:
 
 ```objective-c
 [[OTAppaloosaAgent sharedAgent] checkAuthorizations];
@@ -147,9 +148,9 @@ In your appDelegate file, add the following line to check authorizations when th
     
 By default :
 - if the user is authorized, nothing occurs.
-- if the user is no authorized, an alert view is displayed with the appropriated message and the application is kill.
+- if the user is not authorized, an alert view is displayed with the appropriated message and the application is killed.
 
-If you prefer develop your own behaviour, you should implement the `OTAppaloosaAgentDelegate` :
+If you prefer to develop your own behaviour, you should implement the `OTAppaloosaAgentDelegate` :
 - to know if the user is authorized : `- (void)applicationAuthorizationsAllowed;`
 - to know if the user is not authorized : `- (void)applicationAuthorizationsNotAllowedWithStatus:(OTAppaloosaAutorizationsStatus)status andMessage:(NSString *)message`
 
@@ -158,7 +159,7 @@ Check if the device is jailbroken
 
 You can prevent your app from running on a jailbroken device.
 
-In your appDelegate file, add the following line to check authorizations when the application become active `- (void)applicationDidBecomeActive:(UIApplication *)application`:
+In your appDelegate file, add the following line to check authorizations when the application becomes active `- (void)applicationDidBecomeActive:(UIApplication *)application`:
 
 ```objective-c
 [[OTAppaloosaAgent sharedAgent] blockJailbrokenDevice];
