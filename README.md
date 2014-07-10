@@ -153,6 +153,17 @@ If you prefer develop your own behaviour, you should implement the `OTAppaloosaA
 - to know if the user is authorized : `- (void)applicationAuthorizationsAllowed;`
 - to know if the user is not authorized : `- (void)applicationAuthorizationsNotAllowedWithStatus:(OTAppaloosaAutorizationsStatus)status andMessage:(NSString *)message`
 
+Check if the device is jailbroken
+-------------------------------------
+
+You can prevent your app from running on a jailbroken device.
+
+In your appDelegate file, add the following line to check authorizations when the application become active `- (void)applicationDidBecomeActive:(UIApplication *)application`:
+
+```objective-c
+[[OTAppaloosaAgent sharedAgent] blockJailbrokenDevice];
+```
+
 
 Want some documentation?
 ------------------------

@@ -120,4 +120,23 @@
                                error:nil];
 }
 
+/**************************************************************************************************/
+#pragma mark - Jailbreak
+
++ (OTApplicationAuthorization *)checkDeviceJailbreak
+{
+    OTApplicationAuthorization *appAuthorization = [[OTApplicationAuthorization alloc] init];
+    appAuthorization.status = OTAppaloosaAutorizationsStatusJailbroken;
+
+#if !(TARGET_IPHONE_SIMULATOR)
+    FILE *file = fopen("/bin/bash", "r");
+    BOOL fileIsNull = file == NULL;
+
+    if(!fileIsNull || [[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app"] || [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"cydia://package/com.example.package"]])
+        return appAuthorization;
+#endif
+
+    appAuthorization.status = OTAppaloosaAutorizationsStatusAuthorized;
+    return appAuthorization;
+}
 @end

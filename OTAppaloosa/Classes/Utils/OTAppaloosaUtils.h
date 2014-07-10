@@ -50,4 +50,7 @@
 + (BOOL)isLocallyBlacklisted;
 + (void)setIsLocallyBlacklisted:(BOOL)isBlacklisted;
 
+/**************************************************************************************************/
+#pragma mark - Jailbreak
++ (OTApplicationAuthorization *)checkDeviceJailbreak;
 @end

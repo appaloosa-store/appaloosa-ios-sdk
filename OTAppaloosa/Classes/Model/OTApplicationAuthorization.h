@@ -29,6 +29,7 @@ typedef enum {
     OTAppaloosaAutorizationsStatusNotAuthorized,
     OTAppaloosaAutorizationsStatusNoNetwork,
     OTAppaloosaAutorizationsStatusRequestError,
+    OTAppaloosaAutorizationsStatusJailbroken,
 } OTAppaloosaAutorizationsStatus;
 
 @interface OTApplicationAuthorization : NSObject

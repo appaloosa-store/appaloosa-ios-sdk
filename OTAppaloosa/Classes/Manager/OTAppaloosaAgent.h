@@ -84,6 +84,14 @@
  */
 - (void)checkUpdates;
 
+/*
+ * This method checks if the device is jailbroken
+ *  - if it is: alertview and close the app
+ *  - if it is not: do nothing
+ *
+ */
+- (void)blockJailbrokenDevice;
+
 /**************************************************************************************************/
 #pragma mark - Utilities
 

@@ -31,6 +31,7 @@ const NSString *kApplicationAuthorizationStatusAuthorized = @"AUTHORIZED";
 const NSString *kApplicationAuthorizationStatusNotAuthorized = @"NOT_AUTHORIZED";
 const NSString *kApplicationAuthorizationStatusNoNetwork = @"NO_NETWORK";
 const NSString *kApplicationAuthorizationStatusRequestError = @"REQUEST_ERROR";
+const NSString *kApplicationAuthorizationStatusJailbroken = @"JAILBROKEN_DEVICE";
 
 @implementation OTApplicationAuthorization
 
@@ -99,6 +100,8 @@ const NSString *kApplicationAuthorizationStatusRequestError = @"REQUEST_ERROR";
         status = OTAppaloosaAutorizationsStatusNoNetwork;
     else if ([statusString isEqualToString:(NSString *)kApplicationAuthorizationStatusRequestError])
         status = OTAppaloosaAutorizationsStatusRequestError;
+    else if ([statusString isEqualToString:(NSString *)kApplicationAuthorizationStatusJailbroken])
+        status = OTAppaloosaAutorizationsStatusJailbroken;
     
     return status;
 }
@@ -125,10 +128,13 @@ const NSString *kApplicationAuthorizationStatusRequestError = @"REQUEST_ERROR";
         break;
         case OTAppaloosaAutorizationsStatusNoNetwork:
             statusString = (NSString *)kApplicationAuthorizationStatusNoNetwork;
-        break;
+            break;
         case OTAppaloosaAutorizationsStatusRequestError:
             statusString = (NSString *)kApplicationAuthorizationStatusRequestError;
-        break;
+            break;
+        case OTAppaloosaAutorizationsStatusJailbroken:
+            statusString = (NSString *)kApplicationAuthorizationStatusJailbroken;
+            break;
     }
     
     return statusString;
@@ -142,6 +148,9 @@ const NSString *kApplicationAuthorizationStatusRequestError = @"REQUEST_ERROR";
     {
         case OTAppaloosaAutorizationsStatusNoNetwork:
             message = @"Veuillez vérifier votre connection Internet, merci.";
+            break;
+        case OTAppaloosaAutorizationsStatusJailbroken:
+            message = @"Vous ne pouvez pas utiliser cette app sur votre téléphone jailbreaké.";
             break;
         case OTAppaloosaAutorizationsStatusUnknown:
         case OTAppaloosaAutorizationsStatusRequestError:            
