@@ -138,7 +138,7 @@
         [OTAppaloosaUtils setIsLocallyBlacklisted:YES];
         OTApplicationAuthorization *appAuthorization = [[OTApplicationAuthorization alloc] init];
         appAuthorization.status =  OTAppaloosaAutorizationsStatusNotAuthorized;
-        appAuthorization.message = @"Your account has been blacklisted (This string must be added as a local)";
+        appAuthorization.message = @"Your account has been blacklisted";
         AppaloosaLog(@"This application is not authorized with status %@",[appAuthorization stringAccordingAuthorizationStatus]);
         if(failure)
             failure(appAuthorization);
