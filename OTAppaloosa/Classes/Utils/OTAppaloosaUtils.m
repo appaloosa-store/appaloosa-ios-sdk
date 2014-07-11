@@ -102,8 +102,10 @@
 + (BOOL)isLocallyBlacklisted
 {
     NSString *storedString = [SFHFKeychainUtils getPasswordForUsername:@"appaloosa" andServiceName:@"blacklisting" error:nil];
-    if(!storedString)
+    if(!storedString) {
+        AppaloosaLog(@"Keychain does not exist => first launch");
         return NO;
+    }
 
     return [storedString integerValue];
 }
