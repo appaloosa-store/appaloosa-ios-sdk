@@ -103,7 +103,7 @@
 {
     NSString *storedString = [SFHFKeychainUtils getPasswordForUsername:@"appaloosa" andServiceName:@"blacklisting" error:nil];
     if(!storedString)
-        return YES;
+        return NO;
 
     return [storedString integerValue];
 }
