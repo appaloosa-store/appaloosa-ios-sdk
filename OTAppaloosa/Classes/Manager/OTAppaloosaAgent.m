@@ -34,7 +34,7 @@
 
 const NSUInteger kAlertViewApplicationAuthorization = 1;
 const NSUInteger kAlertViewDownloadUpdate           = 2;
-const NSUInteger kAlertViewApplicationJailbrake     = 3;
+const NSUInteger kAlertViewApplicationJailbreak     = 3;
 
 @interface OTAppaloosaAgent ()
 
@@ -202,7 +202,7 @@ static OTAppaloosaAgent *manager;
         AppaloosaLog(@"Device is jailbroken, exiting");
         UIAlertView *alertView = [OTAppaloosaUtils displayAlertWithMessage:[OTAppaloosaUtils checkDeviceJailbreak].message
                                                               withDelegate:self];
-        alertView.tag = kAlertViewApplicationJailbrake;
+        alertView.tag = kAlertViewApplicationJailbreak;
         [alertView show];
     }
 }
@@ -393,7 +393,7 @@ static OTAppaloosaAgent *manager;
     switch (alertView.tag)
     {
         case kAlertViewApplicationAuthorization:
-        case kAlertViewApplicationJailbrake:
+        case kAlertViewApplicationJailbreak:
         {
             exit(0);
             break;
