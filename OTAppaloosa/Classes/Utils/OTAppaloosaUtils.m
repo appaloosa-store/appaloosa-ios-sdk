@@ -132,7 +132,8 @@
 
 #if !(TARGET_IPHONE_SIMULATOR)
     FILE *file = fopen("/bin/bash", "r");
-    BOOL fileIsNull = file == NULL;
+    BOOL fileIsNull = errno == ENOENT;
+    fclose(file);
 
     if(!fileIsNull || [[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app"] || [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"cydia://package/com.example.package"]])
         return appAuthorization;

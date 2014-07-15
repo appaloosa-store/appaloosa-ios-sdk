@@ -198,9 +198,10 @@ static OTAppaloosaAgent *manager;
 
 - (void)blockJailbrokenDevice
 {
-    if([OTAppaloosaUtils checkDeviceJailbreak].status == OTAppaloosaAutorizationsStatusJailbroken) {
+    OTApplicationAuthorization * authorization = [OTAppaloosaUtils checkDeviceJailbreak];
+    if(authorization.status == OTAppaloosaAutorizationsStatusJailbroken) {
         AppaloosaLog(@"Device is jailbroken, exiting");
-        UIAlertView *alertView = [OTAppaloosaUtils displayAlertWithMessage:[OTAppaloosaUtils checkDeviceJailbreak].message
+        UIAlertView *alertView = [OTAppaloosaUtils displayAlertWithMessage:authorization.message
                                                               withDelegate:self];
         alertView.tag = kAlertViewApplicationJailbreak;
         [alertView show];
