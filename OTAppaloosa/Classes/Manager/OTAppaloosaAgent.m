@@ -139,7 +139,7 @@ static OTAppaloosaAgent *manager;
 
 - (void)setServerBaseURL:(NSString *)serverBaseURL
 {
-    [OTAppaloosaUrlHelper setServerBaseURL:serverBaseURL];
+    [OTAppaloosaUrlHelper setServerBaseURL:[NSString stringWithFormat:@"%@/", serverBaseURL]];
 }
 
 /**************************************************************************************************/
