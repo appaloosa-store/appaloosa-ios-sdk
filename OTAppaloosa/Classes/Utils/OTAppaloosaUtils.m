@@ -36,13 +36,17 @@
 
 + (UIAlertView *)displayAlertWithMessage:(NSString *)message actionTitle:(NSString *)actionTitle withDelegate:(id<UIAlertViewDelegate>)delegate
 {
+    NSMutableString *cancelMessage = [[NSMutableString alloc] initWithString:@"Cancel"];
+    // actionTitle = nil means user does not have a choice
+    if(!actionTitle)
+        [cancelMessage setString:@"OK"];
+
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Appaloosa Information"
                                                     message:message
                                                    delegate:delegate
-                                          cancelButtonTitle:@"Cancel"
+                                          cancelButtonTitle:cancelMessage
                                           otherButtonTitles:actionTitle, nil];
     [alert show];
-    
     return alert;
 }
 
