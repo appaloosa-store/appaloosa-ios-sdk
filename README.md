@@ -83,7 +83,7 @@ Check for application update - clever version
 ```
         
 3. Implement delegate methods if you want your own behaviour :
-    1. The method `- (void)applicationUpdateRequestSuccessWithApplicationUpdateStatus:(OTApplicationUpdateStatus)appUpdateStatus`to be inform if the application needs to be updated. You need to analyze the 'appUpdateStatus' to know if an update is available and download the new version.
+    1. The method `- (void)applicationUpdateRequestSuccessWithApplicationUpdateStatus:(OTAppaloosaUpdateStatus)appUpdateStatus`to inform the application needs to be updated. You need to analyze the 'appUpdateStatus' to know if an update is available and download the new version.
         By default, 
             - if the application is up to date, nothing occures.
             - if an update is available, an alert view asks the user to download it.
