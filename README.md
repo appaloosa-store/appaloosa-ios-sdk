@@ -17,6 +17,10 @@ Requirements
 
 Appaloosa SDK library uses ARC and is compatible with iOS 5+.
 
+/!\ In order to complete the setup for the features "Auto-update" and "Blacklist", the device must make at least one successful login on the native store to register its ADID to the server. 
+/!\ Your App ID must be explicit (as opposed to wildcard)
+/!\ Testing on the simulator won't work
+
 
 Integrate Appaloosa SDK with CocoaPods
 ----------------------------------------
