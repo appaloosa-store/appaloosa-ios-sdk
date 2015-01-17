@@ -16,4 +16,5 @@ Pod::Spec.new do |s|
   s.dependency     'UIDeviceAddition', '~> 1.0'
   s.dependency     'Reachability', '~> 3.1.1'
   s.dependency     'Base64', '~> 1.0.1'
+  s.dependency     'SFHFKeychainUtils', '~> 0.0'
 end
