@@ -27,7 +27,7 @@ Integrate Appaloosa SDK with CocoaPods
 
 Simply add the following line to your Podfile :
        
-`pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.5.0/OTAppaloosa.podspec"`
+`pod 'OTAppaloosa', :podspec => "https://raw.github.com/octo-online/appaloosa-ios-sdk/0.5.6/OTAppaloosa.podspec"`
 
 Refer to [CocoaPods](https://github.com/CocoaPods/CocoaPods) for more information about it.
 
@@ -39,6 +39,7 @@ Integrate Appaloosa SDK the old fashioned way
     - [UIDeviceAddition](https://github.com/gekitz/UIDevice-with-UniqueIdentifier-for-iOS-5/tree/master/UIDeviceAddition).
     - [Reachability](https://github.com/tonymillion/Reachability).
     - [Base64](https://github.com/ekscrypto/Base64).
+    - [SFHFKeychainUtils](https://github.com/ldandersen/scifihifi-iphone/tree/master/security).
 - Add OTAppaloosa sources to your project.
 
 
