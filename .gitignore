@@ -28,7 +28,7 @@ xcuserdata
 !xcschemes
 
 *.moved-aside
-
+.arcconfig
 
 # Pods files
 Example/OTInAppFeedback/OTInAppFeedback.xcworkspace
