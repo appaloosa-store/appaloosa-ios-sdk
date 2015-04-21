@@ -101,6 +101,7 @@
                                                 
                                                    AppaloosaLog(@"This application is authorized");
                                                    [OTAppaloosaUtils setIsLocallyBlacklisted:NO];
+                                                   [OTAppaloosaUtils storeAnalyticsEndpoint:appAuthorization.analyticsEndpoint];
                                                    if (success)
                                                    {
                                                        dispatch_sync(dispatch_get_main_queue(), ^{
@@ -130,6 +131,7 @@
         AppaloosaLog(@"Unable to check authorization because connection seems unavaible, reading from latest local blacklist status");
 
         if(![OTAppaloosaUtils isLocallyBlacklisted]) {
+            [OTAppaloosaUtils refreshAnalyticsEndpoint];
             AppaloosaLog(@"This application is authorized");
             success();
             return;

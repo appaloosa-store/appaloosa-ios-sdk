@@ -39,6 +39,7 @@ typedef enum {
 
 @property (assign, nonatomic) OTAppaloosaAutorizationsStatus status;
 @property (strong, nonatomic) NSString                       *message;
+@property NSString                                           *analyticsEndpoint;
 
 /**************************************************************************************************/
 #pragma mark - Birth and Death

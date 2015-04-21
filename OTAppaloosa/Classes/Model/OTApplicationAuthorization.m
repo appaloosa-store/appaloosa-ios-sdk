@@ -23,6 +23,7 @@
 
 const NSString *kApplicationAuthorizationStatusKey = @"status";
 const NSString *kApplicationAuthorizationMessageKey = @"message";
+const NSString *kApplicationAuthorizationAnalyticsEndpointKey = @"analyticsEndpoint";
 
 const NSString *kApplicationAuthorizationStatusUnknown = @"UNKNOWN";
 const NSString *kApplicationAuthorizationStatusUnknownDevice = @"UNKNOWN_DEVICE";
@@ -75,6 +76,12 @@ const NSString *kApplicationAuthorizationStatusJailbroken = @"JAILBROKEN_DEVICE"
         else
         {
             _message = [OTApplicationAuthorization messageAccordingStatus:_status];
+        }
+
+        value = [jsonDict objectForKey:kApplicationAuthorizationAnalyticsEndpointKey];
+        if ([value isKindOfClass:[NSString class]])
+        {
+            _analyticsEndpoint = value;
         }
     }
     

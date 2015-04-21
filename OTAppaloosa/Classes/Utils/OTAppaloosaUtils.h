@@ -51,6 +51,11 @@
 + (void)setIsLocallyBlacklisted:(BOOL)isBlacklisted;
 
 /**************************************************************************************************/
+#pragma mark - Analytics
++ (void)storeAnalyticsEndpoint:(NSString *)endpoint;
++ (void)refreshAnalyticsEndpoint;
+
+/**************************************************************************************************/
 #pragma mark - Jailbreak
 + (OTApplicationAuthorization *)checkDeviceJailbreak;
 @end

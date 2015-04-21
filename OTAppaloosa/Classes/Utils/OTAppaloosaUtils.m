@@ -127,6 +127,20 @@
 }
 
 /**************************************************************************************************/
+#pragma mark - Analytics
+
++ (void)storeAnalyticsEndpoint:(NSString *)endpoint {
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+
+    [preferences setObject:endpoint forKey:@"analyticsEndpoint"];
+}
+
++ (void)refreshAnalyticsEndpoint {
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    [OTAppaloosaUtils storeAnalyticsEndpoint:[preferences objectForKey:@"analyticsEndpoint"]];
+}
+
+/**************************************************************************************************/
 #pragma mark - Jailbreak
 
 + (OTApplicationAuthorization *)checkDeviceJailbreak
