@@ -23,7 +23,7 @@
 
 // View :
 #import "SSTextView.h"
-#import "TPKeyboardAvoidingScrollView.h"
+#import <TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.h>
 
 // Utils :
 #import <MessageUI/MFMailComposeViewController.h>
