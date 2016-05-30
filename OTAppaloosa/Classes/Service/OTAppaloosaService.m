@@ -22,7 +22,7 @@
 #import "OTAppaloosaService.h"
 
 // Fmk
-#import "Reachability.h"
+#import <Reachability/Reachability.h>
 
 // Model
 #import "OTAppaloosaApplication.h"
