@@ -8,7 +8,7 @@ s.author       = { "Remy Virin" => "rvirin@octo.com", "Abdou Benhamouche" => "ab
   s.source       = { :git => "https://github.com/appaloosa-store/appaloosa-ios-sdk", :tag => s.version.to_s }
   s.platform     = :ios, '5.0'
   s.source_files = "OTAppaloosa/**/*.{h,m}"
-  s.resources    = "OTAppaloosa/**/*.{png,xib}"
+  s.resources    = "OTAppaloosa/**/*.{png,xib,strings}"
   s.frameworks   = 'QuartzCore', 'MessageUI', 'AdSupport'
   s.requires_arc = true
 
