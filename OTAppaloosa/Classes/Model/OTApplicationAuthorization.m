@@ -154,14 +154,17 @@ const NSString *kApplicationAuthorizationStatusJailbroken = @"JAILBROKEN_DEVICE"
     switch (status)
     {
         case OTAppaloosaAutorizationsStatusNoNetwork:
-            message = @"Veuillez vérifier votre connection Internet, merci.";
+            message = NSLocalizedString(@"Please check your internet connection.",
+                                        @"Please check your internet connection.");
             break;
         case OTAppaloosaAutorizationsStatusJailbroken:
-            message = @"Vous ne pouvez pas utiliser cette app sur votre téléphone jailbreaké.";
+            message = NSLocalizedString(@"You can not use this app on a jailbroken device.",
+                                        @"You can not use this app on a jailbroken device.");
             break;
         case OTAppaloosaAutorizationsStatusUnknown:
         case OTAppaloosaAutorizationsStatusRequestError:            
-            message = @"Une erreur est survenue. Veuillez réessayer ultérieusement.";
+            message = NSLocalizedString(@"An error occurred, please try later.",
+                                        @"An error occurred, please try later.");
             break;
         default:
             break;

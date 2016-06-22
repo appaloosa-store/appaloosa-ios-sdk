@@ -54,8 +54,6 @@ static const CGFloat kRoundedCornerRadius = 8;
 
 static const CGFloat kAnimationDuration = 0.4;
 
-static NSString * const kTitlePlaceholder = @"Title *";
-static NSString * const kDescriptionPlaceholder = @"Description";
 static NSString * const kScreenshotFileName = @"screenshot";
 static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 
@@ -291,8 +289,8 @@ static NSString * const kInAppFeedbackPreTitle = @"[In-app feedback]";
 - (void)initializeTitleAndDescriptionViews
 {
     // set placeholders :
-    [self.titleTextField setPlaceholder:kTitlePlaceholder];
-    [self.descriptionTextView setPlaceholder:kDescriptionPlaceholder];
+    [self.titleTextField setPlaceholder:NSLocalizedString(@"Title *", @"Title *")];
+    [self.descriptionTextView setPlaceholder:NSLocalizedString(@"Description", @"Description")];
     
     [self.titleTextField setDelegate:self];
     [self.descriptionTextView setDelegate:self];

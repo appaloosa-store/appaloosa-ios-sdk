@@ -1,0 +1,29 @@
+"Ok";
+"Cancel";
+
+/* OTAppaloosaUtils */
+
+"Appaloosa Information";
+
+/* OTAppaloosaAgent */
+
+"An update is available. Would you like to update?”;
+
+/* OTAppaloosaInAppFeedbackViewController */
+
+"Title *";
+"Description";
+"Service unavailable";
+"No email account configured on the device.";
+
+/* OTApplicationAuthorization */
+
+"Please check your internet connection.";
+"You can not use this app on a jailbroken device.";
+"An error occurred, please try later.";
+
+/* Reachability */
+
+"Cellular";
+"WiFi";
+"No Connection”;

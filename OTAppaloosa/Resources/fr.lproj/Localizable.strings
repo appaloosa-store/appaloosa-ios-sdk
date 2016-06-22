@@ -1,0 +1,29 @@
+"Ok" = "Ok";
+"Cancel" = "Annuler";
+
+/* OTAppaloosaUtils */
+
+"Appaloosa Information" = "Informations Appaloosa";
+
+/* OTAppaloosaAgent */
+
+"An update is available. Would you like to update?" = "Une mise à jour est disponible. Voulez-vous mettre à jour maintenant ?";
+
+/* OTAppaloosaInAppFeedbackViewController */
+
+"Title *" = "Titre *";
+"Description" = "Description";
+"Service unavailable" = "Service indisponible";
+"No email account configured on the device." = "Aucune compte email n'est configuré pour cet appareil.";
+
+/* OTApplicationAuthorization */
+
+"Please check your internet connection." = "Veuillez vérifier votre connection Internet, merci.";
+"You can not use this app on a jailbroken device." = "Vous ne pouvez pas utiliser cette app sur votre téléphone jailbreaké.";
+"An error occurred, please try later." = "Une erreur est survenue. Veuillez réessayer ultérieusement.";
+
+/* Reachability */
+
+"Cellular" = "Cellulaire";
+"WiFi";
+"No Connection" = "Aucune connexion";
