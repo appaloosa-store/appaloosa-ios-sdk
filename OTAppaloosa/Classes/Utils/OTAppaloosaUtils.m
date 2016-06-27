@@ -36,12 +36,12 @@
 
 + (UIAlertView *)displayAlertWithMessage:(NSString *)message actionTitle:(NSString *)actionTitle withDelegate:(id<UIAlertViewDelegate>)delegate
 {
-    NSMutableString *cancelMessage = [[NSMutableString alloc] initWithString:@"Cancel"];
+    NSString *cancelMessage = NSLocalizedString(@"Cancel", @"Cancel");
     // actionTitle = nil means user does not have a choice
     if(!actionTitle)
-        [cancelMessage setString:@"OK"];
+        cancelMessage = NSLocalizedString(@"Ok", @"Ok");
 
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Appaloosa Information"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Appaloosa Information", @"Appaloosa Information")
                                                     message:message
                                                    delegate:delegate
                                           cancelButtonTitle:cancelMessage

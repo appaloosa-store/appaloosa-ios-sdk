@@ -273,8 +273,9 @@ static OTAppaloosaAgent *manager;
         {
             AppaloosaLog(@"application is not up to date, need to update");
             
-            UIAlertView *alert = [OTAppaloosaUtils displayAlertWithMessage:@"An update is available. Would you like to update ?"
-                                                               actionTitle:@"Ok"
+            NSString * message = NSLocalizedString(@"An update is available. Would you like to update?", @"An update is available. Would you like to update?");
+            UIAlertView *alert = [OTAppaloosaUtils displayAlertWithMessage:message
+                                                               actionTitle:NSLocalizedString(@"Ok", @"Ok")
                                                               withDelegate:self];
             alert.tag = kAlertViewDownloadUpdate;
         }
