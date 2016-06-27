@@ -7,7 +7,7 @@
 
 /* OTAppaloosaAgent */
 
-"An update is available. Would you like to update?”;
+"An update is available. Would you like to update?";
 
 /* OTAppaloosaInAppFeedbackViewController */
 
@@ -26,4 +26,4 @@
 
 "Cellular";
 "WiFi";
-"No Connection”;
+"No Connection";
