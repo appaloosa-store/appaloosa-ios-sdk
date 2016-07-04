@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "http://www.appaloosa-store.com/"
   s.license      = 'Apache License, Version 2.0'
 s.author       = { "Remy Virin" => "rvirin@octo.com", "Abdou Benhamouche" => "abenhamouche@octo.com", "Maxence Walbrou" => "mwalbrou@gmail.com", "Mahmoud Reda" => "mmm@octo.com", "Cédric Pointel" => "cpointel@octo.com", "Robin Sfez" => "rsfez@octo.com", "Christophe Valentin" => "lv.beleck@gmail.com" }
-  s.source       = { :git => "https://github.com/appaloosa-store/appaloosa-ios-sdk", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/appaloosa-store/appaloosa-ios-sdk.git", :tag => s.version.to_s }
   s.platform     = :ios, '5.0'
   s.source_files = "OTAppaloosa/**/*.{h,m}"
   s.resources    = "OTAppaloosa/**/*.{png,xib,strings}"
