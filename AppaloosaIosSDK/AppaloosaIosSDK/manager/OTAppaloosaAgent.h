@@ -20,11 +20,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #import "OTAppaloosaAgentDelegate.h"
-
-// Manager
-#import "OTAppaloosaActionButtonsManager.h"
 
 @interface OTAppaloosaAgent : NSObject <UIAlertViewDelegate>
 
@@ -109,56 +107,6 @@
  */
 - (void)setServerBaseURL:(NSString *)serverBaseURL;
 
-/**************************************************************************************************/
-#pragma mark - App Feedback
-
-/*
- * This method opens the feedback controller
- *
- * @param recipientsEmail - NSArray containing feedback email(s) adresses
- */
-- (void)openFeedbackControllerWithRecipientsEmailArray:(NSArray *)recipientsEmail;
-
-/*
- * This method displays a default button in order to open the feedback controller
- *
- * @param position - AppaloosaButtonPosition in the view (kAppaloosaButtonPositionRightBottom or kAppaloosaButtonPositionBottomRight)
- * @param recipientsEmail - NSArray containing feedback email(s) adresses
- */
-- (void)feedbackControllerWithDefaultButtonAtPosition:(AppaloosaButtonPosition)position
-                    forRecipientsEmailArray:(NSArray *)recipientsEmail;
-
-/*
- * This method shows the default feedback button
- *
- * @param shouldShow - BOOL to show/hide the default button
- */
-- (void)showDefaultFeedbackButton:(BOOL)shouldShow;
-
-/**************************************************************************************************/
-#pragma mark - Debug Panel Feedback
-
-/*
- * This method opens the devpanel controller
- *
- */
-- (void)openDevPanelController;
-
-/*
- * This method displays a default button in order to open the devpanel controller
- *
- * @param position - AppaloosaButtonPosition in the view (kAppaloosaButtonPositionRightBottom or kAppaloosaButtonPositionBottomRight)
- */
-- (void)devPanelWithDefaultButtonAtPosition:(AppaloosaButtonPosition)position;
-
-/*
- * This method shows the default devpanl button
- *
- * @param shouldShow - BOOL to show/hide the default button
- */
-- (void)showDefaultDevPanelButton:(BOOL)shouldShow;
-
-/**************************************************************************************************/
 #pragma mark - Getters and Setters
 
 @property (nonatomic) id<OTAppaloosaAgentDelegate> delegate;

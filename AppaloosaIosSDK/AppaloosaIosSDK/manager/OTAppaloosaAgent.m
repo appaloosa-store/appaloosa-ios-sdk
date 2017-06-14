@@ -50,9 +50,6 @@ const NSUInteger kAlertViewApplicationJailbreak     = 3;
 @property (strong, nonatomic) OTAppaloosaApplication *appaloosaApplication;
 @property (strong, nonatomic) OTApplicationUpdate *appaloosaUpdate;
 
-// Interface buttons
-@property (strong, nonatomic) OTAppaloosaActionButtonsManager *actionButtonsManager;
-
 // Services
 @property (strong, nonatomic) OTAppaloosaService *appaloosaService;
 
@@ -317,74 +314,6 @@ static OTAppaloosaAgent *manager;
     {
         AppaloosaLog(@"No url to download the application. Call 'checkUpdates' before downloading a new version.");
     }
-}
-
-/**************************************************************************************************/
-#pragma mark - App Feedback
-
-- (void)openFeedbackControllerWithRecipientsEmailArray:(NSArray *)recipientsEmail
-{
-    if (self.actionButtonsManager == nil)
-    {
-        self.actionButtonsManager = [[OTAppaloosaActionButtonsManager alloc] init];
-    }
-
-    [self.actionButtonsManager presentFeedbackWithRecipientsEmailArray:recipientsEmail];
-}
-
-- (void)feedbackControllerWithDefaultButtonAtPosition:(AppaloosaButtonPosition)position
-                    forRecipientsEmailArray:(NSArray *)emailsArray
-{
-    if (self.actionButtonsManager == nil)
-    {
-        self.actionButtonsManager = [[OTAppaloosaActionButtonsManager alloc] init];
-    }
-    
-    [self.actionButtonsManager initializeDefaultFeedbackButtonWithPosition:position
-                                                   forRecipientsEmailArray:emailsArray];
-}
-
-- (void)showDefaultFeedbackButton:(BOOL)shouldShow
-{
-    if (self.actionButtonsManager == nil)
-    {
-        self.actionButtonsManager = [[OTAppaloosaActionButtonsManager alloc] init];
-    }
-    
-    [self.actionButtonsManager showDefaultFeedbackButton:shouldShow];
-}
-
-/**************************************************************************************************/
-#pragma mark - Debug Panel Feedback
-
-- (void)openDevPanelController
-{
-    if (self.actionButtonsManager == nil)
-    {
-        self.actionButtonsManager = [[OTAppaloosaActionButtonsManager alloc] init];
-    }
-    
-    [self.actionButtonsManager presentDevPanel];
-}
-
-- (void)devPanelWithDefaultButtonAtPosition:(AppaloosaButtonPosition)position
-{
-    if (self.actionButtonsManager == nil)
-    {
-        self.actionButtonsManager = [[OTAppaloosaActionButtonsManager alloc] init];
-    }
-
-    [self.actionButtonsManager initializeDefaultDevPanelButtonWithPosition:position];
-}
-
-- (void)showDefaultDevPanelButton:(BOOL)shouldShow
-{
-    if (self.actionButtonsManager == nil)
-    {
-        self.actionButtonsManager = [[OTAppaloosaActionButtonsManager alloc] init];
-    }
-    
-    [self.actionButtonsManager showDefaultDevPanelButton:shouldShow];
 }
 
 /**************************************************************************************************/
