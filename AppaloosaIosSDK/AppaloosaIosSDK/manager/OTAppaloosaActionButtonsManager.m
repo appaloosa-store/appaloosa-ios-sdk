@@ -21,10 +21,6 @@
 
 #import "OTAppaloosaActionButtonsManager.h"
 
-// Controllers :
-#import "OTAppaloosaInAppFeedbackViewController.h"
-#import "OTAppaloosaDevPanelViewController.h"
-
 // Misc :
 #import <QuartzCore/QuartzCore.h>
 
@@ -160,18 +156,6 @@ static OTAppaloosaActionButtonsManager *manager;
     [self showDefaultDevPanelButton:YES];
 }
 
-- (void)presentDevPanel
-{
-    NSArray *appaloosaButtons = [[NSArray alloc] initWithObjects:self.devPanelButton, self.feedbackButton, nil];
-    
-    OTAppaloosaDevPanelViewController *devControllerViewController =
-    [[OTAppaloosaDevPanelViewController alloc] initWithAppaloosaButtonsArray:appaloosaButtons];
-    
-    [[UIViewController currentPresentedController] presentViewController:devControllerViewController
-                                                                animated:YES
-                                                              completion:nil];
-}
-
 /**************************************************************************************************/
 #pragma mark - Feedback
 
@@ -211,42 +195,42 @@ static OTAppaloosaActionButtonsManager *manager;
     [self triggerFeedbackWithRecipientsEmailArray:emailsArray andFeedbackButton:self.feedbackButton];
 }
 
-- (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray andFeedbackButton:(UIButton *)feedbackButton
-{
-    // take screenshot :
-    [self.feedbackButton setAlpha:0];
-    UIImage *screenshotImage = [OTAppaloosaActionButtonsManager getScreenshotImageFromCurrentScreen];
-    [self.feedbackButton setAlpha:1];
-    
-    // display white blink screen (to copy iOS screenshot effect) before opening feedback controller :
-    UIView *whiteView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [whiteView setBackgroundColor:[UIColor whiteColor]];
-    UIView *windowView = [OTAppaloosaActionButtonUtil getApplicationWindowView];
-    [windowView addSubview:whiteView];
-    [UIView animateWithDuration:kAppaloosaFeedbackScreenshotAnimationDuration animations:^{
-        [whiteView setAlpha:0];
-    } completion:^(BOOL finished) {
-        
-        [whiteView removeFromSuperview];
-        
-        NSArray *buttonsArray = [[NSArray alloc] initWithObjects:feedbackButton, self.devPanelButton, nil];
-        
-        // open feedback controller :
-        OTAppaloosaInAppFeedbackViewController *feedbackViewController =
-        [[OTAppaloosaInAppFeedbackViewController alloc] initWithAppaloosaButtons:buttonsArray
-                                                            recipientsEmailArray:emailsArray
-                                                              andScreenshotImage:screenshotImage];
-        
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        {
-            [feedbackViewController setModalPresentationStyle:UIModalPresentationFormSheet];
-        }
-        
-        [[UIViewController currentPresentedController] presentViewController:feedbackViewController
-                                                                    animated:YES
-                                                                  completion:nil];
-    }];
-}
+//- (void)triggerFeedbackWithRecipientsEmailArray:(NSArray *)emailsArray andFeedbackButton:(UIButton *)feedbackButton
+//{
+//    // take screenshot :
+//    [self.feedbackButton setAlpha:0];
+//    UIImage *screenshotImage = [OTAppaloosaActionButtonsManager getScreenshotImageFromCurrentScreen];
+//    [self.feedbackButton setAlpha:1];
+//    
+//    // display white blink screen (to copy iOS screenshot effect) before opening feedback controller :
+//    UIView *whiteView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    [whiteView setBackgroundColor:[UIColor whiteColor]];
+//    UIView *windowView = [OTAppaloosaActionButtonUtil getApplicationWindowView];
+//    [windowView addSubview:whiteView];
+//    [UIView animateWithDuration:kAppaloosaFeedbackScreenshotAnimationDuration animations:^{
+//        [whiteView setAlpha:0];
+//    } completion:^(BOOL finished) {
+//        
+//        [whiteView removeFromSuperview];
+//        
+//        NSArray *buttonsArray = [[NSArray alloc] initWithObjects:feedbackButton, self.devPanelButton, nil];
+//        
+//        // open feedback controller :
+//        OTAppaloosaInAppFeedbackViewController *feedbackViewController =
+//        [[OTAppaloosaInAppFeedbackViewController alloc] initWithAppaloosaButtons:buttonsArray
+//                                                            recipientsEmailArray:emailsArray
+//                                                              andScreenshotImage:screenshotImage];
+//        
+//        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+//        {
+//            [feedbackViewController setModalPresentationStyle:UIModalPresentationFormSheet];
+//        }
+//        
+//        [[UIViewController currentPresentedController] presentViewController:feedbackViewController
+//                                                                    animated:YES
+//                                                                  completion:nil];
+//    }];
+//}
 
 /**************************************************************************************************/
 #pragma mark - Private

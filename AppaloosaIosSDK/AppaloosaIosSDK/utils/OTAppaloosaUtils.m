@@ -25,9 +25,9 @@
 
 // Fmk
 #import <AdSupport/ASIdentifierManager.h>
-#import <Base64/MF_Base64Additions.h>
+#import "MF_Base64Additions.h"
 #import "UIDevice+IdentifierAddition.h"
-#import "SFHFKeychainUtils.h"
+#import "BCCKeychain.h"
 
 @implementation OTAppaloosaUtils
 
@@ -105,7 +105,8 @@
 
 + (BOOL)isLocallyBlacklisted
 {
-    NSString *storedString = [SFHFKeychainUtils getPasswordForUsername:@"appaloosa" andServiceName:@"blacklisting" error:nil];
+    
+    NSString *storedString = [BCCKeychain getPasswordStringForUsername:@"appaloosa" andServiceName:@"blacklisting" error:nil];
     if(!storedString) {
         AppaloosaLog(@"Keychain does not exist => first launch");
         return NO;
@@ -117,13 +118,10 @@
 + (void)setIsLocallyBlacklisted:(BOOL)isBlacklisted
 {
     AppaloosaLog(@"Saving blacklist status: %d", isBlacklisted ? 1 : 0);
-    [SFHFKeychainUtils deleteItemForUsername:@"appaloosa"
+    [BCCKeychain deleteItemForUsername:@"appaloosa"
                               andServiceName:@"blacklisting" error:nil];
-    [SFHFKeychainUtils storeUsername:@"appaloosa"
-                         andPassword:[NSString stringWithFormat:@"%d", isBlacklisted ? 1 : 0]
-                      forServiceName:@"blacklisting"
-                      updateExisting:YES
-                               error:nil];
+    
+    [BCCKeychain storeUsername:@"appaloosa" andPasswordString:[NSString stringWithFormat:@"%d", isBlacklisted ? 1 : 0] forServiceName:@"blacklisting" updateExisting:YES error:nil];
 }
 
 /**************************************************************************************************/

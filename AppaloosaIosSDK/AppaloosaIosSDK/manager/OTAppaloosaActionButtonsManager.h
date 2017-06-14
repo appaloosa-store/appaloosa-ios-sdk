@@ -21,7 +21,7 @@
 
 #import <Foundation/Foundation.h>
 #import "OTAppaloosaActionButtonUtil.h"
-
+#import <UIKit/UIKit.h>
 
 @interface OTAppaloosaActionButtonsManager : NSObject
 

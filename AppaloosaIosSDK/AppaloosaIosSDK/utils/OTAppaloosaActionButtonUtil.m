@@ -21,6 +21,7 @@
 
 #import "OTAppaloosaActionButtonsManager.h"
 #import "OTAppaloosaActionButtonUtil.h"
+#import <UIKit/UIKit.h>
 
 static const CGFloat kAppaloosaButtonWidth = 35;
 static const CGFloat kAppaloosaButtonHeight = 35;

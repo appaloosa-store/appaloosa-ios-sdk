@@ -22,6 +22,7 @@
 #import <sys/utsname.h>
 #import "OTAppaloosaSystemPropertyService.h"
 #import "OTAppaloosaConfigProperty.h"
+#import <UIKit/UIKit.h>
 
 #include <stdio.h>
 

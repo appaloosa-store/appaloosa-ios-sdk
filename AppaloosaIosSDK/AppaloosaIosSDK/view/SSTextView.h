@@ -6,6 +6,8 @@
 //  Copyright 2010-2011 Sam Soffes. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 /**
  UITextView subclass that adds placeholder support like UITextField has.
  */

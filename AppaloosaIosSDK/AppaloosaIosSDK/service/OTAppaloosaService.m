@@ -22,7 +22,7 @@
 #import "OTAppaloosaService.h"
 
 // Fmk
-#import <Reachability/Reachability.h>
+#import "Reachability.h"
 
 // Model
 #import "OTAppaloosaApplication.h"
@@ -66,7 +66,8 @@
                            withSuccess:(void (^)(void))success
                                failure:(void (^)(OTApplicationAuthorization *appAuthorization))failure;
 {
-    if ([[Reachability reachabilityForInternetConnection] isReachable])
+    
+    if ([Reachability reachabilityForInternetConnection])
     {
         NSString *urlString = [OTAppaloosaUrlHelper urlForApplicationAuthorizationWithStoreId:storeId
                                                                                         bundleId:bundleId
@@ -156,7 +157,7 @@
                                   withSuccess:(void (^)(OTAppaloosaApplication *application))success
                                       failure:(void (^)(NSString *message))failure
 {
-    if ([[Reachability reachabilityForInternetConnection] isReachable])
+    if ([Reachability reachabilityForInternetConnection])
     {
         NSString *urlString = [OTAppaloosaUrlHelper urlForApplicationInformationWithStoreId:storeId
                                                                                         bundleId:bundleId
