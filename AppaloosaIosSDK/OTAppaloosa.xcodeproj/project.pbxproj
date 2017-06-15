@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA08E5EF1EF16AF1004611FB /* AppaloosaIosSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA08E5E51EF16AF1004611FB /* AppaloosaIosSDK.framework */; };
-		FA08E5F41EF16AF2004611FB /* AppaloosaIosSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA08E5F31EF16AF2004611FB /* AppaloosaIosSDKTests.m */; };
-		FA08E5F61EF16AF2004611FB /* AppaloosaIosSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E5E81EF16AF1004611FB /* AppaloosaIosSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FA08E64D1EF16E05004611FB /* OTAppaloosa.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E64C1EF16E05004611FB /* OTAppaloosa.h */; };
+		FA08E64D1EF16E05004611FB /* OTAppaloosa.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E64C1EF16E05004611FB /* OTAppaloosa.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA08E6501EF16E10004611FB /* SSTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E64E1EF16E10004611FB /* SSTextView.h */; };
 		FA08E6511EF16E10004611FB /* SSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA08E64F1EF16E10004611FB /* SSTextView.m */; };
 		FA08E65C1EF16E1D004611FB /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E6521EF16E1D004611FB /* NSString+URLEncoding.h */; };
@@ -51,23 +48,10 @@
 		FA08E6A71EF17C21004611FB /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E68D1EF16EEF004611FB /* Reachability.h */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FA08E5F01EF16AF1004611FB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FA08E5DC1EF16AF1004611FB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FA08E5E41EF16AF1004611FB;
-			remoteInfo = AppaloosaIosSDK;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		FA08E5E51EF16AF1004611FB /* AppaloosaIosSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppaloosaIosSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA08E5E51EF16AF1004611FB /* OTAppaloosa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OTAppaloosa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA08E5E81EF16AF1004611FB /* AppaloosaIosSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppaloosaIosSDK.h; sourceTree = "<group>"; };
 		FA08E5E91EF16AF1004611FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA08E5EE1EF16AF1004611FB /* AppaloosaIosSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppaloosaIosSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA08E5F31EF16AF2004611FB /* AppaloosaIosSDKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppaloosaIosSDKTests.m; sourceTree = "<group>"; };
-		FA08E5F51EF16AF2004611FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA08E64C1EF16E05004611FB /* OTAppaloosa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTAppaloosa.h; path = AppaloosaIosSDK/OTAppaloosa.h; sourceTree = "<group>"; };
 		FA08E64E1EF16E10004611FB /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSTextView.h; path = AppaloosaIosSDK/view/SSTextView.h; sourceTree = "<group>"; };
 		FA08E64F1EF16E10004611FB /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSTextView.m; path = AppaloosaIosSDK/view/SSTextView.m; sourceTree = "<group>"; };
@@ -117,14 +101,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA08E5EB1EF16AF1004611FB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA08E5EF1EF16AF1004611FB /* AppaloosaIosSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -139,7 +115,6 @@
 				FA08E5FF1EF16B12004611FB /* manager */,
 				FA08E68C1EF16EC3004611FB /* libs */,
 				FA08E5E71EF16AF1004611FB /* AppaloosaIosSDK */,
-				FA08E5F21EF16AF2004611FB /* AppaloosaIosSDKTests */,
 				FA08E5E61EF16AF1004611FB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -147,8 +122,7 @@
 		FA08E5E61EF16AF1004611FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA08E5E51EF16AF1004611FB /* AppaloosaIosSDK.framework */,
-				FA08E5EE1EF16AF1004611FB /* AppaloosaIosSDKTests.xctest */,
+				FA08E5E51EF16AF1004611FB /* OTAppaloosa.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,15 +134,6 @@
 				FA08E5E91EF16AF1004611FB /* Info.plist */,
 			);
 			path = AppaloosaIosSDK;
-			sourceTree = "<group>";
-		};
-		FA08E5F21EF16AF2004611FB /* AppaloosaIosSDKTests */ = {
-			isa = PBXGroup;
-			children = (
-				FA08E5F31EF16AF2004611FB /* AppaloosaIosSDKTests.m */,
-				FA08E5F51EF16AF2004611FB /* Info.plist */,
-			);
-			path = AppaloosaIosSDKTests;
 			sourceTree = "<group>";
 		};
 		FA08E5FF1EF16B12004611FB /* manager */ = {
@@ -258,12 +223,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA08E64D1EF16E05004611FB /* OTAppaloosa.h in Headers */,
 				FA08E6971EF1725C004611FB /* NSString+MD5Addition.h in Headers */,
 				FA08E6A71EF17C21004611FB /* Reachability.h in Headers */,
 				FA08E66C1EF16E2E004611FB /* OTAppaloosaService.h in Headers */,
-				FA08E64D1EF16E05004611FB /* OTAppaloosa.h in Headers */,
 				FA08E68B1EF16E4F004611FB /* OTAppaloosaAgentDelegate.h in Headers */,
-				FA08E5F61EF16AF2004611FB /* AppaloosaIosSDK.h in Headers */,
 				FA08E6501EF16E10004611FB /* SSTextView.h in Headers */,
 				FA08E66E1EF16E2E004611FB /* OTAppaloosaSystemPropertyService.h in Headers */,
 				FA08E6601EF16E1D004611FB /* OTAppaloosaUtils.h in Headers */,
@@ -285,9 +249,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		FA08E5E41EF16AF1004611FB /* AppaloosaIosSDK */ = {
+		FA08E5E41EF16AF1004611FB /* OTAppaloosa */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA08E5F91EF16AF2004611FB /* Build configuration list for PBXNativeTarget "AppaloosaIosSDK" */;
+			buildConfigurationList = FA08E5F91EF16AF2004611FB /* Build configuration list for PBXNativeTarget "OTAppaloosa" */;
 			buildPhases = (
 				FA08E5E01EF16AF1004611FB /* Sources */,
 				FA08E5E11EF16AF1004611FB /* Frameworks */,
@@ -298,28 +262,10 @@
 			);
 			dependencies = (
 			);
-			name = AppaloosaIosSDK;
+			name = OTAppaloosa;
 			productName = AppaloosaIosSDK;
-			productReference = FA08E5E51EF16AF1004611FB /* AppaloosaIosSDK.framework */;
+			productReference = FA08E5E51EF16AF1004611FB /* OTAppaloosa.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		FA08E5ED1EF16AF1004611FB /* AppaloosaIosSDKTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FA08E5FC1EF16AF2004611FB /* Build configuration list for PBXNativeTarget "AppaloosaIosSDKTests" */;
-			buildPhases = (
-				FA08E5EA1EF16AF1004611FB /* Sources */,
-				FA08E5EB1EF16AF1004611FB /* Frameworks */,
-				FA08E5EC1EF16AF1004611FB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FA08E5F11EF16AF1004611FB /* PBXTargetDependency */,
-			);
-			name = AppaloosaIosSDKTests;
-			productName = AppaloosaIosSDKTests;
-			productReference = FA08E5EE1EF16AF1004611FB /* AppaloosaIosSDKTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -335,14 +281,9 @@
 						DevelopmentTeam = X28ZDHTUYZ;
 						ProvisioningStyle = Automatic;
 					};
-					FA08E5ED1EF16AF1004611FB = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = X28ZDHTUYZ;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
-			buildConfigurationList = FA08E5DF1EF16AF1004611FB /* Build configuration list for PBXProject "AppaloosaIosSDK" */;
+			buildConfigurationList = FA08E5DF1EF16AF1004611FB /* Build configuration list for PBXProject "OTAppaloosa" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -354,8 +295,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FA08E5E41EF16AF1004611FB /* AppaloosaIosSDK */,
-				FA08E5ED1EF16AF1004611FB /* AppaloosaIosSDKTests */,
+				FA08E5E41EF16AF1004611FB /* OTAppaloosa */,
 			);
 		};
 /* End PBXProject section */
@@ -366,13 +306,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA08E6A61EF1751F004611FB /* LICENCE in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FA08E5EC1EF16AF1004611FB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,23 +337,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FA08E5EA1EF16AF1004611FB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FA08E5F41EF16AF2004611FB /* AppaloosaIosSDKTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FA08E5F11EF16AF1004611FB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FA08E5E41EF16AF1004611FB /* AppaloosaIosSDK */;
-			targetProxy = FA08E5F01EF16AF1004611FB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FA08E5F71EF16AF2004611FB /* Debug */ = {
@@ -557,32 +474,10 @@
 			};
 			name = Release;
 		};
-		FA08E5FD1EF16AF2004611FB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = X28ZDHTUYZ;
-				INFOPLIST_FILE = AppaloosaIosSDKTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Appaloosa.AppaloosaIosSDKTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		FA08E5FE1EF16AF2004611FB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = X28ZDHTUYZ;
-				INFOPLIST_FILE = AppaloosaIosSDKTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Appaloosa.AppaloosaIosSDKTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA08E5DF1EF16AF1004611FB /* Build configuration list for PBXProject "AppaloosaIosSDK" */ = {
+		FA08E5DF1EF16AF1004611FB /* Build configuration list for PBXProject "OTAppaloosa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA08E5F71EF16AF2004611FB /* Debug */,
@@ -591,20 +486,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA08E5F91EF16AF2004611FB /* Build configuration list for PBXNativeTarget "AppaloosaIosSDK" */ = {
+		FA08E5F91EF16AF2004611FB /* Build configuration list for PBXNativeTarget "OTAppaloosa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA08E5FA1EF16AF2004611FB /* Debug */,
 				FA08E5FB1EF16AF2004611FB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FA08E5FC1EF16AF2004611FB /* Build configuration list for PBXNativeTarget "AppaloosaIosSDKTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FA08E5FD1EF16AF2004611FB /* Debug */,
-				FA08E5FE1EF16AF2004611FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
