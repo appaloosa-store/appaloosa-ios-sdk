@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA08E64D1EF16E05004611FB /* OTAppaloosa.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E64C1EF16E05004611FB /* OTAppaloosa.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA08E6501EF16E10004611FB /* SSTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E64E1EF16E10004611FB /* SSTextView.h */; };
 		FA08E6511EF16E10004611FB /* SSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA08E64F1EF16E10004611FB /* SSTextView.m */; };
 		FA08E65C1EF16E1D004611FB /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E6521EF16E1D004611FB /* NSString+URLEncoding.h */; };
@@ -46,13 +45,13 @@
 		FA08E6A41EF17454004611FB /* BCCKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = FA08E6A21EF17454004611FB /* BCCKeychain.m */; };
 		FA08E6A61EF1751F004611FB /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = FA08E6A51EF1751F004611FB /* LICENCE */; };
 		FA08E6A71EF17C21004611FB /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = FA08E68D1EF16EEF004611FB /* Reachability.h */; };
+		FA53F5711EF27E7800E0E42A /* OTAppaloosa.h in Headers */ = {isa = PBXBuildFile; fileRef = FA53F5701EF27E6700E0E42A /* OTAppaloosa.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FA08E5E51EF16AF1004611FB /* OTAppaloosa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OTAppaloosa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA08E5E81EF16AF1004611FB /* AppaloosaIosSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppaloosaIosSDK.h; sourceTree = "<group>"; };
 		FA08E5E91EF16AF1004611FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA08E64C1EF16E05004611FB /* OTAppaloosa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTAppaloosa.h; path = AppaloosaIosSDK/OTAppaloosa.h; sourceTree = "<group>"; };
 		FA08E64E1EF16E10004611FB /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSTextView.h; path = AppaloosaIosSDK/view/SSTextView.h; sourceTree = "<group>"; };
 		FA08E64F1EF16E10004611FB /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSTextView.m; path = AppaloosaIosSDK/view/SSTextView.m; sourceTree = "<group>"; };
 		FA08E6521EF16E1D004611FB /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+URLEncoding.h"; path = "AppaloosaIosSDK/utils/NSString+URLEncoding.h"; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		FA08E6A11EF17454004611FB /* BCCKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BCCKeychain.h; path = AppaloosaIosSDK/libs/BCCKeychain.h; sourceTree = "<group>"; };
 		FA08E6A21EF17454004611FB /* BCCKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BCCKeychain.m; path = AppaloosaIosSDK/libs/BCCKeychain.m; sourceTree = "<group>"; };
 		FA08E6A51EF1751F004611FB /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENCE; path = AppaloosaIosSDK/view/LICENCE; sourceTree = "<group>"; };
+		FA53F5701EF27E6700E0E42A /* OTAppaloosa.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OTAppaloosa.h; path = ../OTAppaloosa/AppaloosaIosSDK/OTAppaloosa.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +107,7 @@
 		FA08E5DB1EF16AF1004611FB = {
 			isa = PBXGroup;
 			children = (
-				FA08E64C1EF16E05004611FB /* OTAppaloosa.h */,
+				FA53F5701EF27E6700E0E42A /* OTAppaloosa.h */,
 				FA08E6031EF16B4F004611FB /* views */,
 				FA08E6021EF16B28004611FB /* utils */,
 				FA08E6011EF16B21004611FB /* service */,
@@ -223,7 +223,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA08E64D1EF16E05004611FB /* OTAppaloosa.h in Headers */,
+				FA53F5711EF27E7800E0E42A /* OTAppaloosa.h in Headers */,
 				FA08E6971EF1725C004611FB /* NSString+MD5Addition.h in Headers */,
 				FA08E6A71EF17C21004611FB /* Reachability.h in Headers */,
 				FA08E66C1EF16E2E004611FB /* OTAppaloosaService.h in Headers */,

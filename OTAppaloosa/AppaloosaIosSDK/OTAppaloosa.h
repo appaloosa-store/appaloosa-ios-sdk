@@ -21,5 +21,3 @@
 
 #import "OTAppaloosaAgent.h"
 #import "OTAppaloosaAgentDelegate.h"
-#import "OTAppaloosaActionButtonsManager.h"
-
