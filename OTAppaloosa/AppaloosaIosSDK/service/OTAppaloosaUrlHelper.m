@@ -55,8 +55,6 @@ const NSString *kUrlJsonExtension = @".json";
 /**
  * This method generates the Appaloosa's URL to check kill switch
  * @param storeId - The store identifier in appaloosa-store.com
- * @param appId - The app id => bundleId
- * @param tokenId - The token identifier in appaloosa-store.com
  *
  *  store_id/mobile_application_updates/is_authorized?
  *      token=(store_token)
@@ -93,8 +91,6 @@ const NSString *kUrlJsonExtension = @".json";
 /**
  * This method generates the Appaloosa's URL to get application information
  * @param storeId - The store identifier in appaloosa-store.com
- * @param appId - The app id => bundleId
- * @param tokenId - The token identifier in appaloosa-store.com
  *
  *   store_id/mobile_applications/app_id.json?
  *       token=(store_token)
@@ -122,8 +118,6 @@ const NSString *kUrlJsonExtension = @".json";
 /**
  * This method generates the Appaloosa's URL to check if an update is available
  * @param storeId - The store identifier in appaloosa-store.com
- * @param appId - The app id => bundleId
- * @param tokenId - The token identifier in appaloosa-store.com
  *
  *  store_id/mobile_application_updates/is_update_needed?
  *      token=(store_token)
