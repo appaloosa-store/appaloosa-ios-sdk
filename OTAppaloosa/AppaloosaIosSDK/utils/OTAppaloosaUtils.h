@@ -29,15 +29,18 @@
 #define AppaloosaLog(fmt, ...) /* */
 #endif
 
+static NSUInteger const kAlertViewApplicationAuthorization = 1;
+static NSUInteger const kAlertViewApplicationJailbreak     = 3;
+static NSUInteger const kAlertViewApplicationNone          = 0;
+
 @interface OTAppaloosaUtils : NSObject
 
 /**************************************************************************************************/
 #pragma mark - AlertView
 
-+ (UIAlertView *)displayAlertWithMessage:(NSString *)message actionTitle:(NSString *)actionTitle withDelegate:(id<UIAlertViewDelegate>)delegate;
-+ (UIAlertView *)displayAlertWithMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate;
-+ (UIAlertView *)displayAlertWithMessage:(NSString *)message andActionTitle:(NSString *)actionTitle;
-+ (UIAlertView *)displayAlertWithMessage:(NSString *)message;
++ (UIAlertController *)displayAlertWithMessage:(NSString *)message actionTitle:(NSString *)actionTitle withAction:(NSUInteger)alertState;
++ (UIAlertController *)displayAlertWithMessage:(NSString *)message withAction:(NSUInteger)alertState;
++ (UIAlertController *)displayAlertWithMessage:(NSString *)message;
 
 /**************************************************************************************************/
 #pragma mark - Utilities

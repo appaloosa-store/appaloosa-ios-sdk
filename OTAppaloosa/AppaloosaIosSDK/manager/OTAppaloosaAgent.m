@@ -32,10 +32,6 @@
 #import "OTAppaloosaService.h"
 #import "OTAppaloosaUrlHelper.h"
 
-const NSUInteger kAlertViewApplicationAuthorization = 1;
-const NSUInteger kAlertViewDownloadUpdate           = 2;
-const NSUInteger kAlertViewApplicationJailbreak     = 3;
-
 @interface OTAppaloosaAgent ()
 
 /**************************************************************************************************/
@@ -139,6 +135,14 @@ static OTAppaloosaAgent *manager;
     [OTAppaloosaUrlHelper setServerBaseURL:[NSString stringWithFormat:@"%@/", serverBaseURL]];
 }
 
+- (UIViewController *)currentTopViewController {
+    UIViewController *topVC = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    return topVC;
+}
+
 /**************************************************************************************************/
 #pragma mark - Application Authorizations
 
@@ -187,9 +191,9 @@ static OTAppaloosaAgent *manager;
     }
     else
     {
-        UIAlertView *alertView = [OTAppaloosaUtils displayAlertWithMessage:appAuthorization.message
-                                                              withDelegate:self];
-        alertView.tag = kAlertViewApplicationAuthorization;
+        UIAlertController *alertView = [OTAppaloosaUtils displayAlertWithMessage:appAuthorization.message withAction:kAlertViewApplicationAuthorization];
+        UIViewController *currentTopVC = [self currentTopViewController];
+        [currentTopVC presentViewController:alertView animated:YES completion:nil];
     }
 }
 
@@ -198,10 +202,9 @@ static OTAppaloosaAgent *manager;
     OTApplicationAuthorization * authorization = [OTAppaloosaUtils checkDeviceJailbreak];
     if(authorization.status == OTAppaloosaAutorizationsStatusJailbroken) {
         AppaloosaLog(@"Device is jailbroken, exiting");
-        UIAlertView *alertView = [OTAppaloosaUtils displayAlertWithMessage:authorization.message
-                                                              withDelegate:self];
-        alertView.tag = kAlertViewApplicationJailbreak;
-        [alertView show];
+        UIAlertController *alertView = [OTAppaloosaUtils displayAlertWithMessage:authorization.message withAction:kAlertViewApplicationJailbreak];
+        UIViewController *currentTopVC = [self currentTopViewController];
+        [currentTopVC presentViewController:alertView animated:YES completion:nil];
     }
 }
 
@@ -271,10 +274,30 @@ static OTAppaloosaAgent *manager;
             AppaloosaLog(@"application is not up to date, need to update");
             
             NSString * message = NSLocalizedString(@"An update is available. Would you like to update?", @"An update is available. Would you like to update?");
-            UIAlertView *alert = [OTAppaloosaUtils displayAlertWithMessage:message
-                                                               actionTitle:NSLocalizedString(@"Ok", @"Ok")
-                                                              withDelegate:self];
-            alert.tag = kAlertViewDownloadUpdate;
+            
+            
+            
+            
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:NSLocalizedString(@"Appaloosa Information", @"Appaloosa Information")
+                                        message:message
+                                        preferredStyle: UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction
+                                           actionWithTitle:NSLocalizedString(@"Ok", @"Ok")
+                                           style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction *action)
+                                           {
+                                               [self openSafariToDownloadApplication];
+                                           }];
+            UIAlertAction *cancelAction = [UIAlertAction
+                                           actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel")
+                                           style:UIAlertActionStyleCancel
+                                           handler:nil];
+            [alert addAction:cancelAction];
+            [alert addAction:okAction];
+            
+            UIViewController *currentTopVC = [self currentTopViewController];
+            [currentTopVC presentViewController:alert animated:YES completion:nil];
         }
         else
         {
@@ -315,30 +338,4 @@ static OTAppaloosaAgent *manager;
         AppaloosaLog(@"No url to download the application. Call 'checkUpdates' before downloading a new version.");
     }
 }
-
-/**************************************************************************************************/
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch (alertView.tag)
-    {
-        case kAlertViewApplicationAuthorization:
-        case kAlertViewApplicationJailbreak:
-        {
-            exit(0);
-            break;
-        }
-        case kAlertViewDownloadUpdate:
-        {
-            if (buttonIndex != alertView.cancelButtonIndex)
-            {
-                [self openSafariToDownloadApplication];
-            }
-        }
-        default:
-            break;
-    }
-}
-
 @end

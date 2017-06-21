@@ -34,41 +34,38 @@
 /**************************************************************************************************/
 #pragma mark - AlertView
 
-+ (UIAlertView *)displayAlertWithMessage:(NSString *)message actionTitle:(NSString *)actionTitle withDelegate:(id<UIAlertViewDelegate>)delegate
++ (UIAlertController *)displayAlertWithMessage:(NSString *)message actionTitle:(NSString *)actionTitle withAction:(NSUInteger)alertState
 {
     NSString *cancelMessage = NSLocalizedString(@"Cancel", @"Cancel");
-    // actionTitle = nil means user does not have a choice
-    if(!actionTitle)
-        cancelMessage = NSLocalizedString(@"Ok", @"Ok");
-
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Appaloosa Information", @"Appaloosa Information")
-                                                    message:message
-                                                   delegate:delegate
-                                          cancelButtonTitle:cancelMessage
-                                          otherButtonTitles:actionTitle, nil];
-    [alert show];
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:NSLocalizedString(@"Appaloosa Information", @"Appaloosa Information")
+                                message:message
+                                preferredStyle: UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:cancelMessage
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       [OTAppaloosaUtils buttonIsClicked:alertState];
+                                   }];
+    [alert addAction:cancelAction];
     return alert;
 }
 
-+ (UIAlertView *)displayAlertWithMessage:(NSString *)message withDelegate:(id<UIAlertViewDelegate>)delegate
++ (UIAlertController *)displayAlertWithMessage:(NSString *)message withAction:(NSUInteger)alertState
+{
+    
+    return [OTAppaloosaUtils displayAlertWithMessage:message
+                                         actionTitle:nil
+                                          withAction:alertState];
+}
+
++ (UIAlertController *)displayAlertWithMessage:(NSString *)message
 {
     return [OTAppaloosaUtils displayAlertWithMessage:message
                                          actionTitle:nil
-                                        withDelegate:delegate];
-}
-
-+ (UIAlertView *)displayAlertWithMessage:(NSString *)message andActionTitle:(NSString *)actionTitle
-{
-    return [OTAppaloosaUtils displayAlertWithMessage:message
-                                         actionTitle:actionTitle
-                                        withDelegate:nil];
-}
-
-+ (UIAlertView *)displayAlertWithMessage:(NSString *)message
-{
-    return [OTAppaloosaUtils displayAlertWithMessage:message
-                                         actionTitle:nil
-                                        withDelegate:nil];
+                                          withAction:kAlertViewApplicationNone];
 }
 
 /**************************************************************************************************/
@@ -98,6 +95,21 @@
 + (NSString *)currentApplicationVersion
 {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
++ (void)buttonIsClicked:(NSUInteger)typeAlertView
+{
+    switch (typeAlertView)
+    {
+        case kAlertViewApplicationAuthorization:
+        case kAlertViewApplicationJailbreak:
+        {
+            exit(0);
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 /**************************************************************************************************/

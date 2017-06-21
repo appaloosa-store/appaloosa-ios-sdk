@@ -107,6 +107,8 @@
  */
 - (void)setServerBaseURL:(NSString *)serverBaseURL;
 
+- (void)openSafariToDownloadApplication;
+
 #pragma mark - Getters and Setters
 
 @property (nonatomic) id<OTAppaloosaAgentDelegate> delegate;
