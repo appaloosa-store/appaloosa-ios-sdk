@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "OTAppaloosa"
-  s.version      = "1.0.0"
+  s.version      = "1.0.0-beta1"
   s.summary      = "Appaloosa SDK for iOS."
   s.homepage     = "http://www.appaloosa-store.com/"
   s.license      = 'Apache License, Version 2.0'
