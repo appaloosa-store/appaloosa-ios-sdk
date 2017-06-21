@@ -1,6 +1,6 @@
-#Appaloosa SDK
+# Appaloosa SDK
 
-##Overview
+## Overview
 
 Appaloosa SDK library is a simple library that helps you to:
 
@@ -8,7 +8,7 @@ Appaloosa SDK library is a simple library that helps you to:
 * Manage authorizations for your application
 * Prevent your application to run on a jailbroken device
 
-##Requirements
+## Requirements
 
 Appaloosa SDK library uses ARC and is compatible with iOS 8+.
 
