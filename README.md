@@ -1,3 +1,5 @@
+# This SDK is now deprecated and won't be supported anymore, if you need autoupdate or blacklist feature please contact us directly to learn about our new features.
+
 # Appaloosa SDK
 
 ## Overview
